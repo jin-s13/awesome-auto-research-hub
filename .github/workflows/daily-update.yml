@@ -7,6 +7,7 @@
 #   - ARK_API_BASE_URL
 #   - ARK_MODEL_NAME
 #   - SMART_MODEL_NAME
+#   - ARK_SURVEY_MAX_TOKENS
 #   - MINERU_API_KEY
 #   - OPENALEX_API_KEY
 #   - OPENALEX_MAILTO
@@ -112,6 +113,7 @@ jobs:
           SMART_MODEL_NAME: ${{ secrets.SMART_MODEL_NAME || secrets.ARK_MODEL_NAME || 'deepseek-v4-pro' }}
           ARK_TIMEOUT_SECONDS: ${{ vars.ARK_TIMEOUT_SECONDS || '60' }}
           ARK_SURVEY_TIMEOUT_SECONDS: ${{ vars.ARK_SURVEY_TIMEOUT_SECONDS || '180' }}
+          ARK_SURVEY_MAX_TOKENS: ${{ vars.ARK_SURVEY_MAX_TOKENS || '8192' }}
           MINERU_API_KEY: ${{ secrets.MINERU_API_KEY }}
           MINERU_BASE_URL: https://mineru.net/api/v4
           MINERU_API_MODE: official
