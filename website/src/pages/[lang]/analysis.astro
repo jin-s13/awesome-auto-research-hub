@@ -1,0 +1,352 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getSurveys } from '../../lib/data';
+import { useTranslations } from '../../lib/i18n';
+import { localizePath, type Lang } from '../../lib/lang';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'en' } }, { params: { lang: 'zh' } }];
+}
+
+const lang = Astro.params.lang as Lang;
+const _t = useTranslations(lang);
+
+const surveyTopics = getSurveys();
+const scoreComponentLabels: Record<string, Record<Lang, string>> = {
+  methodology_quality: { en: 'Methodology quality', zh: '方法质量' },
+  recency: { en: 'Recency', zh: '近期性' },
+  reproducibility: { en: 'Reproducibility', zh: '可复现性' },
+  topical_relevance: { en: 'Topical relevance', zh: '主题相关性' },
+  citation_impact: { en: 'Citation impact', zh: '引用影响力' },
+  graph_prestige: { en: 'Graph prestige', zh: '图谱声望' },
+  citation_velocity: { en: 'Citation velocity', zh: '引用速度' },
+};
+const reviewKeyMap = {
+  scope: { en: 'scope_methodology', zh: '范围与方法' },
+  lines: { en: 'line_of_work_matrix', zh: '研究路线矩阵' },
+  consensus: { en: 'consensus', zh: '共识' },
+  disagreements: { en: 'disagreements', zh: '分歧' },
+  openQuestions: { en: 'open_questions', zh: '开放问题' },
+  trendEvolution: { en: 'trend_evolution', zh: '趋势演进' },
+  timeline: { en: 'timeline', zh: '时间线' },
+  references: { en: 'references', zh: '参考论文' },
+} as const;
+const localizedTopicLabel = (topic: (typeof surveyTopics)[number]) =>
+  lang === 'zh' && topic.label_zh ? topic.label_zh : topic.label;
+const localizedTopicDescription = (topic: (typeof surveyTopics)[number]) =>
+  lang === 'zh' && topic.description_zh ? topic.description_zh : topic.description;
+const localizedOutline = (topic: (typeof surveyTopics)[number]) =>
+  lang === 'zh' && topic.related_work_outline_zh?.length ? topic.related_work_outline_zh : topic.related_work_outline;
+const componentLabel = (key: string) => scoreComponentLabels[key]?.[lang] || key.replace(/_/g, ' ');
+const displayScoreComponents = (topic: (typeof surveyTopics)[number]) => {
+  const entries = Object.entries(topic.component_averages || {});
+  const nonZero = entries.filter(([, value]) => Number(value) > 0);
+  return (nonZero.length >= 4 ? nonZero : entries).slice(0, 4);
+};
+const localizedReview = (topic: (typeof surveyTopics)[number]) =>
+  lang === 'zh' && topic.literature_review_zh ? topic.literature_review_zh : topic.literature_review;
+const reviewValue = (topic: (typeof surveyTopics)[number], key: keyof typeof reviewKeyMap) => {
+  const review = localizedReview(topic);
+  if (!review) return undefined;
+  return review[reviewKeyMap[key][lang]] ?? review[reviewKeyMap[key].en];
+};
+const textList = (value: unknown) => (Array.isArray(value) ? value.filter((item): item is string => typeof item === 'string' && item.trim().length > 0) : []);
+const objectList = (value: unknown) => (
+  Array.isArray(value) ? value.filter((item): item is Record<string, unknown> => !!item && typeof item === 'object') : []
+);
+const lineName = (item: Record<string, unknown>) => String(item[lang === 'zh' ? '路线' : 'line'] || '');
+const lineSolves = (item: Record<string, unknown>) => String(item[lang === 'zh' ? '解决的问题' : 'what_it_solves'] || '');
+const lineGap = (item: Record<string, unknown>) => String(item[lang === 'zh' ? '尚未覆盖' : 'what_remains_open'] || '');
+const reviewSectionLabels = {
+  lines: { en: 'Research Lines', zh: '研究路线' },
+  consensus: { en: 'Shared Direction', zh: '研究共性' },
+  disagreements: { en: 'Key Differences', zh: '关键差异' },
+  openQuestions: { en: 'Open Questions', zh: '开放问题' },
+  timeline: { en: 'Trend Evolution', zh: '趋势演进' },
+  yearTimeline: { en: 'Year Distribution', zh: '年份分布' },
+  references: { en: 'Representative Papers', zh: '代表论文' },
+};
+---
+<Base title={`${_t('pages.analysis.title')} · Awesome Auto Research Hub`} lang={lang}>
+  <section class="page-title">
+    <p class="eyebrow">{_t('pages.analysis.eyebrow')}</p>
+    <h1>{_t('pages.analysis.title')}</h1>
+    <p>{_t('pages.analysis.description')}</p>
+  </section>
+
+  {surveyTopics.length > 0 && (
+    <section class="survey-topic-list">
+      {surveyTopics.map((topic) => (
+        <article class="survey-topic">
+          <div class="survey-topic-head">
+            <div>
+              <p class="eyebrow">{topic.paper_count} {lang === 'zh' ? '篇论文' : 'papers'}</p>
+              <h2>{localizedTopicLabel(topic)}</h2>
+              {localizedTopicDescription(topic) && <p>{localizedTopicDescription(topic)}</p>}
+            </div>
+            <div class="topic-score-grid">
+              {displayScoreComponents(topic).map(([key, value]) => (
+                <span title={key}>
+                  <strong>{Math.round(value)}</strong>
+                  <small>{componentLabel(key)}</small>
+                </span>
+              ))}
+            </div>
+          </div>
+          {localizedReview(topic) ? (
+            <div class="survey-review">
+              <h3>{lang === 'zh' ? '文献综述归纳' : 'Literature review synthesis'}</h3>
+              {reviewValue(topic, 'scope') && <p class="review-scope">{String(reviewValue(topic, 'scope'))}</p>}
+              {objectList(reviewValue(topic, 'lines')).length > 0 && (
+                <section class="review-section review-lines">
+                  <h4>{reviewSectionLabels.lines[lang]}</h4>
+                  <div class="line-list">
+                    {objectList(reviewValue(topic, 'lines')).slice(0, 4).map((item) => (
+                      <article class="line-item">
+                        <strong>{lineName(item)}</strong>
+                        {lineSolves(item) && <p>{lineSolves(item)}</p>}
+                        {lineGap(item) && <small>{lang === 'zh' ? '尚未覆盖：' : 'Open edge: '}{lineGap(item)}</small>}
+                      </article>
+                    ))}
+                  </div>
+                </section>
+              )}
+              <div class="review-grid">
+                {(['consensus', 'disagreements', 'openQuestions'] as const).map((key) => {
+                  const items = textList(reviewValue(topic, key));
+                  return items.length > 0 && (
+                    <section class="review-section">
+                      <h4>{reviewSectionLabels[key][lang]}</h4>
+                      <ul>
+                        {items.map((item) => <li>{item}</li>)}
+                      </ul>
+                    </section>
+                  );
+                })}
+              </div>
+              {reviewValue(topic, 'trendEvolution') && (
+                <section class="review-section review-trend">
+                  <h4>{reviewSectionLabels.timeline[lang]}</h4>
+                  <p>{String(reviewValue(topic, 'trendEvolution'))}</p>
+                </section>
+              )}
+              {objectList(reviewValue(topic, 'timeline')).length > 0 && (
+                <section class="review-section review-timeline">
+                  <h4>{reviewSectionLabels.yearTimeline[lang]}</h4>
+                  <ul>
+                    {objectList(reviewValue(topic, 'timeline')).map((item) => (
+                      <li>
+                        <strong>{String(item.year || '')}</strong>
+                        {item.paper_count != null && <span>{lang === 'zh' ? `：${item.paper_count} 篇论文` : `: ${item.paper_count} papers`}</span>}
+                        {textList(item.representative_papers).length > 0 && (
+                          <span> · {textList(item.representative_papers).slice(0, 3).join('; ')}</span>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              )}
+              {objectList(reviewValue(topic, 'references')).length > 0 && (
+                <section class="review-section review-references">
+                  <h4>{reviewSectionLabels.references[lang]}</h4>
+                  <div class="reference-list">
+                    {objectList(reviewValue(topic, 'references')).slice(0, 6).map((paper) => (
+                      <a href={paper.id ? localizePath(`/papers/${paper.id}`, lang) : '#'} class="reference-pill">
+                        <span>{String(paper.title || '')}</span>
+                        <small>{[paper.year, paper.score != null ? Math.round(Number(paper.score)) : null].filter(Boolean).join(' · ')}</small>
+                      </a>
+                    ))}
+                  </div>
+                </section>
+              )}
+            </div>
+          ) : (
+            <div class="survey-outline">
+              <h3>{lang === 'zh' ? '跨论文综合归纳' : 'Cross-paper synthesis'}</h3>
+              <ul>
+                {localizedOutline(topic).map((item) => <li>{item}</li>)}
+              </ul>
+            </div>
+          )}
+          {topic.top_tags.length > 0 && (
+            <div class="tag-row">
+              {topic.top_tags.slice(0, 8).map((tag) => <span class="tag">{tag}</span>)}
+            </div>
+          )}
+        </article>
+      ))}
+    </section>
+  )}
+</Base>
+
+<style>
+  .survey-topic-list {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    margin-bottom: 40px;
+  }
+  .survey-topic {
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .survey-topic-head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(180px, 280px);
+    gap: 24px;
+    align-items: start;
+  }
+  .survey-topic h2 {
+    font-size: 22px;
+    margin: 0 0 8px;
+  }
+  .survey-topic p, .survey-outline li, .survey-review li {
+    color: var(--color-text-secondary);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .topic-score-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .topic-score-grid span {
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    border-radius: 6px;
+    padding: 8px;
+  }
+  .topic-score-grid strong {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 18px;
+    color: var(--color-text);
+  }
+  .topic-score-grid small {
+    display: block;
+    color: var(--color-text-muted);
+    font-size: 11px;
+    line-height: 1.3;
+    margin-top: 2px;
+  }
+  .survey-outline {
+    margin-top: 18px;
+  }
+  .survey-outline h3 {
+    font-size: 15px;
+    margin-bottom: 8px;
+  }
+  .survey-outline ul {
+    padding-left: 20px;
+    margin: 0;
+  }
+  .survey-review {
+    margin-top: 18px;
+  }
+  .survey-review h3 {
+    font-size: 15px;
+    margin: 0 0 8px;
+  }
+  .review-scope {
+    margin: 0 0 14px;
+  }
+  .review-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .review-lines {
+    margin: 16px 0;
+  }
+  .line-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .line-item {
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    padding: 10px;
+    background: var(--color-surface);
+  }
+  .line-item strong {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 4px;
+  }
+  .line-item p {
+    margin: 0;
+    font-size: 13px;
+  }
+  .line-item small {
+    display: block;
+    margin-top: 6px;
+    color: var(--color-text-muted);
+    font-size: 12px;
+    line-height: 1.45;
+  }
+  .review-section {
+    min-width: 0;
+  }
+  .review-section h4 {
+    font-size: 13px;
+    margin: 0 0 6px;
+  }
+  .review-section ul {
+    margin: 0;
+    padding-left: 18px;
+  }
+  .review-section li + li {
+    margin-top: 6px;
+  }
+  .review-timeline,
+  .review-trend,
+  .review-references {
+    margin-top: 16px;
+  }
+  .review-trend p {
+    margin: 0;
+  }
+  .reference-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .reference-pill {
+    display: inline-flex;
+    max-width: 360px;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    padding: 6px 8px;
+    color: var(--color-text-secondary);
+    background: var(--color-surface);
+    font-size: 12px;
+  }
+  .reference-pill:hover {
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+  .reference-pill span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .reference-pill small {
+    flex: 0 0 auto;
+    color: var(--color-text-muted);
+    font-family: var(--font-mono);
+  }
+  @media (max-width: 720px) {
+    .survey-topic-head {
+      grid-template-columns: 1fr;
+    }
+    .review-grid {
+      grid-template-columns: 1fr;
+    }
+    .line-list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

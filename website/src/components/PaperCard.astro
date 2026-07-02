@@ -1,0 +1,69 @@
+---
+import type { Paper } from '../lib/data';
+import { paperTypeFilterValue, paperTypeLabel, paperTypeList } from '../lib/data';
+import { useTranslations } from '../lib/i18n';
+import { assetPath, localizePath, type Lang } from '../lib/lang';
+const { paper, lang: _lang = 'en' } = Astro.props as { paper: Paper; lang?: Lang };
+const lang: Lang = _lang;
+const _t = useTranslations(lang);
+const linkEntries = Object.entries(paper.links || {}).filter(([, value]) => value);
+const sourceRepos = (paper.sources || []).map((s) => s.repo).join(', ');
+
+// Bilingual title and TLDR
+const displayTitle = (lang === 'zh' && paper.title_cn) ? paper.title_cn : paper.title;
+const displayTldr = (lang === 'zh' && paper.tldr_cn) ? paper.tldr_cn : (paper.tldr || '');
+
+const typeLabel = paperTypeLabel(paper);
+const searchText = [paper.title, paper.venue, paper.year, typeLabel, ...(paperTypeList(paper)), ...(paper.tags || []), ...(paper.representations || []), sourceRepos].join(' ').toLowerCase();
+const interpPath = localizePath(`/papers/${paper.id}`, lang);
+const linkLabelMap: Record<string, { en: string; zh: string }> = {
+  paper: { en: 'Paper', zh: '论文' },
+  pdf: { en: 'PDF', zh: 'PDF' },
+  code: { en: 'Code', zh: '代码' },
+  github: { en: 'GitHub', zh: 'GitHub' },
+  repo: { en: 'Repo', zh: '仓库' },
+  dataset: { en: 'Dataset', zh: '数据集' },
+  data: { en: 'Data', zh: '数据' },
+  project: { en: 'Project', zh: '项目' },
+  demo: { en: 'Demo', zh: '演示' },
+};
+function linkLabel(key: string) {
+  const normalized = key.toLowerCase();
+  const known = linkLabelMap[normalized];
+  if (known) return known[lang];
+  return key
+    .replace(/[_-]/g, ' ')
+    .replace(/\b\w/g, (letter) => letter.toUpperCase());
+}
+
+// Score badge
+const score = paper.score?.read_first_score ?? paper.score?.total;
+const scoreLevel = score != null
+  ? score >= 80 ? 'high'
+    : score >= 60 ? 'medium'
+    : 'low'
+  : null;
+
+const detailUrl = localizePath(`/papers/${paper.id}`, lang);
+---
+<article class="paper-card filter-item" data-search={searchText} data-category={paperTypeFilterValue(paper)} data-year={paper.year} data-title={displayTitle} data-score={score ?? 0}>
+  <a href={detailUrl} class="preview-wrap">
+    <img src={assetPath(paper.preview || '/assets/placeholder.svg')} alt={`Preview for ${paper.title}`} loading="lazy" />
+  </a>
+  <div class="paper-body">
+    <div class="paper-meta">
+      <span>{paper.venue} {paper.year}</span>
+      {scoreLevel && <span class={`score-badge score-${scoreLevel}`}>{score}</span>}
+      <span>{typeLabel}</span>
+    </div>
+    <h3><a href={detailUrl}>{displayTitle}</a></h3>
+    {displayTldr && <p class="paper-tldr">{displayTldr}</p>}
+    <div class="tag-row">
+      {(paper.tags || []).slice(0, 6).map((tag) => <span class="tag">{tag}</span>)}
+    </div>
+    <div class="link-row">
+      {linkEntries.map(([key, value]) => <a href={value} target="_blank" rel="noreferrer">{linkLabel(key)}</a>)}
+      <a href={interpPath} class="interpret-link">{_t('paperCard.analysis')}</a>
+    </div>
+  </div>
+</article>

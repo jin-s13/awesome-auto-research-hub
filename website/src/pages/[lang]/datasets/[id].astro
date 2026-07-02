@@ -1,0 +1,189 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { getDataset, getDatasets } from '../../../lib/data';
+import { useTranslations } from '../../../lib/i18n';
+import { assetPath, localizePath, type Lang } from '../../../lib/lang';
+
+export async function getStaticPaths() {
+  const datasets = getDatasets();
+  const langs = ['en', 'zh'] as const;
+  return datasets
+    .filter((dataset) => dataset.id)
+    .flatMap((dataset) =>
+      langs.map((lang) => ({
+        params: { lang, id: dataset.id },
+        props: { dataset },
+      }))
+    );
+}
+
+const { dataset: datasetProp } = Astro.props;
+const lang = Astro.params.lang as Lang;
+const _t = useTranslations(lang);
+const dataset = datasetProp || getDataset(Astro.params.id || '');
+const localizedTitle = lang === 'zh' && dataset.name_zh ? dataset.name_zh : dataset.name;
+const localizedDescription = lang === 'zh' && dataset.description_zh ? dataset.description_zh : dataset.description;
+const localizedNotes = lang === 'zh' && dataset.notes_zh ? dataset.notes_zh : dataset.notes;
+const linkEntries = Object.entries(dataset.links || {}).filter(([, value]) => value);
+const relatedPapers = dataset.related_papers || [];
+const sourceRepos = (dataset.sources || []).map((source) => source.repo).join(', ');
+const preview = assetPath(dataset.preview || '/assets/placeholder.svg');
+const linkLabelMap: Record<string, { en: string; zh: string }> = {
+  paper: { en: 'Paper', zh: '论文' },
+  pdf: { en: 'PDF', zh: 'PDF' },
+  code: { en: 'Code', zh: '代码' },
+  github: { en: 'GitHub', zh: 'GitHub' },
+  repo: { en: 'Repo', zh: '仓库' },
+  dataset: { en: 'Dataset', zh: '数据集' },
+  data: { en: 'Data', zh: '数据' },
+  huggingface: { en: 'Hugging Face', zh: 'Hugging Face' },
+  project: { en: 'Project', zh: '项目' },
+  demo: { en: 'Demo', zh: '演示' },
+};
+function linkLabel(key: string) {
+  const normalized = key.toLowerCase();
+  const known = linkLabelMap[normalized];
+  if (known) return known[lang];
+  return key
+    .replace(/[_-]/g, ' ')
+    .replace(/\b\w/g, (letter) => letter.toUpperCase());
+}
+function relatedPaperHref(paper: { id?: string; url?: string }) {
+  return paper.id ? localizePath(`/papers/${paper.id}`, lang) : (paper.url || '#');
+}
+function relatedPaperTitle(paper: { id?: string; title?: string; title_zh?: string; url?: string }) {
+  return lang === 'zh' && paper.title_zh ? paper.title_zh : (paper.title || paper.id || paper.url);
+}
+---
+<Base title={`${localizedTitle} · Awesome Auto Research Hub`} lang={lang}>
+  <section class="paper-detail">
+    <a href={localizePath('/datasets', lang)} class="back-link">{_t('dataset.backToDatasets')}</a>
+
+    <div class="detail-header">
+      <h1>{localizedTitle}</h1>
+      <div class="detail-meta">
+        {dataset.year && <span>{dataset.year}</span>}
+        <span class="detail-category">{dataset.type || dataset.category || _t('nav.datasets')}</span>
+      </div>
+    </div>
+
+    <a href={preview} class="preview-wrap detail-preview" target="_blank" rel="noreferrer">
+      <img src={preview} alt={`Preview for ${localizedTitle}`} loading="lazy" />
+    </a>
+
+    <div class="detail-tldr">
+      <h2>{_t('dataset.analysis')}</h2>
+      <p>{localizedDescription}</p>
+    </div>
+
+    <div class="detail-reasoning">
+      <h2>{_t('dataset.provenance')}</h2>
+      <p>{sourceRepos ? _t('dataset.provenanceText', sourceRepos) : _t('dataset.provenanceUnknown')}</p>
+      {localizedNotes && <p>{localizedNotes}</p>}
+    </div>
+
+    {relatedPapers.length > 0 && (
+      <div class="detail-reasoning">
+        <h2>{_t('dataset.relatedPapers')}</h2>
+        <div class="dataset-related-list">
+          {relatedPapers.map((paper) => (
+            <a href={relatedPaperHref(paper)}>{relatedPaperTitle(paper)}</a>
+          ))}
+        </div>
+      </div>
+    )}
+
+    {linkEntries.length > 0 && (
+      <div class="detail-resources">
+        <h2>{_t('paper.resources')}</h2>
+        <div class="link-row">
+          {linkEntries.map(([key, value]) => <a href={value} target="_blank" rel="noreferrer">{linkLabel(key)}</a>)}
+        </div>
+      </div>
+    )}
+
+    {dataset.tags && dataset.tags.length > 0 && (
+      <div class="detail-tags">
+        <h2>{_t('paper.tags')}</h2>
+        <div class="tag-row">
+          {dataset.tags.map((tag) => <span class="tag">{tag}</span>)}
+        </div>
+      </div>
+    )}
+  </section>
+</Base>
+
+<style>
+  .paper-detail {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 40px 0;
+  }
+  .back-link {
+    display: inline-flex;
+    margin-bottom: 24px;
+    color: var(--color-text-secondary);
+    font-size: 14px;
+  }
+  .detail-header {
+    margin-bottom: 20px;
+  }
+  .detail-header h1 {
+    font-size: 36px;
+    line-height: 1.15;
+    margin-bottom: 12px;
+  }
+  .detail-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    color: var(--color-text-muted);
+  }
+  .detail-category {
+    background: var(--color-primary-light);
+    color: var(--color-primary);
+    padding: 1px 8px;
+    border-radius: 4px;
+  }
+  .detail-preview {
+    margin-bottom: 32px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+  }
+  .detail-tldr,
+  .detail-reasoning,
+  .detail-resources,
+  .detail-tags {
+    border-top: 1px solid var(--color-border);
+    padding-top: 24px;
+    margin-bottom: 28px;
+  }
+  .detail-tldr h2,
+  .detail-reasoning h2,
+  .detail-resources h2,
+  .detail-tags h2 {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+  .detail-tldr p,
+  .detail-reasoning p {
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+  }
+  .dataset-related-list {
+    display: grid;
+    gap: 10px;
+  }
+  .dataset-related-list a {
+    padding: 10px 12px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    color: var(--color-text);
+    background: var(--color-surface);
+  }
+  .dataset-related-list a:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+</style>

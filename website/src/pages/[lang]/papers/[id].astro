@@ -1,0 +1,530 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { getPapers, paperTypeLabel } from '../../../lib/data';
+import { useTranslations } from '../../../lib/i18n';
+import { localizePath, type Lang } from '../../../lib/lang';
+
+export async function getStaticPaths() {
+  const papers = getPapers();
+  const langs = ['en', 'zh'] as const;
+  return papers.flatMap((paper) =>
+    langs.map((lang) => ({
+      params: { lang, id: paper.id },
+      props: { paper },
+    }))
+  );
+}
+
+const { paper } = Astro.props;
+const lang = Astro.params.lang as Lang;
+const _t = useTranslations(lang);
+
+// Bilingual content
+const displayTitle = (lang === 'zh' && paper.title_cn) ? paper.title_cn : paper.title;
+const displayTldr = (lang === 'zh' && paper.tldr_cn) ? paper.tldr_cn : (paper.tldr || '');
+const displayReasoning = (lang === 'zh' && paper.reasoning_cn) ? paper.reasoning_cn : (paper.reasoning || '');
+const displayAnalysis = (lang === 'zh' && paper.analysis_cn) ? paper.analysis_cn : (paper.analysis || null);
+
+const linkEntries = Object.entries(paper.links || {}).filter(([, value]) => value);
+const linkLabelMap: Record<string, { en: string; zh: string }> = {
+  paper: { en: 'Paper', zh: '论文' },
+  pdf: { en: 'PDF', zh: 'PDF' },
+  code: { en: 'Code', zh: '代码' },
+  github: { en: 'GitHub', zh: 'GitHub' },
+  repo: { en: 'Repo', zh: '仓库' },
+  dataset: { en: 'Dataset', zh: '数据集' },
+  data: { en: 'Data', zh: '数据' },
+  huggingface: { en: 'Hugging Face', zh: 'Hugging Face' },
+  project: { en: 'Project', zh: '项目' },
+  demo: { en: 'Demo', zh: '演示' },
+};
+function linkLabel(key: string) {
+  const normalized = key.toLowerCase();
+  const known = linkLabelMap[normalized];
+  if (known) return known[lang];
+  return key
+    .replace(/[_-]/g, ' ')
+    .replace(/\b\w/g, (letter) => letter.toUpperCase());
+}
+const score = paper.score;
+const analysis = displayAnalysis;
+function asList(value: unknown): string[] {
+  if (Array.isArray(value)) {
+    return value.map((item) => String(item || '').trim()).filter(Boolean);
+  }
+  if (typeof value === 'string') {
+    const trimmed = value.trim();
+    return trimmed ? [trimmed] : [];
+  }
+  return [];
+}
+function asText(value: unknown): string {
+  if (Array.isArray(value)) {
+    return value.map((item) => String(item || '').trim()).filter(Boolean).join(' ');
+  }
+  if (typeof value === 'string') {
+    return value.trim();
+  }
+  return '';
+}
+const analysisObject = analysis && typeof analysis === 'object' ? analysis : null;
+const analysisFallbackText = typeof analysis === 'string' ? analysis.trim() : '';
+const analysisInnovations = analysisObject ? asList(analysisObject.innovations ?? analysisObject.innovation) : [];
+const analysisMethodology = analysisObject ? asText(analysisObject.methodology) : analysisFallbackText;
+const analysisKeyResults = analysisObject ? asText(analysisObject.key_results ?? analysisObject.keyResults) : '';
+const analysisLimitations = analysisObject ? asList(analysisObject.limitations ?? analysisObject.limitation) : [];
+const analysisTechStack = analysisObject ? asList(analysisObject.tech_stack ?? analysisObject.techStack) : [];
+const displayScore = score?.read_first_score ?? score?.total;
+const scoreLevel = displayScore != null
+  ? displayScore >= 80 ? 'high'
+    : displayScore >= 60 ? 'medium'
+    : 'low'
+  : null;
+const scoreComponentLabels = {
+  topical_relevance: { en: 'Topical relevance', zh: '主题相关性' },
+  citation_impact: { en: 'Citation impact', zh: '引用影响力' },
+  graph_prestige: { en: 'Graph prestige', zh: '图谱声望' },
+  citation_velocity: { en: 'Citation velocity', zh: '引用速度' },
+  methodology_quality: { en: 'Methodology quality', zh: '方法质量' },
+  reproducibility: { en: 'Reproducibility', zh: '可复现性' },
+  recency: { en: 'Recency', zh: '近期性' },
+};
+const fieldRoleLabels: Record<string, Record<Lang, string>> = {
+  foundation: { en: 'Foundation', zh: '基础论文' },
+  frontier: { en: 'Frontier', zh: '前沿论文' },
+  bridge: { en: 'Bridge', zh: '桥接论文' },
+  methodology_anchor: { en: 'Methodology anchor', zh: '方法锚点' },
+  reproducibility_anchor: { en: 'Reproducibility anchor', zh: '复现锚点' },
+  candidate: { en: 'Candidate', zh: '候选论文' },
+};
+const markerLabels: Record<string, string> = {
+  ablation: '消融',
+  analysis: '分析',
+  artifact: '工件',
+  baseline: '基线',
+  benchmark: '基准',
+  checkpoint: '检查点',
+  code: '代码',
+  dataset: '数据集',
+  evaluation: '评估',
+  experiment: '实验',
+  github: 'GitHub',
+  metric: '指标',
+  'open source': '开源',
+  repository: '仓库',
+  reproduce: '复现',
+  result: '结果',
+  validation: '验证',
+};
+function localizedComponentExplanation(component: { explanation?: string; explanation_zh?: string }, currentLang: Lang) {
+  return currentLang === 'zh'
+    ? (component.explanation_zh || component.explanation || '')
+    : (component.explanation || component.explanation_zh || '');
+}
+function yesNo(value: string) {
+  return value === 'True' ? '有' : value === 'False' ? '无' : value;
+}
+function formatMarkers(value: string) {
+  if (!value || value === 'none') return '无';
+  return value
+    .split(',')
+    .filter(Boolean)
+    .map((marker) => markerLabels[marker] || marker)
+    .join('、');
+}
+function formatEvidenceDetail(item: { source?: string; field?: string; detail?: string }, currentLang: Lang) {
+  const detail = item.detail || item.field || item.source || '';
+  if (currentLang !== 'zh') return detail;
+  if (!detail) return '';
+  if (item.field === 'score.keyword_scores') {
+    return `关键词：${detail.split(',').filter(Boolean).join('、')}`;
+  }
+  if (item.field === 'year') {
+    return detail === 'missing' ? '年份：缺失' : `年份：${detail}`;
+  }
+  if (detail.startsWith('matched=')) {
+    return `匹配关键词数：${detail.replace('matched=', '')}`;
+  }
+  if (detail.startsWith('markers=')) {
+    return `命中信号：${formatMarkers(detail.replace('markers=', ''))}`;
+  }
+  if (detail.startsWith('citation_normalized_percentile=')) {
+    return `归一化引用分位：${detail.replace('citation_normalized_percentile=', '')}`;
+  }
+  if (detail.startsWith('cited_by_count=')) {
+    return `引用数：${detail.replace('cited_by_count=', '')}`;
+  }
+  if (detail.startsWith('local_pagerank=')) {
+    return `局部 PageRank：${detail.replace('local_pagerank=', '')}`;
+  }
+  if (detail.startsWith('velocity=')) {
+    return `年均引用：${detail.replace('velocity=', '')}`;
+  }
+  if (detail.includes('pdf=') || detail.includes('code=') || detail.includes('dataset=')) {
+    const parts = Object.fromEntries(
+      detail.split(';').map((part) => {
+        const [key, value] = part.trim().split('=');
+        return [key, value || ''];
+      })
+    );
+    return [
+      `论文：${yesNo(parts.pdf || '')}`,
+      `代码：${yesNo(parts.code || '')}`,
+      `数据：${yesNo(parts.dataset || '')}`,
+      `命中信号：${formatMarkers(parts.markers || '')}`,
+    ].join('；');
+  }
+  return detail === 'missing' ? '缺失' : detail;
+}
+const fieldRoles = score?.field_roles || [];
+const rankSensitivity = score?.rank_sensitivity;
+const scoreComponentEntries = score?.components
+  ? Object.entries(score.components)
+      .filter(([, component]) => component && component.available !== false && typeof component.value === 'number')
+      .sort(([, a], [, b]) => b.value - a.value)
+  : [];
+const maxComponentScore = Math.max(...scoreComponentEntries.map(([, component]) => component.value), 1);
+const keywordEntries = score?.keyword_scores
+  ? Object.entries(score.keyword_scores).sort(([, a], [, b]) => b - a)
+  : [];
+const maxKeywordScore = Math.max(...keywordEntries.map(([, v]) => v), 1);
+const typeLabel = paperTypeLabel(paper);
+---
+
+<Base title={`${paper.title} · Awesome Auto Research Hub`} lang={lang}>
+  <section class="paper-detail">
+    <a href={localizePath('/papers', lang)} class="back-link">{_t('paper.backToPapers')}</a>
+
+    <div class="detail-header">
+      <h1>{displayTitle}</h1>
+      <div class="detail-meta">
+        <span>{paper.venue} {paper.year}</span>
+        {scoreLevel && <span class={`score-badge score-${scoreLevel}`}>{displayScore}</span>}
+        <span class="detail-category">{typeLabel}</span>
+      </div>
+    </div>
+
+    {displayTldr && (
+      <div class="detail-tldr">
+        <h2>{_t('paper.tldr')}</h2>
+        <p>{displayTldr}</p>
+      </div>
+    )}
+
+    {displayReasoning && (
+      <div class="detail-reasoning">
+        <h2>{_t('paper.reasoning')}</h2>
+        <p>{displayReasoning}</p>
+      </div>
+    )}
+
+    {scoreComponentEntries.length > 0 && (
+      <div class="detail-score-components">
+        <h2>{lang === 'zh' ? 'Read-first 评分解释' : 'Read-first score'}</h2>
+        <p class="score-summary">
+          {lang === 'zh'
+            ? `综合优先阅读分 ${displayScore}，由主题、引用、图谱、方法、可复现性和近期性等信号加权得到。`
+            : `Read-first score ${displayScore}, weighted from topical fit, citation, graph, method, reproducibility, and recency signals.`}
+          {score?.total != null && score?.read_first_score != null && score.total !== score.read_first_score && (
+            <span>{lang === 'zh' ? ` 原始总分保留为 ${score.total}。` : ` Original total remains ${score.total}.`}</span>
+          )}
+        </p>
+        <div class="score-component-bars">
+          {scoreComponentEntries.map(([key, component]) => {
+            const label = scoreComponentLabels[key as keyof typeof scoreComponentLabels]?.[lang] || key.replace(/_/g, ' ');
+            const weight = score?.applied_weights?.[key];
+            const evidence = (component.evidence || []).slice(0, 2);
+            const explanation = localizedComponentExplanation(component, lang);
+            const evidenceDetails = evidence.map((item) => formatEvidenceDetail(item, lang)).filter(Boolean);
+            return (
+              <div class="score-component-row">
+                <div class="score-component-label">
+                  <span>{label}</span>
+                  {weight != null && <small>{Math.round(weight * 100)}%</small>}
+                </div>
+                <div class="score-component-track">
+                  <div class="score-component-fill" style={`width: ${(component.value / maxComponentScore) * 100}%`}></div>
+                </div>
+                <span class="score-component-value">{component.value}</span>
+                <p class="score-component-note">
+                  {explanation}
+                  {evidenceDetails.length > 0 && (
+                    <span> {evidenceDetails.join(' · ')}</span>
+                  )}
+                </p>
+              </div>
+            );
+          })}
+        </div>
+        {score?.warnings && score.warnings.length > 0 && (
+          <p class="score-warnings">{score.warnings.join(' · ')}</p>
+        )}
+        {(fieldRoles.length > 0 || rankSensitivity) && (
+          <div class="rank-context">
+            {fieldRoles.length > 0 && (
+              <div>
+                <h3>{lang === 'zh' ? '研究版图角色' : 'Field roles'}</h3>
+                <div class="tag-row">
+                  {fieldRoles.map((role) => <span class="tag">{fieldRoleLabels[role]?.[lang] || role.replace(/_/g, ' ')}</span>)}
+                </div>
+              </div>
+            )}
+            {rankSensitivity && (
+              <div>
+                <h3>{lang === 'zh' ? '排序敏感性' : 'Rank sensitivity'}</h3>
+                <p>
+                  {lang === 'zh'
+                    ? `稳定性：${rankSensitivity.stability || 'unknown'}；排名波动范围：${rankSensitivity.rank_range ?? 0}。`
+                    : `Stability: ${rankSensitivity.stability || 'unknown'}; rank range: ${rankSensitivity.rank_range ?? 0}.`}
+                </p>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+    )}
+
+    {keywordEntries.length > 0 && (
+      <div class="detail-keywords">
+        <h2>{_t('paper.keywordScores')}</h2>
+        <div class="keyword-bars">
+          {keywordEntries.map(([kw, sc]) => (
+            <div class="keyword-bar-row">
+              <span class="keyword-label">{kw}</span>
+              <div class="keyword-bar-track">
+                <div class="keyword-bar-fill" style={`width: ${(sc / maxKeywordScore) * 100}%`}></div>
+              </div>
+              <span class="keyword-score">{sc}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+
+    {analysis && (
+      <div class="detail-analysis">
+        <h2>{_t('paper.deepAnalysis')}</h2>
+
+        {analysisInnovations.length > 0 && (
+          <div class="analysis-section">
+            <h3>{_t('paper.innovations')}</h3>
+            <ul>
+              {analysisInnovations.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+        )}
+
+        {analysisMethodology && (
+          <div class="analysis-section">
+            <h3>{_t('paper.methodology')}</h3>
+            <p>{analysisMethodology}</p>
+          </div>
+        )}
+
+        {analysisKeyResults && (
+          <div class="analysis-section">
+            <h3>{_t('paper.keyResults')}</h3>
+            <p>{analysisKeyResults}</p>
+          </div>
+        )}
+
+        {analysisLimitations.length > 0 && (
+          <div class="analysis-section">
+            <h3>{_t('paper.limitations')}</h3>
+            <ul>
+              {analysisLimitations.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+        )}
+
+        {analysisTechStack.length > 0 && (
+          <div class="analysis-section">
+            <h3>{_t('paper.techStack')}</h3>
+            <div class="tag-row">
+              {analysisTechStack.map((t) => <span class="tag">{t}</span>)}
+            </div>
+          </div>
+        )}
+      </div>
+    )}
+
+    <div class="detail-links">
+      <h2>{_t('paper.resources')}</h2>
+      <div class="link-row">
+        {linkEntries.map(([key, value]) => <a href={value} target="_blank" rel="noreferrer">{linkLabel(key)}</a>)}
+      </div>
+    </div>
+
+    <div class="detail-tags">
+      <h2>{_t('paper.tags')}</h2>
+      <div class="tag-row">
+        {(paper.tags || []).map((tag) => <span class="tag">{tag}</span>)}
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .back-link {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 24px;
+    color: var(--color-text-secondary);
+  }
+  .back-link:hover { color: var(--color-primary); }
+
+  .detail-header { margin-bottom: 32px; }
+  .detail-header h1 { font-size: 26px; font-weight: 700; line-height: 1.3; margin-bottom: 12px; }
+  .detail-meta { display: flex; gap: 8px; align-items: center; font-size: 14px; color: var(--color-text-secondary); }
+  .detail-category {
+    background: var(--color-primary-light);
+    color: var(--color-primary);
+    padding: 2px 10px;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 12px;
+  }
+
+  .detail-tldr, .detail-reasoning, .detail-score-components, .detail-keywords, .detail-analysis, .detail-links, .detail-tags {
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .detail-tldr:last-child, .detail-reasoning:last-child, .detail-score-components:last-child, .detail-keywords:last-child,
+  .detail-analysis:last-child, .detail-links:last-child, .detail-tags:last-child {
+    border-bottom: none;
+  }
+
+  h2 { font-size: 18px; font-weight: 600; margin-bottom: 12px; }
+  h3 { font-size: 15px; font-weight: 600; margin-bottom: 8px; color: var(--color-text-secondary); }
+
+  .detail-tldr p, .detail-reasoning p, .analysis-section p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+  }
+
+  .analysis-section { margin-bottom: 20px; }
+  .analysis-section ul { padding-left: 20px; }
+  .analysis-section li { font-size: 14px; line-height: 1.6; color: var(--color-text-secondary); margin-bottom: 4px; }
+
+  .score-summary, .score-warnings {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    margin-bottom: 12px;
+  }
+  .score-warnings {
+    color: #b45309;
+    margin-top: 12px;
+    margin-bottom: 0;
+  }
+  .score-component-bars { display: flex; flex-direction: column; gap: 12px; }
+  .rank-context {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 18px;
+  }
+  .rank-context p {
+    color: var(--color-text-secondary);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .score-component-row {
+    display: grid;
+    grid-template-columns: minmax(140px, 180px) minmax(120px, 1fr) minmax(32px, auto);
+    gap: 10px 12px;
+    align-items: center;
+  }
+  .score-component-label {
+    display: flex;
+    justify-content: flex-end;
+    align-items: baseline;
+    gap: 6px;
+    color: var(--color-text-secondary);
+    font-size: 13px;
+    font-weight: 500;
+    text-align: right;
+  }
+  .score-component-label small {
+    color: var(--color-text-muted);
+    font-family: var(--font-mono);
+    font-size: 11px;
+  }
+  .score-component-track {
+    height: 12px;
+    background: var(--color-surface);
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+  }
+  .score-component-fill {
+    height: 100%;
+    background: var(--color-primary);
+    border-radius: 6px;
+  }
+  .score-component-value {
+    color: var(--color-text);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .score-component-note {
+    grid-column: 2 / 4;
+    margin: -4px 0 0;
+    color: var(--color-text-secondary);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .keyword-bars { display: flex; flex-direction: column; gap: 8px; }
+  .keyword-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .keyword-label {
+    font-size: 13px;
+    font-weight: 500;
+    min-width: 140px;
+    text-align: right;
+    color: var(--color-text-secondary);
+  }
+  .keyword-bar-track {
+    flex: 1;
+    height: 12px;
+    background: var(--color-surface);
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+  }
+  .keyword-bar-fill {
+    height: 100%;
+    background: var(--color-primary);
+    border-radius: 6px;
+    transition: width 0.3s;
+  }
+  .keyword-score {
+    font-size: 13px;
+    font-weight: 600;
+    font-family: var(--font-mono);
+    min-width: 24px;
+    color: var(--color-text);
+  }
+
+  @media (max-width: 640px) {
+    .detail-meta { flex-wrap: wrap; }
+    .score-component-row {
+      grid-template-columns: 1fr minmax(28px, auto);
+    }
+    .score-component-label {
+      justify-content: flex-start;
+      text-align: left;
+      grid-column: 1 / 3;
+    }
+    .score-component-track { grid-column: 1; }
+    .score-component-note { grid-column: 1 / 3; }
+  }
+</style>

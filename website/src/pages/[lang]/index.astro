@@ -1,0 +1,88 @@
+---
+import Base from '../../layouts/Base.astro';
+import PaperCard from '../../components/PaperCard.astro';
+import ResourceCard from '../../components/ResourceCard.astro';
+import { getPapers, getDatasets, getProjects, getResources, getStats } from '../../lib/data';
+import { useTranslations } from '../../lib/i18n';
+import { localizePath, type Lang } from '../../lib/lang';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'en' } }, { params: { lang: 'zh' } }];
+}
+
+const lang = Astro.params.lang as Lang;
+const _t = useTranslations(lang);
+
+const papers = getPapers();
+const datasets = getDatasets();
+const projects = getProjects();
+const resources = getResources();
+const stats = getStats();
+const showDatasets = true;
+const showProjects = true;
+const showResources = true;
+const featured = papers
+  .sort((a, b) => (b.score?.read_first_score ?? b.score?.total ?? 0) - (a.score?.read_first_score ?? a.score?.total ?? 0))
+  .slice(0, 6);
+---
+<Base title="Awesome Auto Research Hub" lang={lang}>
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">{_t('hero.eyebrow')}</p>
+      <h1>A curated hub for AI systems that automate scientific research: literature review, survey synthesis, experiment design and execution, paper writing, AI scientists, and autonomous research agents.</h1>
+      <p set:html={_t('hero.description')}></p>
+      <div class="hero-actions">
+        <a class="button primary" href={localizePath('/papers', lang)}>{_t('hero.explorePapers')}</a>
+        {showProjects && <a class="button" href={localizePath('/projects', lang)}>{_t('hero.browseProjects')}</a>}
+        {!showProjects && showDatasets && <a class="button" href={localizePath('/datasets', lang)}>{_t('nav.datasets')}</a>}
+      </div>
+    </div>
+    <div class="hero-panel">
+      <div class="stat-grid">
+        <div><strong>{stats.papers}</strong><span>{_t('stat.papers')}</span></div>
+        {showDatasets && <div><strong>{stats.datasets}</strong><span>{_t('stat.datasets')}</span></div>}
+        {showProjects && <div><strong>{stats.projects}</strong><span>{_t('stat.projects')}</span></div>}
+        {showResources && <div><strong>{stats.resources}</strong><span>{_t('stat.resources')}</span></div>}
+        <div><strong>{stats.sources}</strong><span>{_t('stat.sources')}</span></div>
+      </div>
+      <p>{_t('hero.categories')} {stats.categories.join(' · ')}</p>
+    </div>
+  </section>
+
+  <section class="section-head">
+    <div>
+      <p class="eyebrow">{_t('section.latestPapers')}</p>
+      <h2>{_t('section.featuredResearch')}</h2>
+    </div>
+    <a href={localizePath('/papers', lang)}>{_t('section.viewAllPapers')}</a>
+  </section>
+  <div class="card-grid papers-grid">
+    {featured.map((paper) => <PaperCard paper={paper} lang={lang} />)}
+  </div>
+
+  {showDatasets && <section class="featured-dataset-section">
+    <section class="section-head">
+      <div>
+        <p class="eyebrow">{_t('section.datasets')}</p>
+        <h2>{_t('section.datasetZoo')}</h2>
+      </div>
+      <a href={localizePath('/datasets', lang)}>{_t('section.viewAllDatasets')}</a>
+    </section>
+    <div class="card-grid papers-grid featured-dataset-grid">
+      {datasets.slice(0, 3).map((item) => <ResourceCard item={item} mode="paper" lang={lang} />)}
+    </div>
+  </section>}
+
+  {showProjects && <section>
+    <section class="section-head compact-head">
+      <div>
+        <p class="eyebrow">{_t('section.projects')}</p>
+        <h2>{_t('section.openSourceStack')}</h2>
+      </div>
+      <a href={localizePath('/projects', lang)}>{_t('section.viewAllProjects')}</a>
+    </section>
+    <div class="stack-list">
+      {projects.slice(0, 3).map((item) => <ResourceCard item={item} lang={lang} />)}
+    </div>
+  </section>}
+</Base>

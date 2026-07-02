@@ -1,0 +1,286 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getPapers } from '../../lib/data';
+import type { Paper } from '../../lib/data';
+import { useTranslations } from '../../lib/i18n';
+import { type Lang } from '../../lib/lang';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'en' } }, { params: { lang: 'zh' } }];
+}
+
+const lang = Astro.params.lang as Lang;
+const _t = useTranslations(lang);
+
+const papers = getPapers();
+
+const tagLabels: Record<string, string> = {
+  ai: 'AI',
+  cl: 'CL',
+  cv: 'CV',
+  lg: 'LG',
+  rl: 'RL',
+  ro: 'RO',
+};
+
+function normalizeTag(raw: string): string {
+  let tag = String(raw || '')
+    .trim()
+    .replace(/[_-]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .replace(/^[^a-z0-9]+|[^a-z0-9]+$/gi, '')
+    .toLowerCase();
+
+  if (!tag) return '';
+
+  const phraseAliases: Array<[RegExp, string]> = [
+    [/\bworld models\b/g, 'world model'],
+    [/\bdiffusion models\b/g, 'diffusion model'],
+    [/\blarge language models\b/g, 'large language model'],
+    [/\bvision language action\b/g, 'vision-language-action'],
+    [/\bembodied agents\b/g, 'embodied agent'],
+    [/\bdatasets\b/g, 'dataset'],
+    [/\bbenchmarks\b/g, 'benchmark'],
+  ];
+
+  for (const [pattern, replacement] of phraseAliases) {
+    tag = tag.replace(pattern, replacement);
+  }
+
+  return tagLabels[tag] || tag;
+}
+
+function inferPaperYear(paper: Paper): number | null {
+  const directYear = Number.parseInt(String(paper.year || ''), 10);
+  if (Number.isFinite(directYear) && directYear >= 1900 && directYear <= 2030) {
+    return directYear;
+  }
+
+  const linkText = Object.values(paper.links || {}).filter(Boolean).join(' ');
+  const arxivMatch = linkText.match(/(?:arxiv\.org\/(?:abs|pdf)\/|arxiv:)?(\d{2})(\d{2})\.\d{4,5}/i);
+  if (arxivMatch) {
+    const shortYear = Number.parseInt(arxivMatch[1], 10);
+    return shortYear >= 90 ? 1900 + shortYear : 2000 + shortYear;
+  }
+
+  const explicitYear = `${linkText} ${paper.title || ''}`.match(/\b(?:19|20)\d{2}\b/);
+  return explicitYear ? Number.parseInt(explicitYear[0], 10) : null;
+}
+
+// Aggregate keyword frequency from tags
+const tagCounts: Record<string, number> = {};
+for (const p of papers) {
+  for (const tag of p.tags || []) {
+    const normalized = normalizeTag(tag);
+    if (!normalized) continue;
+    tagCounts[normalized] = (tagCounts[normalized] || 0) + 1;
+  }
+}
+const topTags = Object.entries(tagCounts)
+  .sort(([, a], [, b]) => b - a)
+  .slice(0, 30);
+
+// Aggregate keyword scores from scored papers
+const keywordScoreAgg: Record<string, { count: number; total: number }> = {};
+for (const p of papers) {
+  if (p.score?.keyword_scores) {
+    for (const [kw, sc] of Object.entries(p.score.keyword_scores)) {
+      if (!keywordScoreAgg[kw]) keywordScoreAgg[kw] = { count: 0, total: 0 };
+      keywordScoreAgg[kw].count += 1;
+      keywordScoreAgg[kw].total += sc;
+    }
+  }
+}
+const topKeywords = Object.entries(keywordScoreAgg)
+  .sort(([, a], [, b]) => b.total - a.total)
+  .slice(0, 20);
+
+// Aggregate read-first score components
+const componentAgg: Record<string, { count: number; total: number }> = {};
+for (const p of papers) {
+  if (!p.score?.components) continue;
+  for (const [key, component] of Object.entries(p.score.components)) {
+    if (!component || component.available === false || typeof component.value !== 'number') continue;
+    if (!componentAgg[key]) componentAgg[key] = { count: 0, total: 0 };
+    componentAgg[key].count += 1;
+    componentAgg[key].total += component.value;
+  }
+}
+const topComponents = Object.entries(componentAgg)
+  .map(([key, value]) => [key, { ...value, average: value.total / Math.max(value.count, 1) }] as const)
+  .sort(([, a], [, b]) => b.average - a.average);
+
+const maxTagCount = Math.max(...topTags.map(([, c]) => c), 1);
+const maxKeywordTotal = Math.max(...topKeywords.map(([, v]) => v.total), 1);
+const maxComponentAverage = Math.max(...topComponents.map(([, v]) => v.average), 1);
+
+// Year distribution
+const yearCounts: Record<string, number> = {};
+for (const p of papers) {
+  const inferredYear = inferPaperYear(p);
+  if (!inferredYear) continue;
+  const y = String(inferredYear);
+  yearCounts[y] = (yearCounts[y] || 0) + 1;
+}
+const yearEntries = Object.entries(yearCounts).sort(([a], [b]) => b.localeCompare(a));
+const maxYearCount = Math.max(...yearEntries.map(([, c]) => c), 1);
+---
+
+<Base title={`${_t('pages.trends.title')} · Awesome Auto Research Hub`} lang={lang}>
+  <section class="page-title">
+    <p class="eyebrow">{_t('pages.trends.eyebrow')}</p>
+    <h1>{_t('pages.trends.title')}</h1>
+    <p>{_t('pages.trends.description', papers.length)}</p>
+  </section>
+
+  {topKeywords.length > 0 && (
+    <section class="trend-section">
+      <h2>{_t('trends.keywordScoreTitle')}</h2>
+      <p class="trend-subtitle">{_t('trends.keywordScoreSubtitle')}</p>
+      <div class="trend-chart">
+        {topKeywords.map(([kw, { count, total }]) => (
+          <div class="trend-bar-row">
+            <span class="trend-label">{kw}</span>
+            <div class="trend-bar-track">
+              <div
+                class="trend-bar-fill keyword-fill"
+                style={`width: ${(total / maxKeywordTotal) * 100}%`}
+              ></div>
+            </div>
+            <span class="trend-value">{total.toFixed(1)}</span>
+            <span class="trend-count">({count} {_t('trends.papers')})</span>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {topComponents.length > 0 && (
+    <section class="trend-section">
+      <h2>{lang === 'zh' ? 'Read-first 组件趋势' : 'Read-first component trends'}</h2>
+      <p class="trend-subtitle">
+        {lang === 'zh'
+          ? '按论文评分组件聚合的平均信号，帮助判断当前索引强在哪里。'
+          : 'Average score-component signals across ranked papers.'}
+      </p>
+      <div class="trend-chart">
+        {topComponents.map(([component, { count, average }]) => (
+          <div class="trend-bar-row">
+            <span class="trend-label">{component.replace(/_/g, ' ')}</span>
+            <div class="trend-bar-track">
+              <div
+                class="trend-bar-fill component-fill"
+                style={`width: ${(average / maxComponentAverage) * 100}%`}
+              ></div>
+            </div>
+            <span class="trend-value">{average.toFixed(1)}</span>
+            <span class="trend-count">({count} {_t('trends.papers')})</span>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <section class="trend-section">
+    <h2>{_t('trends.tagFrequencyTitle')}</h2>
+    <p class="trend-subtitle">{_t('trends.tagFrequencySubtitle')}</p>
+    <div class="trend-chart">
+      {topTags.map(([tag, count]) => (
+        <div class="trend-bar-row">
+          <span class="trend-label">{tag}</span>
+          <div class="trend-bar-track">
+            <div
+              class="trend-bar-fill tag-fill"
+              style={`width: ${(count / maxTagCount) * 100}%`}
+            ></div>
+          </div>
+          <span class="trend-value">{count}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="trend-section">
+    <h2>{_t('trends.yearDistributionTitle')}</h2>
+    <p class="trend-subtitle">{_t('trends.yearDistributionSubtitle')}</p>
+    <div class="trend-chart">
+      {yearEntries.map(([year, count]) => (
+        <div class="trend-bar-row">
+          <span class="trend-label">{year}</span>
+          <div class="trend-bar-track">
+            <div
+              class="trend-bar-fill year-fill"
+              style={`width: ${(count / maxYearCount) * 100}%`}
+            ></div>
+          </div>
+          <span class="trend-value">{count}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+</Base>
+
+<style>
+  .trend-section {
+    margin-bottom: 48px;
+  }
+  .trend-section h2 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .trend-subtitle {
+    font-size: 14px;
+    color: var(--color-text-muted);
+    margin-bottom: 20px;
+  }
+  .trend-chart {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .trend-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .trend-label {
+    font-size: 13px;
+    font-weight: 500;
+    min-width: 140px;
+    text-align: right;
+    color: var(--color-text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .trend-bar-track {
+    flex: 1;
+    height: 16px;
+    background: var(--color-surface);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+  }
+  .trend-bar-fill {
+    height: 100%;
+    border-radius: 8px;
+    transition: width 0.3s;
+  }
+  .keyword-fill { background: linear-gradient(90deg, #2563eb, #7c3aed); }
+  .component-fill { background: linear-gradient(90deg, #0f766e, #14b8a6); }
+  .tag-fill { background: linear-gradient(90deg, #059669, #10b981); }
+  .year-fill { background: linear-gradient(90deg, #d97706, #f59e0b); }
+  .trend-value {
+    font-size: 13px;
+    font-weight: 600;
+    font-family: var(--font-mono);
+    min-width: 40px;
+    color: var(--color-text);
+  }
+  .trend-count {
+    font-size: 12px;
+    color: var(--color-text-muted);
+    min-width: 60px;
+  }
+</style>
