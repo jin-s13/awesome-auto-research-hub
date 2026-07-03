@@ -1,7 +1,7 @@
 # Negative Knowledge as Failure-aware Shared Memory for AutoResearch
 
 - Status: planned
-- Generated at: 2026-07-02T06:34:36Z
+- Generated at: 2026-07-03T03:53:59Z
 - Read-first score: 73.9
 - Paper: https://arxiv.org/abs/2606.21024v1
 - Code: https://github.com/hch-wang/Negative_Knowledge.
