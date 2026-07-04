@@ -1,7 +1,7 @@
 # Why LLMs Aren't Scientists Yet: Lessons from Four Autonomous Research Attempts
 
 - Status: planned
-- Generated at: 2026-07-03T03:53:59Z
+- Generated at: 2026-07-04T03:41:44Z
 - Read-first score: 75.2
 - Paper: https://arxiv.org/abs/2601.03315v1
 - Code: https://github.com/Lossfunk/ai-scientist-artefacts-v1
