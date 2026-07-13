@@ -1,7 +1,7 @@
 # Benchmarking AI scientists for omics data driven biological discovery
 
 - Status: planned
-- Generated at: 2026-07-12T03:23:33Z
+- Generated at: 2026-07-13T03:28:58Z
 - Read-first score: 76.8
 - Paper: https://arxiv.org/abs/2505.08341v2
 - Code: https://github.com/EperLuo/BAISBench

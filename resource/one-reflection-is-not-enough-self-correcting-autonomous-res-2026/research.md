@@ -1,7 +1,7 @@
 # One Reflection Is Not Enough: Self-Correcting Autonomous Research via Multi-Hypothesis Failure Attribution
 
 - Status: planned
-- Generated at: 2026-07-12T03:23:33Z
+- Generated at: 2026-07-13T03:28:58Z
 - Read-first score: 74.0
 - Paper: https://arxiv.org/abs/2606.31478v1
 - Code: 
