@@ -1,23 +1,24 @@
-# DISCOVERYWORLD: A Virtual Environment for Developing and Evaluating Automated Scientific Discovery Agents
+# ReasFlow: Assisting Reasoning-Centric Scientific Discovery in Applied Mathematics via a Knowledge-Based Multi-Agent System
 
 - Status: planned
 - Generated at: 2026-07-19T03:19:49Z
-- Read-first score: 77.5
-- Paper: https://arxiv.org/abs/2406.06769v2
-- Code: https://github.com/allenai/discoveryworld
+- Read-first score: 81.3
+- Paper: https://arxiv.org/abs/2607.14178v1
+- Code: https://github.com/ReasLab/ReasFlow.git.
 
 ## Score Signals
 
-- methodology_quality: 100.0 - Screens visible abstract and analysis fields for experiment, dataset, baseline, metric, and limitation evidence.
-- reproducibility: 81 - Screens links and visible text for paper, code, dataset, artifact, and repository signals.
-- recency: 75.1 - Uses a gentle age decay so recent papers surface without erasing older foundations.
-- topical_relevance: 62.5 - Uses existing LLM keyword relevance scores normalized to 0-100.
+- recency: 100.0 - Uses a gentle age decay so recent papers surface without erasing older foundations.
+- topical_relevance: 83.3 - Uses existing LLM keyword relevance scores normalized to 0-100.
+- methodology_quality: 80 - Screens visible abstract and analysis fields for experiment, dataset, baseline, metric, and limitation evidence.
+- reproducibility: 73 - Screens links and visible text for paper, code, dataset, artifact, and repository signals.
 - citation_impact: 0.0 - No OpenAlex identifier was available for this paper.
 - graph_prestige: 0.0 - No local citation edges were available, so graph prestige is excluded.
 - citation_velocity: 0.0 - No OpenAlex identifier was available for this paper.
 
 ## Critique
 
+- Strength: Strong topical fit for the hub's research scope.
 - Strength: Visible methodology or evaluation signals make it worth reading early.
 - Strength: Reproducibility signals suggest useful code, data, paper, or artifact paths.
 - Concern: Ranking evidence is triage only; full text, metrics, baselines, and limitations still need inspection.
