@@ -1,7 +1,7 @@
 # The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery
 
 - Status: planned
-- Generated at: 2026-07-19T03:19:49Z
+- Generated at: 2026-07-20T03:34:43Z
 - Read-first score: 77.7
 - Paper: https://arxiv.org/abs/2408.06292v3
 - Code: https://github.com/SakanaAI/AI-Scientist
