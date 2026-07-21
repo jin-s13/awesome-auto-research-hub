@@ -129,6 +129,7 @@ A curated hub for AI systems that automate scientific research: literature revie
 | 2026 | 47.3 | method | [RESCORE: LLM-Driven Simulation Recovery in Control Systems Research Papers](https://arxiv.org/abs/2604.04324v1) | RESCORE uses LLM agents to recover simulations from control systems papers, achieving 40.7% success and 10x speedup over manual replication. |
 | 2026 | 46.9 | method, system | [ResearchStudio-Idea: An Evidence-Grounded Research-Ideation Skill Suite from ML Conference Outcomes](https://arxiv.org/abs/2607.04439) | A skill suite for evidence-grounded research ideation using patterns derived from ML conference papers. |
 | 2026 | 46.2 | method | [AgentJet: A Flexible Swarm Training Framework for Agentic Reinforcement Learning](https://arxiv.org/abs/2606.04484v1) | AgentJet is a distributed swarm training framework for LLM agent reinforcement learning with decoupled architecture, enabling heterogeneous multi-agent training and automated RL r... |
+| 2026 | 46 | method, application | [PEARL: Auditable Repair for Scientific Reasoning Graph Extraction](https://arxiv.org/abs/2607.17917v1) | PEARL repairs noisy LLM-generated scientific reasoning graphs into auditable, valid structures, achieving high accuracy on ARCHE benchmark. |
 | 2026 | 44.7 | method | [Deciphering Scientific Reasoning Steps from Outcome Data for Molecule Optimization](https://arxiv.org/abs/2603.20262v1) | DESRO infers scientific reasoning steps from outcome data using LLMs, achieving high success in molecule optimization across 18 tasks. |
 | 2026 | 43.8 | method | [SciAtlas: A Large-Scale Knowledge Graph for Automated Scientific Research](https://arxiv.org/abs/2605.22878v1) | SciAtlas is a large-scale multi-disciplinary knowledge graph with 43M papers and a neuro-symbolic retrieval algorithm to support automated scientific research. |
 | 2026 | 43.4 | method, system | [CORAL: Towards Autonomous Multi-Agent Evolution for Open-Ended Discovery](https://arxiv.org/abs/2604.01658) |  |
@@ -149,6 +150,7 @@ A curated hub for AI systems that automate scientific research: literature revie
 | 2026 | 39.5 | method | [The Calibration Turn in AI-Assisted Research: A Conceptual and Methodological Framework for Evidence-Licensed Claims](https://arxiv.org/abs/2606.31273v1) | A conceptual framework for evidence-licensed claims in AI-assisted research, arguing calibration manages scientific assertion rights. |
 | 2026 | 38.7 | system, application | [Boundary-Aware Context Grounding for A Low-Channel EEG Agent](https://arxiv.org/abs/2606.26519) | NeuraDock Agent uses an LLM with boundary-aware context grounding to enable reliable low-channel EEG analysis while preventing unsupported interpretations. |
 | 2026 | 38.4 | method | [Sparking Scientific Creativity via LLM-Driven Interdisciplinary Inspiration](https://arxiv.org/abs/2603.12226v1) | Idea-Catalyst uses LLMs to generate interdisciplinary insights for creative brainstorming, avoiding premature solution anchoring. |
+| 2026 | 38.2 | method, system | [Auto Research for Materials: Auditable AI-Scientist Workflows with Held-Out Transfer](https://arxiv.org/abs/2607.17100v1) | An AI research agent for materials science performs automated searches over modeling changes and validates them on held-out data, achieving significant improvements. |
 | 2026 | 38.1 | method, system | [AutoFigure-Edit: Generating Editable Scientific Illustration](https://arxiv.org/abs/2602.03828) |  |
 | 2026 | 38.1 | benchmark | [HeurekaBench: A Benchmarking Framework for AI Co-scientist](https://arxiv.org/abs/2601.01678) |  |
 | 2026 | 38.1 | method, system | [Toward Autonomous Long-Horizon Engineering for ML Research](https://arxiv.org/abs/2604.13018) |  |
@@ -417,4 +419,4 @@ A curated hub for AI systems that automate scientific research: literature revie
 
 ---
 
-Total papers: **405**.
+Total papers: **407**.
