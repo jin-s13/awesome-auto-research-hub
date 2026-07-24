@@ -164,6 +164,7 @@ A curated hub for AI systems that automate scientific research: literature revie
 | 2026 | 35.9 | method | [AIBuildAI-2: A Knowledge-Enhanced Agent for Automatically Building AI Models](https://arxiv.org/abs/2605.27873v1) | A knowledge-enhanced agent with hierarchical external knowledge to automatically build AI models, addressing limitations of static LLM knowledge. |
 | 2026 | 35.4 | method, system | [DRPG: An Agentic Framework for Academic Rebuttal](https://arxiv.org/abs/2601.18081) |  |
 | 2026 | 35.4 | benchmark, application | [PostTrainBench: Can LLM Agents Automate LLM Post-Training?](https://arxiv.org/abs/2603.08640) |  |
+| 2026 | 34.8 | method | [AREX: Towards a Recursively Self-Improving Agent for Deep Research](https://arxiv.org/abs/2607.21461) | AREX introduces recursively self-improving agents for deep research that alternate between evidence gathering and constraint-wise verification, trained via reinforcement learning. |
 | 2026 | 34.2 | method | [Quantifying the Reconstructability of Astrophysical Methods with Large Language Models and Information Theory: A Case Study in Spectral Reconstruction](https://arxiv.org/abs/2605.11154v2) | An information-theoretic framework using LLMs to quantify how well astrophysical methods can be reconstructed from text, revealing an entropy floor limiting reproducibility. |
 | 2026 | 33.4 | method | [pAI/MSc: ML Theory Research with Humans on the Loop](https://arxiv.org/abs/2604.20622v1) | pAI/MSc is a modular multi-agent system that reduces human effort in turning hypotheses into submission-ready manuscripts for ML theory research. |
 | 2026 | 32.2 | method | [Large language models for post-publication research evaluation: Evidence from expert recommendations and citation indicators](https://arxiv.org/abs/2604.16387v1) | Benchmarks LLMs for post-publication research evaluation using expert recommendations and citation indicators, finding good coarse-grained but poor fine-grained performance. |
@@ -420,4 +421,4 @@ A curated hub for AI systems that automate scientific research: literature revie
 
 ---
 
-Total papers: **408**.
+Total papers: **409**.
