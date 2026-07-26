@@ -142,6 +142,7 @@ A curated hub for AI systems that automate scientific research: literature revie
 | 2026 | 42 | system, application | [HalluCiteChecker: A Lightweight Toolkit for Hallucinated Citation Detection and Verification in the Era of AI Scientists](https://arxiv.org/abs/2604.26835v1) | A lightweight toolkit for detecting hallucinated citations in scientific papers, designed to reduce reviewer workload. |
 | 2026 | 42 | method | [Understanding Usage and Engagement in AI-Powered Scientific Research Tools: The Asta Interaction Dataset](https://arxiv.org/abs/2602.23335v1) | Analyzes 200k+ user queries from two AI-powered research tools, revealing complex query patterns and collaborative usage behaviors. |
 | 2026 | 41.9 | method | [CausalDS: Benchmarking Causal Reasoning in Data-Science Agents](https://arxiv.org/abs/2607.08093) | Introduces CausalDS, a benchmark for evaluating causal reasoning in data-science agents using synthetic structural causal models and real-world empirical grounding. |
+| 2026 | 41.8 | method, system | [Automated Synthesis and Adversarial Validation of Executable Causal Research Pipelines](https://arxiv.org/abs/2607.21173v1) | ARA framework automates causal research pipelines with synthetic data and adversarial validation to detect invalid assumptions. |
 | 2026 | 41.8 | method | [Evolution Fine-Tuning: Learning to Discover Across 371 Optimization Tasks](https://arxiv.org/abs/2606.29082) | Introduces Evolution Fine-Tuning (EFT) to teach LLMs to evolve solutions across optimization tasks, achieving cross-task generalization. |
 | 2026 | 41.6 | method | [Measuring the Gap Between Human and LLM Research Ideas](https://arxiv.org/abs/2607.01233) | LLM-generated research ideas are systematically narrower and shifted in distribution compared to human ideas, as measured by a new taxonomy. |
 | 2026 | 40.8 | method | [The Scientific Contribution Graph: Automated Literature-based Technological Roadmapping at Scale](https://arxiv.org/abs/2605.15011v2) | Introduces Scientific Contribution Graph, a large-scale resource linking 2M contributions from 230k papers with 12.5M prerequisite edges for automated roadmapping. |
@@ -421,4 +422,4 @@ A curated hub for AI systems that automate scientific research: literature revie
 
 ---
 
-Total papers: **409**.
+Total papers: **410**.
