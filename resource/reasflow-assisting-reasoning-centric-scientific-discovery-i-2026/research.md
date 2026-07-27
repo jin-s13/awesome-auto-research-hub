@@ -1,7 +1,7 @@
 # ReasFlow: Assisting Reasoning-Centric Scientific Discovery in Applied Mathematics via a Knowledge-Based Multi-Agent System
 
 - Status: planned
-- Generated at: 2026-07-26T03:25:35Z
+- Generated at: 2026-07-27T03:41:54Z
 - Read-first score: 81.3
 - Paper: https://arxiv.org/abs/2607.14178v1
 - Code: https://github.com/ReasLab/ReasFlow.git.
