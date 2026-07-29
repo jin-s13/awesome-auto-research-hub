@@ -1,7 +1,7 @@
 # The AI Scientist-v2: Workshop-Level Automated Scientific Discovery via Agentic Tree Search
 
 - Status: planned
-- Generated at: 2026-07-28T02:52:37Z
+- Generated at: 2026-07-29T03:01:45Z
 - Read-first score: 76.9
 - Paper: https://arxiv.org/abs/2504.08066v1
 - Code: https://github.com/SakanaAI/AI-Scientist-v2
