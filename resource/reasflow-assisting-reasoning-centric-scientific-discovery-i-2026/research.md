@@ -1,16 +1,16 @@
 # ReasFlow: Assisting Reasoning-Centric Scientific Discovery in Applied Mathematics via a Knowledge-Based Multi-Agent System
 
 - Status: planned
-- Generated at: 2026-07-30T02:46:28Z
-- Read-first score: 81.3
-- Paper: https://arxiv.org/abs/2607.14178v1
-- Code: https://github.com/ReasLab/ReasFlow.git.
+- Generated at: 2026-07-31T03:28:19Z
+- Read-first score: 78.9
+- Paper: https://arxiv.org/abs/2607.14178v2
+- Code: https://github.com/reaslab/ReasFlow.git.
 
 ## Score Signals
 
 - recency: 100.0 - Uses a gentle age decay so recent papers surface without erasing older foundations.
-- topical_relevance: 83.3 - Uses existing LLM keyword relevance scores normalized to 0-100.
 - methodology_quality: 80 - Screens visible abstract and analysis fields for experiment, dataset, baseline, metric, and limitation evidence.
+- topical_relevance: 77.5 - Uses existing LLM keyword relevance scores normalized to 0-100.
 - reproducibility: 73 - Screens links and visible text for paper, code, dataset, artifact, and repository signals.
 - citation_impact: 0.0 - No OpenAlex identifier was available for this paper.
 - graph_prestige: 0.0 - No local citation edges were available, so graph prestige is excluded.
