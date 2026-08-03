@@ -152,6 +152,7 @@ A curated hub for AI systems that automate scientific research: literature revie
 | 2026 | 41.9 | method | [CausalDS: Benchmarking Causal Reasoning in Data-Science Agents](https://arxiv.org/abs/2607.08093) | Introduces CausalDS, a benchmark for evaluating causal reasoning in data-science agents using synthetic structural causal models and real-world empirical grounding. |
 | 2026 | 41.8 | method | [Evolution Fine-Tuning: Learning to Discover Across 371 Optimization Tasks](https://arxiv.org/abs/2606.29082) | Introduces Evolution Fine-Tuning (EFT) to teach LLMs to evolve solutions across optimization tasks, achieving cross-task generalization. |
 | 2026 | 41.6 | method | [Measuring the Gap Between Human and LLM Research Ideas](https://arxiv.org/abs/2607.01233) | LLM-generated research ideas are systematically narrower and shifted in distribution compared to human ideas, as measured by a new taxonomy. |
+| 2026 | 41.2 | method | [Scaling Scientific Discovery Environments for Turn-Level Agentic RL](https://arxiv.org/abs/2607.28990v1) | SciDisco: a scalable framework for training scientific discovery agents using process-verifiable environments and turn-level reinforcement learning. |
 | 2026 | 40.8 | method | [The Scientific Contribution Graph: Automated Literature-based Technological Roadmapping at Scale](https://arxiv.org/abs/2605.15011v2) | Introduces Scientific Contribution Graph, a large-scale resource linking 2M contributions from 230k papers with 12.5M prerequisite edges for automated roadmapping. |
 | 2026 | 40.7 | survey, theory | [A Vocabulary for Multi-Agent Automated Research Systems](https://arxiv.org/abs/2607.22682) | Introduces a vocabulary for describing and comparing multi-agent automated research systems, covering agents, operations, communication, and evaluation. |
 | 2026 | 40.7 | system, method | [IRIS: Interactive Research Ideation System for Accelerating Scientific Discovery](https://aclanthology.org/2025.acl-demo.57/) |  |
@@ -170,6 +171,7 @@ A curated hub for AI systems that automate scientific research: literature revie
 | 2026 | 37.5 | method | [Deterministic Integrity Gates for LLM-Assisted Clinical Manuscript Preparation: An Auditable Biomedical Informatics Architecture](https://arxiv.org/abs/2606.09500v4) | An architecture using deterministic integrity gates to verify LLM-generated clinical manuscripts, evaluated on public datasets and defect ablation. |
 | 2026 | 37.5 | method, application | [Learning to Trigger: Reinforcement Learning at the Large Hadron Collider](https://arxiv.org/abs/2606.23993) | Reinforcement learning optimizes trigger thresholds at the LHC, improving signal efficiency and in-tolerance time on simulation and real data. |
 | 2026 | 37.3 | method | [An Axiomatic Benchmark for Evaluation of Scientific Novelty Metrics](https://arxiv.org/abs/2604.15145v1) | Proposes an axiomatic benchmark to evaluate scientific novelty metrics, revealing that no existing metric satisfies all axioms consistently. |
+| 2026 | 37.2 | method | [LabEvolver: Training-Free Experience Evolution for Safe and Grounded Wet-Lab Agents](https://arxiv.org/abs/2607.27690v2) | A training-free framework using episodic memory and experience evolution to improve wet-lab and household task agents. |
 | 2026 | 37.2 | method, system | [OmniQEC: discovering practical quantum error-correcting codes by an AI scientist](https://arxiv.org/abs/2607.25865v1) | Quantum error correction (QEC) is indispensable for scalable fault-tolerant quantum computing. However, discovering QEC codes that remain effective is challenging, as logical perf... |
 | 2026 | 36.9 | method | [GoodPoint: Learning Constructive Scientific Paper Feedback from Author Responses](https://arxiv.org/abs/2604.11924v1) | Introduces GoodPoint, a training recipe using author responses to generate constructive, actionable feedback for scientific papers, achieving state-of-the-art results. |
 | 2026 | 36.4 | method | [SciCoQA: Quality Assurance for Scientific Paper--Code Alignment](https://arxiv.org/abs/2601.12910v3) | SciCoQA dataset benchmarks LLMs on detecting paper-code discrepancies, revealing significant gaps in automated quality assurance. |
@@ -434,4 +436,4 @@ A curated hub for AI systems that automate scientific research: literature revie
 
 ---
 
-Total papers: **422**.
+Total papers: **424**.
