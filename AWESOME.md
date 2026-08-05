@@ -94,6 +94,7 @@ A curated hub for AI systems that automate scientific research: literature revie
 | 2026 | 56 | method | [SoundnessBench: Can Your AI Scientist Really Tell Good Research Ideas from Bad Ones?](https://arxiv.org/abs/2605.30329v1) | Introduces SoundnessBench to test LLMs' ability to judge research idea soundness, finding pervasive optimism bias and unreliability. |
 | 2026 | 55.8 | method | [Can AI agents conduct open-ended AI research? Early evidence from two case studies](https://arxiv.org/abs/2607.27191) | Introduces shadow evaluations to test AI agents on open-ended research; agents excel at engineering but fail at research, with five failure modes identified. |
 | 2026 | 55.8 | method | [Competing with AI Scientists: Agent-Driven Approach to Astrophysics Research](https://arxiv.org/abs/2604.09621v1) | Agent-driven multi-agent system for astrophysics parameter inference pipelines, achieving first place in a challenge with human intervention. |
+| 2026 | 55.5 | method | [EMBL AI Librarian: Life-Sciences Knowledge Layer for AI Agents](https://arxiv.org/abs/2607.28229) | EMBL AI Librarian upgrades Europe PMC for AI agents using LLM orchestration to retrieve and extract evidence, improving citation F1 by 16 points. |
 | 2026 | 55.5 | survey, theory | [Position: Correct Answer, Wrong Mechanism -- When AI Scientists Defend General Claims Their Own Data Contradicts](https://arxiv.org/abs/2606.23175v1) | Position paper arguing outcome-only evaluation of AI scientists is insufficient; proposes measuring mechanism fidelity and epistemic honesty, with evidence from coding agents in s... |
 | 2026 | 55 | method | [Clarus: Coordinating Autonomous Research Agents toward Web-Scale Scientific Collaboration](https://arxiv.org/abs/2606.30246v1) | Clarus is a collaboration infrastructure for coordinating autonomous research agents to enable web-scale scientific collaboration, demonstrated via a paper-generation case study. |
 | 2026 | 54.7 | method, benchmark | [PaperSearchQA: Learning to Search and Reason over Scientific Papers with RLVR](https://arxiv.org/abs/2601.18207v1) | Trains search agents to reason over scientific papers using RLVR, releasing a biomedical corpus and QA dataset. |
@@ -164,11 +165,11 @@ A curated hub for AI systems that automate scientific research: literature revie
 | 2026 | 39.5 | method | [The Calibration Turn in AI-Assisted Research: A Conceptual and Methodological Framework for Evidence-Licensed Claims](https://arxiv.org/abs/2606.31273v1) | A conceptual framework for evidence-licensed claims in AI-assisted research, arguing calibration manages scientific assertion rights. |
 | 2026 | 38.7 | system, application | [Boundary-Aware Context Grounding for A Low-Channel EEG Agent](https://arxiv.org/abs/2606.26519) | NeuraDock Agent uses an LLM with boundary-aware context grounding to enable reliable low-channel EEG analysis while preventing unsupported interpretations. |
 | 2026 | 38.4 | method | [Sparking Scientific Creativity via LLM-Driven Interdisciplinary Inspiration](https://arxiv.org/abs/2603.12226v1) | Idea-Catalyst uses LLMs to generate interdisciplinary insights for creative brainstorming, avoiding premature solution anchoring. |
-| 2026 | 38.3 | method | [EMBL AI Librarian: Life-Sciences Knowledge Layer for AI Agents](https://arxiv.org/abs/2607.28229) | EMBL AI Librarian upgrades Europe PMC for AI agents using LLM orchestration to retrieve and extract evidence, improving citation F1 by 16 points. |
 | 2026 | 38.1 | method, system | [AutoFigure-Edit: Generating Editable Scientific Illustration](https://arxiv.org/abs/2602.03828) |  |
 | 2026 | 38.1 | benchmark | [HeurekaBench: A Benchmarking Framework for AI Co-scientist](https://arxiv.org/abs/2601.01678) |  |
 | 2026 | 38.1 | method, system | [Toward Autonomous Long-Horizon Engineering for ML Research](https://arxiv.org/abs/2604.13018) |  |
 | 2026 | 38.1 | survey, method | [Towards Autonomous Mathematics Research](https://arxiv.org/abs/2602.10177) |  |
+| 2026 | 37.8 | method | [RecHarness: A Bandit-Routed Agentic Harness for Self-Evolving Recommender Systems](https://arxiv.org/abs/2607.29241) | RecHarness uses a bandit router and LLM to automate recommender model optimization, achieving stable improvements and real-world gains. |
 | 2026 | 37.7 | method | [Beyond Drug Discovery: The Nanotechnology Molecular Optimization (NMO) Benchmark](https://arxiv.org/abs/2606.30170) | Introduces NMO Benchmark for nanotechnology molecular optimization using quantum simulations, revealing simple methods outperform advanced ones. |
 | 2026 | 37.5 | method | [Deterministic Integrity Gates for LLM-Assisted Clinical Manuscript Preparation: An Auditable Biomedical Informatics Architecture](https://arxiv.org/abs/2606.09500v4) | An architecture using deterministic integrity gates to verify LLM-generated clinical manuscripts, evaluated on public datasets and defect ablation. |
 | 2026 | 37.5 | method, application | [Learning to Trigger: Reinforcement Learning at the Large Hadron Collider](https://arxiv.org/abs/2606.23993) | Reinforcement learning optimizes trigger thresholds at the LHC, improving signal efficiency and in-tolerance time on simulation and real data. |
@@ -437,4 +438,4 @@ A curated hub for AI systems that automate scientific research: literature revie
 
 ---
 
-Total papers: **425**.
+Total papers: **426**.
