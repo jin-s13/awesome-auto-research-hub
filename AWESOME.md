@@ -330,6 +330,7 @@ A curated hub for AI systems that automate scientific research: literature revie
 | 2025 | 41.9 | method, system | [Curie: Toward Rigorous and Automated Scientific Experimentation with AI Agents](https://arxiv.org/abs/2502.16069) |  |
 | 2025 | 41.9 | method, system | [IterSurvey: Deep Literature Survey Automation with an Iterative Workflow](https://arxiv.org/abs/2510.21900) |  |
 | 2025 | 41.9 | system | [PaperDebugger: A Plugin-Based Multi-Agent System for In-Editor Academic Writing, Review, and Editing](https://arxiv.org/abs/2512.02589) |  |
+| 2025 | 41.6 | method | [DeepCode: Open Agentic Coding](https://arxiv.org/abs/2512.07921) | DeepCode autonomously synthesizes code from scientific papers, outperforming human experts and commercial agents on PaperBench. |
 | 2025 | 39.8 | method | [Enabling AI Scientists to Recognize Innovation: A Domain-Agnostic Algorithm for Assessing Novelty](https://arxiv.org/abs/2503.01508v4) | A domain-agnostic algorithm (RND) for assessing novelty of research ideas, achieving SOTA cross-domain performance without expert labeling. |
 | 2025 | 39.4 | method, application | [Automating Experimental Optics with Sample Efficient Machine Learning Methods](https://arxiv.org/abs/2503.14260v1) | Uses sample-efficient machine learning to autonomously align a free-space optical resonator, demonstrating feasibility in drifting systems. |
 | 2025 | 39.3 | method, system | [AutoReproduce: Automatic AI Experiment Reproduction with Paper Lineage](https://arxiv.org/abs/2505.20662) |  |
@@ -438,4 +439,4 @@ A curated hub for AI systems that automate scientific research: literature revie
 
 ---
 
-Total papers: **426**.
+Total papers: **427**.

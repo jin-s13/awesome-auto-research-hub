@@ -1,7 +1,7 @@
 # Agentic AI for Scientific Discovery: A Survey of Progress, Challenges, and Future Directions
 
 - Status: planned
-- Generated at: 2026-08-06T02:59:38Z
+- Generated at: 2026-08-07T02:56:09Z
 - Read-first score: 75.4
 - Paper: https://arxiv.org/abs/2503.08979v1
 - Code: 
