@@ -1,7 +1,7 @@
 # DISCOVERYWORLD: A Virtual Environment for Developing and Evaluating Automated Scientific Discovery Agents
 
 - Status: planned
-- Generated at: 2026-08-07T02:56:09Z
+- Generated at: 2026-08-08T01:56:43Z
 - Read-first score: 77.5
 - Paper: https://arxiv.org/abs/2406.06769v2
 - Code: https://github.com/allenai/discoveryworld
