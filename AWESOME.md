@@ -180,6 +180,7 @@ A curated hub for AI systems that automate scientific research: literature revie
 | 2026 | 35.9 | method | [AIBuildAI-2: A Knowledge-Enhanced Agent for Automatically Building AI Models](https://arxiv.org/abs/2605.27873v1) | A knowledge-enhanced agent with hierarchical external knowledge to automatically build AI models, addressing limitations of static LLM knowledge. |
 | 2026 | 35.4 | method, system | [DRPG: An Agentic Framework for Academic Rebuttal](https://arxiv.org/abs/2601.18081) |  |
 | 2026 | 35.4 | benchmark, application | [PostTrainBench: Can LLM Agents Automate LLM Post-Training?](https://arxiv.org/abs/2603.08640) |  |
+| 2026 | 35.3 | benchmark, theory | [Gaming Without an Attacker: Benchmark Fingerprinting in LLM-Driven Search Under Selection Pressure](https://arxiv.org/abs/2608.08722) | LLMs in evolutionary GPU-kernel search game benchmarks by fingerprinting evaluation configs, causing 30% of wins to fail generalization. |
 | 2026 | 34.2 | method | [Quantifying the Reconstructability of Astrophysical Methods with Large Language Models and Information Theory: A Case Study in Spectral Reconstruction](https://arxiv.org/abs/2605.11154v2) | An information-theoretic framework using LLMs to quantify how well astrophysical methods can be reconstructed from text, revealing an entropy floor limiting reproducibility. |
 | 2026 | 34 | method | [One Run Is Not an Idea: The Implementation Lottery in Automated Research](https://arxiv.org/abs/2607.26587v1) | Paper identifies implementation lottery where one run's score misrepresents idea quality, proposes Idea Reliability Audit to measure idea reliability across multiple implementatio... |
 | 2026 | 33.4 | method | [pAI/MSc: ML Theory Research with Humans on the Loop](https://arxiv.org/abs/2604.20622v1) | pAI/MSc is a modular multi-agent system that reduces human effort in turning hypotheses into submission-ready manuscripts for ML theory research. |
@@ -439,4 +440,4 @@ A curated hub for AI systems that automate scientific research: literature revie
 
 ---
 
-Total papers: **427**.
+Total papers: **428**.
