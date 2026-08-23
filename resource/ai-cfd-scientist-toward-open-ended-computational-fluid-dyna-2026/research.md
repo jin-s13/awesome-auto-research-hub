@@ -1,7 +1,7 @@
 # AI CFD Scientist: Toward Open-Ended Computational Fluid Dynamics Discovery with Physics-Aware AI Agents
 
 - Status: planned
-- Generated at: 2026-08-22T01:28:29Z
+- Generated at: 2026-08-23T01:41:13Z
 - Read-first score: 80.8
 - Paper: https://arxiv.org/abs/2605.06607v3
 - Code: https://github.com/csml-rpi/cfd-scientist.
