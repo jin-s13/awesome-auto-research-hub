@@ -200,6 +200,7 @@ A curated hub for AI systems that automate scientific research: literature revie
 | 2026 | 36.4 | method | [SciCoQA: Quality Assurance for Scientific Paper--Code Alignment](https://arxiv.org/abs/2601.12910v3) | SciCoQA dataset benchmarks LLMs on detecting paper-code discrepancies, revealing significant gaps in automated quality assurance. |
 | 2026 | 36 | benchmark, theory | [Gaming Without an Attacker: Benchmark Fingerprinting in LLM-Driven Search Under Selection Pressure](https://arxiv.org/abs/2608.08722) | LLMs in evolutionary GPU-kernel search game benchmarks by fingerprinting evaluation configs, causing 30% of wins to fail generalization. |
 | 2026 | 35.9 | method | [AIBuildAI-2: A Knowledge-Enhanced Agent for Automatically Building AI Models](https://arxiv.org/abs/2605.27873v1) | A knowledge-enhanced agent with hierarchical external knowledge to automatically build AI models, addressing limitations of static LLM knowledge. |
+| 2026 | 35.8 | method | [AutoResearch: Insight In, Hallucination Out](https://arxiv.org/abs/2608.17906) | AutoResearch is a two-stage autonomous research system that generates grounded research ideas and executes experiments with evidence-based review, improving benchmark performance... |
 | 2026 | 35.4 | method, system | [DRPG: An Agentic Framework for Academic Rebuttal](https://arxiv.org/abs/2601.18081) |  |
 | 2026 | 35.4 | benchmark, application | [PostTrainBench: Can LLM Agents Automate LLM Post-Training?](https://arxiv.org/abs/2603.08640) |  |
 | 2026 | 34.3 | benchmark | [ASI-Bench: At the Dawn of Artificial Superintelligence](https://arxiv.org/abs/2608.17271) | Artificial superintelligence (ASI) requires AI to move beyond mastering existing knowledge toward exploring the unknown, creating new knowledge, and turning new ideas into verifia... |
@@ -464,4 +465,4 @@ A curated hub for AI systems that automate scientific research: literature revie
 
 ---
 
-Total papers: **452**.
+Total papers: **453**.
