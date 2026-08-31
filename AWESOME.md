@@ -211,7 +211,7 @@ A curated hub for AI systems that automate scientific research: literature revie
 | 2026 | 35.9 | method | [AIBuildAI-2: A Knowledge-Enhanced Agent for Automatically Building AI Models](https://arxiv.org/abs/2605.27873v1) | A knowledge-enhanced agent with hierarchical external knowledge to automatically build AI models, addressing limitations of static LLM knowledge. |
 | 2026 | 35.4 | method, system | [DRPG: An Agentic Framework for Academic Rebuttal](https://arxiv.org/abs/2601.18081) |  |
 | 2026 | 35.4 | benchmark, application | [PostTrainBench: Can LLM Agents Automate LLM Post-Training?](https://arxiv.org/abs/2603.08640) |  |
-| 2026 | 34.7 | method | [Science Done on a Machine by a Machine: AI Agents in Computational Chemistry](https://arxiv.org/abs/2608.18508v1) | We are witnessing an explosion of agentic systems for computational chemistry simulations: from half a dozen in 2024 to a dozen in 2025, and the current number approaches fifty, s... |
+| 2026 | 34.7 | method | [Science Done on a Machine by a Machine: AI Agents in Computational Chemistry](https://arxiv.org/abs/2608.18508v1) | Perspective surveying rapid growth of AI agent systems for computational chemistry, moving from task assistance to autonomous experiments and manuscript writing toward fully auton... |
 | 2026 | 34.3 | benchmark | [ASI-Bench: At the Dawn of Artificial Superintelligence](https://arxiv.org/abs/2608.17271) | Artificial superintelligence (ASI) requires AI to move beyond mastering existing knowledge toward exploring the unknown, creating new knowledge, and turning new ideas into verifia... |
 | 2026 | 34.2 | method | [Quantifying the Reconstructability of Astrophysical Methods with Large Language Models and Information Theory: A Case Study in Spectral Reconstruction](https://arxiv.org/abs/2605.11154v2) | An information-theoretic framework using LLMs to quantify how well astrophysical methods can be reconstructed from text, revealing an entropy floor limiting reproducibility. |
 | 2026 | 34 | method | [One Run Is Not an Idea: The Implementation Lottery in Automated Research](https://arxiv.org/abs/2607.26587v1) | Paper identifies implementation lottery where one run's score misrepresents idea quality, proposes Idea Reliability Audit to measure idea reliability across multiple implementatio... |
@@ -224,6 +224,7 @@ A curated hub for AI systems that automate scientific research: literature revie
 | 2026 | 30.8 | method | [How Can Rhetoric Reward-Hack AI Reviewers? Dissecting Rhetorical Sensitivity in AI-Based Peer Review](https://arxiv.org/abs/2608.08975) | As large language models increasingly participate in scientific evaluation, we investigate a potential form of reward hacking: how rhetorical choices shape AI-review judgments whe... |
 | 2026 | 30.8 | method | [ResearchStudio-Reel: Automate the Last Mile of Research from Paper to Poster, Video, and Blog](https://arxiv.org/abs/2607.04438) | ResearchStudio-Reel automates converting research papers into editable posters, videos, and blogs using agent-based skills and shared extraction. |
 | 2026 | 30.5 | method | [Inspectable AI for Science: A Research Object Approach to Generative AI Governance](https://arxiv.org/abs/2604.11261v1) | Proposes AI as a Research Object (AI-RO) for governing generative AI in science via structured documentation and provenance. |
+| 2026 | 30.3 | method | [Code as Worlds: Agentic Discovery of Executable World Representations for Physical Reasoning](https://arxiv.org/abs/2608.27549) | Introduces Code-as-World, an agentic loop that represents physical worlds as executable code and uses verified worlds to train vision-language models for physical reasoning tasks. |
 | 2026 | 29.1 | method | [Author-in-the-Loop Response Generation and Evaluation: Integrating Author Expertise and Intent in Responses to Peer Review](https://arxiv.org/abs/2602.11173) |  |
 | 2026 | 29.1 | benchmark | [AutoResearchBench: Benchmarking AI Agents on Complex Scientific Literature Discovery](https://arxiv.org/abs/2604.25256) |  |
 | 2026 | 29.1 | method, system | [PaperOrchestra: A Multi-Agent Framework for Automated AI Research Paper Writing](https://arxiv.org/abs/2604.05018) |  |
@@ -475,4 +476,4 @@ A curated hub for AI systems that automate scientific research: literature revie
 
 ---
 
-Total papers: **463**.
+Total papers: **464**.
