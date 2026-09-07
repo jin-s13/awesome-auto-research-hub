@@ -107,6 +107,7 @@ A curated hub for AI systems that automate scientific research: literature revie
 | 2026 | 58.7 | method | [Scaling Scientific Discovery Environments for Turn-Level Agentic RL](https://arxiv.org/abs/2607.28990v1) | SciDisco: a scalable framework for training scientific discovery agents using process-verifiable environments and turn-level reinforcement learning. |
 | 2026 | 58.4 | method | [Epistemic Uncertainty for Test-Time Discovery](https://arxiv.org/abs/2605.11328v1) | UG-TTT uses ensemble of low-rank adapters to measure epistemic uncertainty, guiding exploration in automated scientific discovery to overcome reward plateaus. |
 | 2026 | 58 | method | [PaperGym: Rubric-Centered Evolution for Research-Plan Generation](https://arxiv.org/abs/2608.31119) | PaperGym turns research papers into reinforcement learning environments with rubric-based rewards, improving research-plan generation across models and benchmarks. |
+| 2026 | 57.5 | method | [TruthInsightBench: An Evidence-Grounded Benchmark for Automated Evaluation of Open-Ended Scientific Discovery Agents](https://arxiv.org/abs/2609.05079v1) | Autonomous coding agents are increasingly proposed as AI-scientist systems that conduct analyses and write research reports, but executing a prescribed analysis is not the same as... |
 | 2026 | 57.4 | method | [HypoForge: A Self-Improving Multi-Agent Framework for Automated Hypothesis Generation and Testing via Scientific Skill Learning](https://arxiv.org/abs/2608.25770v1) | HypoForge is an experience-guided multi-agent framework that learns reusable scientific skills for automated hypothesis generation and testing, using stage-specific supervision to... |
 | 2026 | 57.2 | method | [An AI Scientist that Doesn't Drift: Taste, Structure, and Falsifiable Findings in a Quadruped Navigation Research Loop](https://arxiv.org/abs/2608.07542v1) | An AI Scientist loop for quadruped navigation adds immutable experiment cards, specialized subagents, and a taste oracle to prevent drift; oracle changes research direction, not s... |
 | 2026 | 56.9 | method | [CausalGame: Benchmarking Causal Thinking of LLM Agents in Games](https://arxiv.org/abs/2607.04293v1) | CausalGame benchmarks LLM agents' causal thinking via interactive games with selection bias, measurement error, and hidden confounders; best model achieves 68% survival. |
@@ -200,6 +201,7 @@ A curated hub for AI systems that automate scientific research: literature revie
 | 2026 | 40.1 | method | [AICID: Unique Identifiers for AI Scientists](https://arxiv.org/abs/2606.28756v2) | Proposes AICID, a persistent unique identifier for AI scientists to ensure transparent provenance in scholarly communication. |
 | 2026 | 39.5 | method | [The Calibration Turn in AI-Assisted Research: A Conceptual and Methodological Framework for Evidence-Licensed Claims](https://arxiv.org/abs/2606.31273v1) | A conceptual framework for evidence-licensed claims in AI-assisted research, arguing calibration manages scientific assertion rights. |
 | 2026 | 38.7 | system, application | [Boundary-Aware Context Grounding for A Low-Channel EEG Agent](https://arxiv.org/abs/2606.26519) | NeuraDock Agent uses an LLM with boundary-aware context grounding to enable reliable low-channel EEG analysis while preventing unsupported interpretations. |
+| 2026 | 38.7 | method | [La Agente Óptima: Towards Agentic Self-Driving Laboratories](https://arxiv.org/abs/2609.04564v1) | Presents La Agente Óptima, an agentic framework for self-driving labs that manages Bayesian optimization campaigns across computational and physical systems, with real-world evalu... |
 | 2026 | 38.4 | method | [Sparking Scientific Creativity via LLM-Driven Interdisciplinary Inspiration](https://arxiv.org/abs/2603.12226v1) | Idea-Catalyst uses LLMs to generate interdisciplinary insights for creative brainstorming, avoiding premature solution anchoring. |
 | 2026 | 38.1 | method, system | [AutoFigure-Edit: Generating Editable Scientific Illustration](https://arxiv.org/abs/2602.03828) |  |
 | 2026 | 38.1 | benchmark | [HeurekaBench: A Benchmarking Framework for AI Co-scientist](https://arxiv.org/abs/2601.01678) |  |
@@ -487,4 +489,4 @@ A curated hub for AI systems that automate scientific research: literature revie
 
 ---
 
-Total papers: **475**.
+Total papers: **477**.
