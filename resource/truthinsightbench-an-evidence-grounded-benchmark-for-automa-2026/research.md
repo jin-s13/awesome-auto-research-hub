@@ -1,17 +1,17 @@
-# DISCOVERYWORLD: A Virtual Environment for Developing and Evaluating Automated Scientific Discovery Agents
+# TruthInsightBench: An Evidence-Grounded Benchmark for Automated Evaluation of Open-Ended Scientific Discovery Agents
 
 - Status: planned
 - Generated at: 2026-09-09T04:04:45Z
-- Read-first score: 77.5
-- Paper: https://arxiv.org/abs/2406.06769v2
-- Code: https://github.com/allenai/discoveryworld
+- Read-first score: 77.2
+- Paper: https://arxiv.org/abs/2609.05079v1
+- Code: https://github.com/TruthInsight-stack/TruthInsightBench.
 
 ## Score Signals
 
 - methodology_quality: 100.0 - Screens visible abstract and analysis fields for experiment, dataset, baseline, metric, and limitation evidence.
-- reproducibility: 81 - Screens links and visible text for paper, code, dataset, artifact, and repository signals.
-- recency: 75.1 - Uses a gentle age decay so recent papers surface without erasing older foundations.
-- topical_relevance: 62.5 - Uses existing LLM keyword relevance scores normalized to 0-100.
+- recency: 100.0 - Uses a gentle age decay so recent papers surface without erasing older foundations.
+- reproducibility: 85 - Screens links and visible text for paper, code, dataset, artifact, and repository signals.
+- topical_relevance: 54.2 - Uses existing LLM keyword relevance scores normalized to 0-100.
 - citation_impact: 0.0 - No OpenAlex identifier was available for this paper.
 - graph_prestige: 0.0 - No local citation edges were available, so graph prestige is excluded.
 - citation_velocity: 0.0 - No OpenAlex identifier was available for this paper.
