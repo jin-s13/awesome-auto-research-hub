@@ -3659,6 +3659,16 @@
     title: 'Online Surrogate Repair: Decoupling High-Fidelity Feedback from Search
       Length in Closed-Loop Discovery'
     url: https://arxiv.org/abs/2609.07655v1
+  - id: dianshi-rxndb-a-large-scale-fine-grained-organic-reaction-2026
+    title: 'DianShi-RxnDB: A Large-Scale, Fine-Grained Organic Reaction Data Platform
+      Built via a Fully Automated Pipeline for Researchers and AI Agents'
+    url: https://arxiv.org/abs/2609.06703
+    title_zh: DianShi-RxnDB：一个通过全自动流水线构建的大规模细粒度有机反应数据平台，服务于研究人员与AI代理
+  - id: scores-alone-do-not-prove-discovery-the-discovery-certifica-2026
+    title: 'Scores Alone Do Not Prove Discovery: The Discovery Certification Protocol
+      for Auditing AI Research Agents'
+    url: https://arxiv.org/abs/2609.09219
+    title_zh: 仅凭分数不足以证明发现：审计 AI 研究智能体的发现认证协议
   name_zh: RATIO
   description_zh: RATIO是面向科学文献的检索基准，用Address/Broaden/Specify三种构思操作定义相关性，由远程监督和人工/LLM审查构建。
   notes_zh: 派生自论文：RATIO：面向科学文献中类型化构思操作检索的基准
@@ -3716,3 +3726,57 @@
   notes_zh: 派生自论文：TruthInsightBench：一个基于证据的基准，用于自动评估开放式科学发现智能体
   year: 2026
   preview: https://arxiv.org/html/2609.05079v1/figs/figure1_boundary.png
+- id: paper-dianshi-rxndb-a-large-scale-fine-grained-organic-reaction-2026
+  name: DianShi-RxnDB
+  description: DianShi-RxnDB is a large-scale organic reaction data platform with
+    ~24M instances, built via automated extraction from patents, and offering web/MCP
+    access for researchers and AI agents.
+  tags: []
+  links:
+    paper: https://arxiv.org/abs/2609.06703
+  sources:
+  - repo: papers
+    category: dataset
+  notes: 'Derived from paper: DianShi-RxnDB: A Large-Scale, Fine-Grained Organic Reaction
+    Data Platform Built via a Fully Automated Pipeline for Researchers and AI Agents'
+  related_papers:
+  - id: dianshi-rxndb-a-large-scale-fine-grained-organic-reaction-2026
+    title: 'DianShi-RxnDB: A Large-Scale, Fine-Grained Organic Reaction Data Platform
+      Built via a Fully Automated Pipeline for Researchers and AI Agents'
+    url: https://arxiv.org/abs/2609.06703
+    title_zh: DianShi-RxnDB：一个通过全自动流水线构建的大规模细粒度有机反应数据平台，服务于研究人员与AI代理
+  name_zh: DianShi-RxnDB
+  description_zh: DianShi-RxnDB：约2400万实例的大规模有机反应数据平台，通过专利自动提取构建，为研究人员和AI代理提供Web/MCP访问。
+  notes_zh: 派生自论文：DianShi-RxnDB：一个通过全自动流水线构建的大规模细粒度有机反应数据平台，服务于研究人员与AI代理
+  year: 2026
+  preview: https://arxiv.org/html/2609.06703v1/figures/fig-01.png
+- id: paper-opendiscoverytrace-process-traces-for-evaluating-ai-scienti-2026
+  name: OpenDiscoveryTrace
+  description: Existing benchmarks for autonomous AI scientists evaluate only final
+    outputs---generated code, hypotheses, or papers---yet discard the reasoning process
+    by which those outputs were obtained. This makes it impossible to audit scientific
+    meth...
+  tags: []
+  links:
+    paper: https://arxiv.org/abs/2609.09203v1
+  sources:
+  - repo: papers
+    category: dataset
+  notes: 'Derived from paper: OpenDiscoveryTrace: Process Traces for Evaluating AI
+    Scientist Workflows'
+  related_papers:
+  - id: opendiscoverytrace-process-traces-for-evaluating-ai-scienti-2026
+    title: 'OpenDiscoveryTrace: Process Traces for Evaluating AI Scientist Workflows'
+    url: https://arxiv.org/abs/2609.09203v1
+    title_zh: OpenDiscoveryTrace：用于评估AI科学家工作流的过程轨迹
+  name_zh: OpenDiscoveryTrace
+  description_zh: 现有的自主AI科学家基准只评估最终输出——生成的代码、假设或论文——却丢弃了获得这些输出的推理过程。这使得无法审查科学方法论、诊断失败模式，或区分系统性推理与侥幸猜测。我们提出
+    OpenDiscoveryTrace，一个包含558条完整AI科学智能体轨迹的公开数据集，捕捉模型的推理方式，而不仅仅是其产出。每条轨迹在模型执行124项科学任务（涵盖药物发现、材料科学、基因组学和科学文献分析）时，记录结构化的每步9字段轨迹——包括思考、工具调用、观察、错误、修订触发器和自我报告置信度。该数据集涵盖七个模型：三个前沿模型（GPT-5.4、Claude
+    Opus 4.6 和 Gemini 3.1 Pro；各124条轨迹，在领域和难度水平上完全平衡）和四个开放权重模型（Qwen2.5-7B、Mistral-7B-v0.3、Phi-3.5-mini
+    和 Qwen2.5-1.5B；各30条），外加60条实时检索变体轨迹。对363条由LLM评分的轨迹进行的初步分析显示，过程轨迹揭示了仅评估输出时不可见的行为差异：所有三个前沿模型都取得了相近的成功率（84–89%），但
+    Claude Opus 4.6 产生的错误是 GPT-5.4 的30倍（每条轨迹2.5次 vs 0.08次，p < 0.0001，Cliff's δ = 0.613），且错误特征在本质上不同——Claude
+    中66.7%为工具误用，而 GPT-5.4 中83.6%为推理错误。我们定义了五个基准任务，基线包括逻辑回归、随机森林、LSTM和Transformer模型。数据集、轨迹模式、智能体框架和基准定义均以CC
+    BY 4.0许可公开提供，以支持过程级评估、科学智能体审计和AI治理方面的研究。
+  notes_zh: 派生自论文：OpenDiscoveryTrace：用于评估AI科学家工作流的过程轨迹
+  year: 2026
+  preview: https://arxiv.org/html/2609.09203v1/fig_architecture.png
