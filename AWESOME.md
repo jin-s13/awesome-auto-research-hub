@@ -203,6 +203,7 @@ A curated hub for AI systems that automate scientific research: literature revie
 | 2026 | 41.2 | method | [Position: AI Agents in Scientific Teams Should Be Studied as Human-Agent Systems](https://arxiv.org/abs/2608.14667) | Argues AI scientists in scientific teams should be studied as human-agent systems, emphasizing social dynamics and human-AI synergy over autonomous capabilities. |
 | 2026 | 40.8 | method | [The Scientific Contribution Graph: Automated Literature-based Technological Roadmapping at Scale](https://arxiv.org/abs/2605.15011v2) | Introduces Scientific Contribution Graph, a large-scale resource linking 2M contributions from 230k papers with 12.5M prerequisite edges for automated roadmapping. |
 | 2026 | 40.7 | survey, theory | [A Vocabulary for Multi-Agent Automated Research Systems](https://arxiv.org/abs/2607.22682) | Introduces a vocabulary for describing and comparing multi-agent automated research systems, covering agents, operations, communication, and evaluation. |
+| 2026 | 40.7 | method | [Discovery Foundation Models: Toward Open-Ended Discovery Intelligence](https://arxiv.org/abs/2609.15973) | Foundation models have progressed from learning and reasoning over existing knowledge, to increasingly learning through action, tool use, and outcome feedback. We argue that the n... |
 | 2026 | 40.7 | system, method | [IRIS: Interactive Research Ideation System for Accelerating Scientific Discovery](https://aclanthology.org/2025.acl-demo.57/) |  |
 | 2026 | 40.7 | method, application | [Paper2Poster: Towards Multimodal Poster Automation from Scientific Papers](https://openreview.net/forum?id=p0E74lpRBD) |  |
 | 2026 | 40.7 | method | [SGHA: Evidence-Grounded Research Problem Discovery with Local Language Models](https://arxiv.org/abs/2608.17501v1) | Recent efforts toward fully automated AI scientists have demonstrated that language-model agents can generate hypotheses, execute experiments, and draft scientific manuscripts. Ho... |
@@ -253,6 +254,7 @@ A curated hub for AI systems that automate scientific research: literature revie
 | 2026 | 30.8 | method | [ResearchStudio-Reel: Automate the Last Mile of Research from Paper to Poster, Video, and Blog](https://arxiv.org/abs/2607.04438) | ResearchStudio-Reel automates converting research papers into editable posters, videos, and blogs using agent-based skills and shared extraction. |
 | 2026 | 30.5 | method | [Inspectable AI for Science: A Research Object Approach to Generative AI Governance](https://arxiv.org/abs/2604.11261v1) | Proposes AI as a Research Object (AI-RO) for governing generative AI in science via structured documentation and provenance. |
 | 2026 | 30.3 | method | [DianShi-RxnDB: A Large-Scale, Fine-Grained Organic Reaction Data Platform Built via a Fully Automated Pipeline for Researchers and AI Agents](https://arxiv.org/abs/2609.06703) | DianShi-RxnDB is a large-scale organic reaction data platform with ~24M instances, built via automated extraction from patents, and offering web/MCP access for researchers and AI... |
+| 2026 | 29.3 | method | [Atria Dawn: The Dawn of Agentic Superintelligence](https://arxiv.org/abs/2609.15818) | As AI agents become participants in the development of their successors, they reshape both the production of intelligence and the role of human researchers. We introduce Atria Daw... |
 | 2026 | 29.1 | method | [Author-in-the-Loop Response Generation and Evaluation: Integrating Author Expertise and Intent in Responses to Peer Review](https://arxiv.org/abs/2602.11173) |  |
 | 2026 | 29.1 | benchmark | [AutoResearchBench: Benchmarking AI Agents on Complex Scientific Literature Discovery](https://arxiv.org/abs/2604.25256) |  |
 | 2026 | 29.1 | method, system | [PaperOrchestra: A Multi-Agent Framework for Automated AI Research Paper Writing](https://arxiv.org/abs/2604.05018) |  |
@@ -504,4 +506,4 @@ A curated hub for AI systems that automate scientific research: literature revie
 
 ---
 
-Total papers: **492**.
+Total papers: **494**.
