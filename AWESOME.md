@@ -252,6 +252,7 @@ A curated hub for AI systems that automate scientific research: literature revie
 | 2026 | 33.4 | method | [pAI/MSc: ML Theory Research with Humans on the Loop](https://arxiv.org/abs/2604.20622v1) | pAI/MSc is a modular multi-agent system that reduces human effort in turning hypotheses into submission-ready manuscripts for ML theory research. |
 | 2026 | 32.3 | method | [Code as Worlds: Agentic Discovery of Executable World Representations for Physical Reasoning](https://arxiv.org/abs/2608.27549) | Introduces Code-as-World, an agentic loop that represents physical worlds as executable code and uses verified worlds to train vision-language models for physical reasoning tasks. |
 | 2026 | 32.3 | method | [PaperBanana-Interact: Scientific Diagram Refinement with Multi-Turn Human Feedback](https://arxiv.org/abs/2608.30241) | Recent efforts have aimed to automate scientific diagram generation from paper content (Lin et al., 2026; Zhu et al., 2026a). However, fully satisfying an author's visual and comm... |
+| 2026 | 32.3 | method | [When AI Reviews Train AI Reviewers: Scientific-Judgment Collapse and Mitigation](https://arxiv.org/abs/2609.20942) | Fine-tuning AI reviewers on synthetic reviews causes scientific-judgment collapse; TrustReviewer mitigates via curated training and activation steering. |
 | 2026 | 32.2 | method | [Large language models for post-publication research evaluation: Evidence from expert recommendations and citation indicators](https://arxiv.org/abs/2604.16387v1) | Benchmarks LLMs for post-publication research evaluation using expert recommendations and citation indicators, finding good coarse-grained but poor fine-grained performance. |
 | 2026 | 31.9 | method | [SciForma: Structure-Faithful Generation of Scientific Diagrams](https://arxiv.org/abs/2607.18091) | SciForma introduces a framework for structure-faithful generation of scientific diagrams using multi-dimensional preference optimization. |
 | 2026 | 31.8 | method | [The Problem Is the Problem: Towards Scalable Mathematical Discovery](https://arxiv.org/abs/2608.16977) | AI systems are increasingly capable of contributing to mathematical research. In research practice, frontier-model reasoning is a limited resource, and expert mathematical review... |
@@ -518,4 +519,4 @@ A curated hub for AI systems that automate scientific research: literature revie
 
 ---
 
-Total papers: **505**.
+Total papers: **506**.
