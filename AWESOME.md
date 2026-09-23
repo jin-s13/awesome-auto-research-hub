@@ -243,6 +243,7 @@ A curated hub for AI systems that automate scientific research: literature revie
 | 2026 | 35.4 | benchmark, application | [PostTrainBench: Can LLM Agents Automate LLM Post-Training?](https://arxiv.org/abs/2603.08640) |  |
 | 2026 | 34.8 | method | [ActReview: Rebuttal-Guided Training Data and Rubric Rewards for Actionable Peer Review Generation](https://arxiv.org/abs/2609.09076) | As LLMs are increasingly used for pre-submission self-review, there is growing demand for feedback that not only identifies weaknesses but also guides authors toward concrete revi... |
 | 2026 | 34.7 | method | [AppliedScientist: Automated Scientific Revision Through Iterative AI Reviewing](https://arxiv.org/abs/2609.14738v1) | Automated reviewing systems are increasingly evaluated based on the quality of the reviews they produce. Yet a review is only useful if acting on it leads to a measurable improvem... |
+| 2026 | 34.7 | method | [AppliedScientist: Automated Scientific Revision Through Iterative AI Reviewing](https://arxiv.org/abs/2609.14738v2) | Automated reviewing systems are increasingly evaluated based on the quality of the reviews they produce. Yet a review is only useful if acting on it leads to a measurable improvem... |
 | 2026 | 34.6 | method | [IdeaAMBIG: Benchmarking Implementation-Critical Gaps in Research-Idea Specifications](https://arxiv.org/abs/2609.10539) | Introduces IdeaAMBIG, a benchmark of 660 evidence-grounded instances for evaluating whether research-method specifications are sufficiently detailed for implementation by coding a... |
 | 2026 | 34.3 | benchmark | [ASI-Bench: At the Dawn of Artificial Superintelligence](https://arxiv.org/abs/2608.17271) | Artificial superintelligence (ASI) requires AI to move beyond mastering existing knowledge toward exploring the unknown, creating new knowledge, and turning new ideas into verifia... |
 | 2026 | 34.2 | method | [Quantifying the Reconstructability of Astrophysical Methods with Large Language Models and Information Theory: A Case Study in Spectral Reconstruction](https://arxiv.org/abs/2605.11154v2) | An information-theoretic framework using LLMs to quantify how well astrophysical methods can be reconstructed from text, revealing an entropy floor limiting reproducibility. |
@@ -273,6 +274,7 @@ A curated hub for AI systems that automate scientific research: literature revie
 | 2026 | 29.1 | method | [ScholarPeer: A Context-Aware Multi-Agent Framework for Automated Peer Review](https://arxiv.org/abs/2601.22638) |  |
 | 2026 | 28.8 | method | [AskChem: Claim-Centered Infrastructure for Chemistry Literature Synthesis](https://arxiv.org/abs/2607.28618) | Chemistry literature synthesis often requires assembling specific findings scattered across many publications, yet existing literature-search systems primarily return ranked docum... |
 | 2026 | 28.2 | method | [GigaWorld-Policy-0.5: A Faster and Stronger WAM Empowered by AutoResearch](https://arxiv.org/abs/2607.13960) | A faster World Action Model for robot control using action-centered formulation and Mixture-of-Transformers, with AutoResearch for training config search. |
+| 2026 | 27.8 | method | [Measuring the Creativity of Frontier LLMs in Automated Research](https://arxiv.org/abs/2609.14057v2) | Proposes creativity metrics for frontier LLMs in automated research, evaluating idea valueness and novelty, and finds variable-level novelty correlates with research performance. |
 | 2026 | 27.8 | method | [Symposium: Trust via Auditable Records for Communities of AI Scientist Agents](https://arxiv.org/abs/2608.19511v1) | Symposium is a formal framework and practical implementation to record the operation of AI agents deployed by small scientific research communities. Symposium provides long-term,... |
 | 2026 | 26.4 | system | [CiteLLM: An Agentic Platform for Trustworthy Scientific Reference Discovery](https://arxiv.org/abs/2602.23075) |  |
 | 2026 | 26.4 | method | [Defend: Automated Rebuttals for Peer Review with Minimal Author Guidance](https://arxiv.org/abs/2603.27360) |  |
@@ -519,4 +521,4 @@ A curated hub for AI systems that automate scientific research: literature revie
 
 ---
 
-Total papers: **506**.
+Total papers: **508**.
