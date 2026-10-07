@@ -1,24 +1,23 @@
-# AI CFD Scientist: Toward Open-Ended Computational Fluid Dynamics Discovery with Physics-Aware AI Agents
+# EvoCast: Reliable Autonomous Research Agents for Iterative Forecasting Architecture Evolution
 
 - Status: planned
 - Generated at: 2026-10-07T05:20:43Z
-- Read-first score: 80.8
-- Paper: https://arxiv.org/abs/2605.06607v3
-- Code: https://github.com/csml-rpi/cfd-scientist.
+- Read-first score: 76.8
+- Paper: https://arxiv.org/abs/2610.04517v1
+- Code: https://github.com/18e0-x/EvoCast.
 
 ## Score Signals
 
+- methodology_quality: 100.0 - Screens visible abstract and analysis fields for experiment, dataset, baseline, metric, and limitation evidence.
 - recency: 100.0 - Uses a gentle age decay so recent papers surface without erasing older foundations.
 - reproducibility: 85 - Screens links and visible text for paper, code, dataset, artifact, and repository signals.
-- methodology_quality: 80 - Screens visible abstract and analysis fields for experiment, dataset, baseline, metric, and limitation evidence.
-- topical_relevance: 75.0 - Uses existing LLM keyword relevance scores normalized to 0-100.
+- topical_relevance: 53.3 - Uses existing LLM keyword relevance scores normalized to 0-100.
 - citation_impact: 0.0 - No OpenAlex identifier was available for this paper.
 - graph_prestige: 0.0 - No local citation edges were available, so graph prestige is excluded.
 - citation_velocity: 0.0 - No OpenAlex identifier was available for this paper.
 
 ## Critique
 
-- Strength: Strong topical fit for the hub's research scope.
 - Strength: Visible methodology or evaluation signals make it worth reading early.
 - Strength: Reproducibility signals suggest useful code, data, paper, or artifact paths.
 - Concern: Ranking evidence is triage only; full text, metrics, baselines, and limitations still need inspection.
