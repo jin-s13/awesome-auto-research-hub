@@ -3917,6 +3917,32 @@
       Limitation Generation'
     url: https://arxiv.org/abs/2610.23038v1
     title_zh: 研究构思始于何处：基于前向引用监督的可操作局限性生成
+  - id: scipvot-benchmarking-principal-investigator-judgment-at-piv-2026
+    title: 'SciΠvot: Benchmarking Principal-Investigator Judgment at Pivotal Moments
+      of Scientific AutoResearch Agents'
+    url: https://arxiv.org/abs/2610.21082
+    title_zh: SciΠvot：在科学自动研究智能体的关键时刻对首席研究员判断进行基准测试
+  - id: rap-a-dataset-for-paper-to-poster-generation-via-declarativ-2026
+    title: 'RAP: A Dataset for Paper-to-Poster Generation via Declarative Markup from
+      Human-Crafted Exemplars'
+    url: https://arxiv.org/abs/2610.23230
+    title_zh: RAP：基于人工制作范例并通过声明式标记进行论文到海报生成的数据集
+  - id: discuss-more-comment-less-boosting-automated-research-via-2026
+    title: 'Discuss More, Comment Less: Boosting Automated Research via Multi-Perspective
+      Collaborative Review'
+    url: https://arxiv.org/abs/2610.24050v1
+    title_zh: 多讨论、少评论：通过多视角协作评审提升自动化研究
+  - id: tcmscience-an-autonomous-scientist-for-traditional-chinese-2026
+    title: 'TCMScience: An Autonomous Scientist for Traditional Chinese Medicine'
+    url: https://arxiv.org/abs/2610.24601v1
+  - id: epi-towards-a-persistent-self-improving-agent-for-autonomo-2026
+    title: 'Epi: Towards a Persistent, Self-Improving Agent for Autonomous Research'
+    url: https://arxiv.org/abs/2610.24944v1
+    title_zh: Épi：迈向持久、自我改进的自主研究智能体
+  - id: auto-md-bench-evaluating-autoresearch-agents-for-real-world-2026
+    title: 'Auto-MD-bench: Evaluating Autoresearch Agents for Real-World Medical Tasks'
+    url: https://arxiv.org/abs/2610.25069v1
+    title_zh: Auto-MD-bench：评估面向真实世界医学任务的自动研究智能体
   name_zh: RATIO
   description_zh: RATIO是面向科学文献的检索基准，用Address/Broaden/Specify三种构思操作定义相关性，由远程监督和人工/LLM审查构建。
   notes_zh: 派生自论文：RATIO：面向科学文献中类型化构思操作检索的基准
@@ -4280,3 +4306,52 @@
   notes_zh: 派生自论文：进入未知（Into the Unknown）：在开放科学研究问题上对AI智能体进行基准测试
   year: 2026
   preview: https://arxiv.org/html/2610.19159v1/scientist_to_rubric.png
+- id: paper-rap-a-dataset-for-paper-to-poster-generation-via-declarativ-2026
+  name: RAP
+  description: 'Making a conference poster is visual coding in miniature: an entire
+    paper must be compressed onto a single page, which exercises summarization, visual
+    design, and code implementation at once, using nothing beyond the paper itself.
+    Yet bench...'
+  tags: []
+  links:
+    paper: https://arxiv.org/abs/2610.23230
+  sources:
+  - repo: papers
+    category: dataset
+  notes: 'Derived from paper: RAP: A Dataset for Paper-to-Poster Generation via Declarative
+    Markup from Human-Crafted Exemplars'
+  related_papers:
+  - id: rap-a-dataset-for-paper-to-poster-generation-via-declarativ-2026
+    title: 'RAP: A Dataset for Paper-to-Poster Generation via Declarative Markup from
+      Human-Crafted Exemplars'
+    url: https://arxiv.org/abs/2610.23230
+    title_zh: RAP：基于人工制作范例并通过声明式标记进行论文到海报生成的数据集
+  name_zh: RAP
+  description_zh: 制作会议海报是一种微缩的视觉编码：整篇论文必须压缩到单页上，这同时锻炼了摘要撰写、视觉设计与代码实现能力，且仅依赖论文本身。然而，在视觉编码语境下针对该任务的基准仍然稀缺：现有资源规模较小，且仅用布局框进行标注，因此评估只能退而求其次地依赖VLM-as-judge或人工检查清单，而无法进行客观的渲染-比较；同时，这些资源所支持的生成方法是从零开始设计布局，使得人工制作的海报既不能作为可检索的设计库，也无法作为经过验证的监督信号。我们提出RAP（Reconstruct
+    A Poster），一个将论文到海报生成视为视觉编码任务的数据集与基准。RAP包含来自2022年至2026年间多个机器学习会议的25K+对经过验证的论文-海报样本，并标注了三层内容分类体系；此外还有一个留出的基准集，包含150篇测试论文，每篇都配有其对应的人工制作海报。一条全自动的反渲染（derendering）流水线将每张海报转换为带类型的、可重新填充槽位的样式化HTML/CSS，因此每个样本都是一个论文-海报-标记三元组，可通过与源海报进行渲染比对来验证。该语料库同时服务于推理与训练：PosterRAG是一个无需训练的多智能体流水线，它检索范例并重新填充其槽位，而不改动布局或样式；而一种SFT+RL方案则利用相同的三元组训练专用模型。在线演示见https://reconstruct-a-poster.github.io/。
+  notes_zh: 派生自论文：RAP：基于人工制作范例并通过声明式标记进行论文到海报生成的数据集
+  year: 2026
+  preview: https://arxiv.org/html/2610.23230v1/rap_teaser_crop.png
+- id: paper-auto-md-bench-evaluating-autoresearch-agents-for-real-world-2026
+  name: Auto-MD-bench
+  description: Introduces Auto-MD-bench, a benchmark of 15 real-world medical tasks
+    evaluating four autonomous ML agents, showing primary metric performance doesn't
+    guarantee calibration or robustness.
+  tags: []
+  links:
+    paper: https://arxiv.org/abs/2610.25069v1
+  sources:
+  - repo: papers
+    category: dataset
+  notes: 'Derived from paper: Auto-MD-bench: Evaluating Autoresearch Agents for Real-World
+    Medical Tasks'
+  related_papers:
+  - id: auto-md-bench-evaluating-autoresearch-agents-for-real-world-2026
+    title: 'Auto-MD-bench: Evaluating Autoresearch Agents for Real-World Medical Tasks'
+    url: https://arxiv.org/abs/2610.25069v1
+    title_zh: Auto-MD-bench：评估面向真实世界医学任务的自动研究智能体
+  name_zh: Auto-MD-bench
+  description_zh: 引入Auto-MD-bench医学基准，评估四个自主智能体，发现主要指标不能保证校准与稳健性。
+  notes_zh: 派生自论文：Auto-MD-bench：评估面向真实世界医学任务的自动研究智能体
+  year: 2026
+  preview: https://arxiv.org/static/base/1.0.1/images/funders/simons-foundation.png
