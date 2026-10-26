@@ -1,7 +1,7 @@
 # AutoResearchClaw: Self-Reinforcing Autonomous Research with Human-AI Collaboration
 
 - Status: planned
-- Generated at: 2026-10-25T04:02:48Z
+- Generated at: 2026-10-26T04:06:31Z
 - Read-first score: 76.8
 - Paper: https://arxiv.org/abs/2605.20025v2
 - Code: https://github.com/aiming-lab/AutoResearchClaw.
