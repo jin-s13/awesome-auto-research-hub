@@ -1,7 +1,7 @@
 # EvoCast: Reliable Autonomous Research Agents for Iterative Forecasting Architecture Evolution
 
 - Status: planned
-- Generated at: 2026-10-27T04:34:04Z
+- Generated at: 2026-10-28T05:05:35Z
 - Read-first score: 76.8
 - Paper: https://arxiv.org/abs/2610.04517v1
 - Code: https://github.com/18e0-x/EvoCast.
