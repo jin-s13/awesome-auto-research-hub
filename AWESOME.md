@@ -306,6 +306,7 @@ A curated hub for AI systems that automate scientific research: literature revie
 | 2026 | 40.7 | method, application | [Paper2Poster: Towards Multimodal Poster Automation from Scientific Papers](https://openreview.net/forum?id=p0E74lpRBD) |  |
 | 2026 | 40.7 | method | [SGHA: Evidence-Grounded Research Problem Discovery with Local Language Models](https://arxiv.org/abs/2608.17501v1) | Recent efforts toward fully automated AI scientists have demonstrated that language-model agents can generate hypotheses, execute experiments, and draft scientific manuscripts. Ho... |
 | 2026 | 40.7 | system, benchmark | [Unlocking the Visual Record of Materials Science: A Large-Scale Multimodal Dataset from Scientific Literature](https://arxiv.org/abs/2606.29667) | A pipeline to decompose compound figures in materials science papers into sub-panels with structured annotations, creating a large multimodal dataset. |
+| 2026 | 40.5 | method | [Glyph: An Interpretability Engine for AI-Driven Scientific Discovery in Clinical Data](https://arxiv.org/abs/2611.08922v1) | Automated scientific discovery has the potential to advance understanding of disease mechanisms and accelerate identification of early disease markers. Manual data annotation is i... |
 | 2026 | 40.3 | method | [Cost-Aware Recovery-Pathway Identification and Bayesian Optimization for Autonomous Materials Discovery](https://arxiv.org/abs/2607.23896v1) | Autonomous laboratories automate experimental execution, but a campaign must also decide which recovery pathway merits optimization. We formulate this as a sequential decision pro... |
 | 2026 | 40.2 | method | [El Agente Fármaco: A Scalable AI Scientist for Drug Discovery](https://arxiv.org/abs/2611.03832v1) | Computational drug discovery offers a growing range of tools for proposing and evaluating molecules, but combining them and deciding what to do next still requires substantial exp... |
 | 2026 | 40.1 | method | [AICID: Unique Identifiers for AI Scientists](https://arxiv.org/abs/2606.28756v2) | Proposes AICID, a persistent unique identifier for AI scientists to ensure transparent provenance in scholarly communication. |
@@ -652,4 +653,4 @@ A curated hub for AI systems that automate scientific research: literature revie
 
 ---
 
-Total papers: **639**.
+Total papers: **640**.
