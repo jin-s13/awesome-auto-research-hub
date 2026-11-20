@@ -1,7 +1,7 @@
 # TruthInsightBench: An Evidence-Grounded Benchmark for Automated Evaluation of Open-Ended Scientific Discovery Agents
 
 - Status: planned
-- Generated at: 2026-11-19T06:51:14Z
+- Generated at: 2026-11-20T06:39:44Z
 - Read-first score: 77.2
 - Paper: https://arxiv.org/abs/2609.05079v2
 - Code: https://github.com/TruthInsight-stack/TruthInsightBench.
