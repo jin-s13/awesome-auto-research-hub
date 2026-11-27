@@ -1,5 +1,5 @@
 schema_version: awesome-hub.surveys.v1
-generated_at: '2026-11-26T07:46:05Z'
+generated_at: '2026-11-27T07:42:11Z'
 topics:
 - id: literature_intelligence
   label: Literature Intelligence
@@ -402,7 +402,7 @@ topics:
   description: Agents that design, execute, monitor, analyze, or iterate experiments,
     including code-based and lab-based experimentation.
   description_zh: ''
-  paper_count: 263
+  paper_count: 264
   top_tags:
   - AI
   - LG
@@ -416,9 +416,9 @@ topics:
     citation_impact: 0.0
     citation_velocity: 0.0
     graph_prestige: 0.0
-    methodology_quality: 62.1
+    methodology_quality: 62.2
     recency: 95.1
-    reproducibility: 40.5
+    reproducibility: 40.4
     topical_relevance: 40.0
   top_papers:
   - id: reasflow-assisting-reasoning-centric-scientific-discovery-i-2026
@@ -467,131 +467,128 @@ topics:
     score: 73.9
     url: https://arxiv.org/abs/2606.21024v1
   related_work_outline:
-  - 'Mainstream direction: end-to-end LLM agents that automate idea/hypothesis generation,
-    experiment execution, analysis, and manuscript writing, often with automated review
-    or verification.'
-  - 'Shared research pattern: a propose-experiment-evaluate-write-review loop, with
-    memory, verification, tree search, or reviewer feedback added to reduce repeated
-    failures and human intervention.'
-  - 'Key differences: target science varies across applied math derivation, simulated
-    discovery tasks, and code-centric ML benchmark improvement; evaluation ranges
-    from peer-review acceptance to task completion and judge preference.'
-  - 'Trend evolution: within the 2024-2026 frontier, work moves from first fully automated
-    discovery frameworks and benchmark environments toward tree search, multi-agent
-    platforms, negative knowledge, and in-the-wild scientific ML evaluation.'
-  - 'Open questions: whether proxy metrics align with real scientific utility, whether
-    agents can produce domain-level insight rather than engineering tricks, and how
-    memory and verification generalize across scientific domains.'
+  - 'Mainstream direction: End-to-end LLM and multi-agent systems that automate scientific
+    experimentation, from hypothesis generation and code execution to analysis, reporting,
+    and simulated review, with increasing focus on interactive control and benchmarking.'
+  - 'Shared research pattern: Agents iterate through propose/experiment/analyze loops,
+    use verification or reviewer feedback, and are evaluated by LLM judges, peer-review
+    acceptance, task completion, or benchmark improvement.'
+  - 'Key differences: Scope spans full paper generation, virtual discovery tasks,
+    interactive research platforms, failure-memory layers, and in-the-wild ML optimization;
+    evaluation criteria and human involvement differ sharply.'
+  - 'Trend evolution: Within 2024–2026, work moves from single fully automated pipelines
+    and simulated discovery environments toward agentic tree search, multi-agent teams,
+    failure-aware memory, and long-horizon scientific ML testbeds.'
+  - 'Open questions: Reliability and pass rates remain low; progress often comes from
+    engineering tricks rather than domain insight; external and human validation,
+    reproducibility, and cross-domain generalization are still open.'
   related_work_outline_zh:
-  - 主流方向：以LLM智能体为核心，自动完成从想法/假设生成、实验执行、分析到论文撰写与自动评审的端到端科研流程。
-  - 研究共性：采用“提出—实验—评估—撰写—验证/评审”闭环，并引入记忆、内部验证或树搜索来减少重复失败和人类干预。
-  - 关键差异：目标任务包括应用数学理论推导、模拟环境科学发现和ML代码基准改进；评估方式涵盖同行评审、任务完成指标和专家/LLM偏好。
-  - 趋势演进：在2024–2026前沿期内，从全自动发现框架和基准环境，发展到树搜索、多智能体平台、失败记忆与真实科学ML评测；重点由生成论文转向稳定性和真实科研进展度量。
-  - 开放问题：自动指标与人类科学效用是否一致；智能体是否能提出领域洞见而非仅工程技巧；记忆与验证机制如何跨领域泛化。
+  - 主流方向：端到端LLM和多智能体系统自动化科学实验，覆盖假设生成、代码执行、分析、报告和模拟评审，并越来越多强调交互控制与基准评测。
+  - 研究共性：智能体围绕提出-实验-分析循环工作，引入验证或评审反馈，用LLM评审、同行评审接收、任务完成或基准提升来评估。
+  - 关键差异：范围涵盖完整论文生成、虚拟发现任务、交互式平台、失败记忆层和真实ML优化；评测标准与人工参与程度明显不同。
+  - 趋势演进：2024–2026年内，从单一全自动流程和模拟发现环境走向智能体树搜索、多智能体团队、失败感知记忆和长程科学ML测试平台。
+  - 开放问题：通过率与可靠性仍有限；进展常来自工程技巧而非领域洞察；外部人工验证、可复现性和跨领域泛化仍未解决。
   literature_review:
     line_of_work_matrix:
-    - line: End-to-end autonomous discovery agents
-      what_it_solves: Converts a research prompt or idea into code/experiment runs,
-        analysis, visualizations, and manuscript drafts, sometimes with automated
-        review or verification.
-      what_remains_open: Validation is narrow; peer-review success is unstable and
-        there is limited evidence that outputs contain domain-level novelty rather
-        than formatted paper narratives.
-    - line: Discovery-oriented benchmark environments
-      what_it_solves: Makes discovery agents comparable through long-horizon tasks,
-        parametric variation, and automatic completion/action/knowledge metrics.
-      what_remains_open: Coverage is limited to simulated or code-centric science,
-        and proxy metrics may not capture whether an agent produced genuine scientific
-        insight.
-    - line: Interactive multi-agent research platforms
-      what_it_solves: Converts isolated agents into observable teams with customizable
-        roles, real-time monitoring, rollback/resume, and local code/artifact integration.
-      what_remains_open: Evidence comes from small internal case studies; external
-        generalization, maturity, and reproducibility across hardware and user settings
-        remain unverified.
-    - line: Failure-aware memory and knowledge reuse
-      what_it_solves: Records failed attempts as structured negative knowledge so
-        downstream agents can avoid repeated mistakes and improve token efficiency
-        in retries or cross-task transfer.
-      what_remains_open: Boundaries are shown mainly on ScienceAgentBench and nonlinear
-        PDE tasks; interaction with other retrieval and verification loops is underexplored.
-    - line: Automated review and evidence-quality feedback
-      what_it_solves: Provides scalable LLM/VLM reviewer or peer-review signals to
-        score generated papers and guide iterative improvements in manuscripts and
-        figures.
-      what_remains_open: Reviewer scoring is not yet shown to consistently track human
-        scientific utility, and acceptance-level outcomes remain unstable and domain-limited.
+    - line: 'End-to-end autonomous research pipelines (examples: The AI Scientist,
+        AI Scientist-v2, ReasFlow)'
+      what_it_solves: 'Automating the full idea-to-paper loop: hypothesis formation,
+        code execution, experiment analysis, visualization, and manuscript drafting
+        with internal verification or simulated review.'
+      what_remains_open: 'Reliability is inconsistent: only one of three AI Scientist-v2
+        submissions passed peer review, and evaluation often relies on automated review
+        rather than independent human validation.'
+    - line: 'Virtual discovery environments and standardized benchmarks (example:
+        DISCOVERYWORLD)'
+      what_it_solves: Benchmarking complete discovery cycles across diverse science
+        tasks with task completion, action, and explanatory-knowledge metrics.
+      what_remains_open: Strong prior-environment agents still struggle, and the translation
+        from simulated task metrics to real-world discovery utility is not yet established.
+    - line: 'Interactive multi-agent research platforms (example: Claw AI Lab)'
+      what_it_solves: Customizable role-based research teams, real-time monitoring,
+        rollback/resume, and integration of local code, data, and checkpoints into
+        runnable experiments.
+      what_remains_open: Evidence is limited to five internal case studies with expert
+        preference judgments; platform maturity and external generalization remain
+        unproven.
+    - line: 'Failure-aware memory and negative knowledge (example: Negative Knowledge
+        as Failure-aware Shared Memory)'
+      what_it_solves: Converting failed attempts into typed shared records that downstream
+        agents can adopt or reject, improving retry performance and cross-task transfer
+        with fewer tokens.
+      what_remains_open: Demonstrated mainly on ScienceAgentBench and PDE tasks; broader
+        domain generality, memory quality control, and longer-term benefit are unresolved.
+    - line: 'In-the-wild scientific ML optimization agents (example: Agent4Sci)'
+      what_it_solves: Long-horizon evaluation of frontier coding agents improving
+        published best models across scientific ML benchmarks and domains.
+      what_remains_open: Observed improvements come mostly from ML-engineering tricks
+        rather than research insight, with novelty miscalibration and resource under-utilization.
     consensus:
-    - The shared objective is to automate or support the full scientific experiment
-      loop with LLM agents, from idea or hypothesis formation through execution, analysis,
-      and reporting.
-    - Most work introduces verification, reviewer feedback, or memory mechanisms to
-      reduce errors and repeated failures, but evidence is concentrated in narrow
-      domains or internal case studies.
-    - Evaluation commonly uses automatic metrics or LLM/expert judges, yet alignment
-      with long-term scientific utility remains unproven.
-    - Performance is strongest when systems can execute code or access runnable artifacts,
-      which biases current evidence toward code-centric or simulated tasks.
+    - Most work organizes around a loop of proposing hypotheses or ideas, running
+      experiments or executing code, analyzing results, and producing reports or papers.
+    - Evaluation is increasingly mediated by LLM-based judges or automated review,
+      with task completion metrics used in benchmark environments.
+    - Recent systems add multi-agent roles, verification feedback, or memory to reduce
+      failures and human intervention.
+    - Code, experiment artifacts, and paper generation are treated as core outputs,
+      but reported reproducibility and limitations remain uneven.
     disagreements:
-    - 'Systems cover different scientific stages: some include full manuscript generation
-      and peer review, while others focus on simulated task completion or code-only
-      model improvement.'
-    - 'Autonomy and interaction modes differ: fully autonomous agents, human-as-principal-investigator
-      collaboration, and interactive dashboards with rollback/resume coexist.'
-    - 'Evaluation targets differ: workshop peer-review acceptance, simulated discovery
-      task completion, relative improvement over published best models, and expert/LLM
-      judge preference are used separately.'
-    - 'Knowledge reuse mechanisms differ: structured negative failure records, declarative/procedural
-      retrieval, and runnable code/artifact harnesses represent distinct ways of retaining
-      experience.'
-    - Progress claims are hard to compare because some work treats gains from ML engineering
-      tricks as a limitation, while paper-generation systems emphasize manuscript
-      quality and format.
+    - Evaluation target varies from publication-like paper acceptance to task completion
+      in simulated environments to improving published ML baselines.
+    - 'Human involvement differs: some systems are fully autonomous, while others
+      use human-in-the-loop PI/dashboard control or curator-agent memory.'
+    - 'Systems prioritize different problems: logical verification in mathematical
+      reasoning, open-ended discovery, interactive control, failure avoidance, or
+      long-horizon ML optimization.'
+    - 'What counts as progress differs: automated reviewer scores, peer-review acceptance,
+      explanatory knowledge, expert preference, or numerical benchmark gain.'
+    - Some works report explicit limitations such as pass rate and engineering-trick
+      gains, while others leave limitation evidence blank.
     open_questions:
-    - Do automatic evaluation metrics and LLM reviewers align with human scientific
-      peer judgment across applied mathematics, ML, and simulated discovery tasks?
-    - Can agents move beyond ML-engineering tricks and template code to produce reusable
-      domain-level hypotheses or theory?
-    - How does failure-aware memory transfer across scientific domains, and what should
-      be stored as negative knowledge without over-constraining future search?
-    - What minimal human oversight, safety, and validity checks are needed when generated
-      experiments or papers enter real scientific workflows?
-    - How can interactive multi-agent platforms be externally validated beyond small
-      internal case studies?
+    - Can automated reviewer or LLM-judge scores be calibrated against independent
+      human peer review and real scientific validity?
+    - How can agents convert engineering tricks into novel domain insights rather
+      than local parameter and implementation sweeps?
+    - Do virtual discovery metrics such as task completion and explanatory knowledge
+      predict success in real laboratory or code-based experiments?
+    - How general is failure-aware negative knowledge beyond PDE and ScienceAgentBench-style
+      tasks?
+    - What are the missing safety, cost, and reproducibility boundaries when limitations
+      and artifacts are not reported?
   literature_review_zh:
     研究路线矩阵:
-    - 路线: 端到端自主发现智能体
-      解决的问题: 将研究提示或想法转化为代码/实验运行、分析、可视化和论文草稿，部分系统加入自动评审或验证。
-      尚未覆盖: 验证范围较窄；同行评审通过率不稳定，且缺乏证据表明输出包含真正领域新发现而非格式化论文叙事。
-    - 路线: 发现型基准环境
-      解决的问题: 通过长周期任务、参数变化和自动完成/动作/知识指标，让自动化科研智能体可比较。
-      尚未覆盖: 覆盖局限于模拟或代码中心科学；代理指标可能无法反映是否产生了真正科学洞见。
-    - 路线: 交互式多智能体研究平台
-      解决的问题: 将单点智能体转化为可观察团队，支持自定义角色、实时监控、回滚/恢复，以及本地代码和工件集成。
-      尚未覆盖: 证据来自小规模内部案例；外部泛化、成熟度以及跨硬件和用户设置的可复现性仍未见验证。
-    - 路线: 失败感知记忆与知识复用
-      解决的问题: 将失败尝试记录为结构化负知识，让下游智能体避免重复错误，并在重试或跨任务迁移时降低token消耗。
-      尚未覆盖: 主要证据限于ScienceAgentBench和非线性PDE任务；与其他检索和验证循环的交互仍缺乏探索。
-    - 路线: 自动评审与证据质量反馈
-      解决的问题: 用可扩展的LLM/VLM评审或同行评审信号对生成论文打分，并指导论文与图表迭代改进。
-      尚未覆盖: 评审分数与真实科学效用的一致性尚未确证；接受级结果不稳定且局限于有限领域。
+    - 路线: 端到端自主研究流程（如The AI Scientist、AI Scientist-v2、ReasFlow）
+      解决的问题: 自动化从想法到论文的完整闭环：假设形成、代码执行、实验分析、可视化和论文撰写，并加入内部验证或模拟评审。
+      尚未覆盖: 可靠性不一致：AI Scientist-v2三篇仅一篇通过同行评审；评价常依赖自动评审而非独立人工验证。
+    - 路线: 虚拟发现环境与标准化基准（如DISCOVERYWORLD）
+      解决的问题: 用任务完成、任务相关动作和解释性知识等指标，在多样科学任务中评测完整发现循环。
+      尚未覆盖: 强基线仍大多困难；模拟任务指标到真实发现效用的转化尚未建立。
+    - 路线: 交互式多智能体研究平台（如Claw AI Lab）
+      解决的问题: 支持可定制角色研究团队、实时监控、回滚/恢复，并把本地代码、数据和检查点接入可运行实验。
+      尚未覆盖: 证据限于五个内部案例和专家偏好判断；平台成熟度与外部泛化未验证。
+    - 路线: 失败感知记忆与负知识（如Negative Knowledge as Failure-aware Shared Memory）
+      解决的问题: 把失败尝试转化为共享的类型化记录，下游智能体可采纳或拒绝，以更少token改进重试与跨任务迁移。
+      尚未覆盖: 主要在ScienceAgentBench和PDE任务上验证；更广领域泛化、记忆质量与长期收益未解决。
+    - 路线: 真实科学ML优化智能体（如Agent4Sci）
+      解决的问题: 通过长程基准评估前沿编码智能体在多个科学ML基准和领域上改进已发表最佳模型。
+      尚未覆盖: 提升主要来自ML工程技巧而非研究洞察，存在新颖性误判和资源利用不足。
     共识:
-    - 共同目标是用LLM智能体自动化或支持从想法/假设形成、实验执行、分析到报告撰写的完整科研闭环。
-    - 多数工作引入验证、评审反馈或记忆机制来减少错误和重复失败，但证据主要来自窄领域或内部案例。
-    - 评测普遍使用自动指标或LLM/专家评审，但尚未证明这些指标与长期科学效用对齐。
-    - 当系统能执行代码或接入可运行工件时表现更好，导致评测偏向代码中心或模拟任务。
+    - 多数工作围绕提出假设或想法、运行实验或代码、分析结果、生成报告或论文的循环展开。
+    - 评测日益依赖LLM评审或自动评审，并在基准环境中使用任务完成指标。
+    - 近期系统加入多智能体角色、验证反馈或记忆机制，以减少失败和人工干预。
+    - 代码、实验工件和论文生成被作为核心输出，但可复现性与局限性报告仍不均衡。
     分歧:
-    - 覆盖的科研阶段不同：部分系统生成完整论文并进入同行评审，部分只关注模拟任务完成或代码模型改进。
-    - 自主性和交互模式不同：完全自主、人类担任PI的协作、以及具有回滚/恢复的交互式仪表板并存。
-    - 评价目标不同：工作坊同行评审接受、模拟发现任务完成、相对已发布最优模型提升、专家/LLM偏好各有侧重。
-    - 知识复用机制不同：失败负知识、陈述性/过程性检索、代码与工件接入代表不同的经验保留方式。
-    - 对进展度量存在分歧：代码基准上的提升被指主要来自ML工程技巧，而论文生成系统更强调稿件质量与格式，导致主张难以横向比较。
+    - 评测目标不同：从论文级接受、模拟环境任务完成，到提升已发表ML基线。
+    - 人工参与程度不同：有的全自动，有的采用人类PI/仪表板控制或策展-智能体记忆。
+    - 系统侧重点不同：数学推理逻辑验证、开放式发现、交互控制、失败避免或长程ML优化。
+    - 进展定义不同：自动评审分数、同行评审接受、解释性知识、专家偏好或数值基准提升。
+    - 一部分工作明确报告通过率和工程技巧收益等局限，另一些工作的局限性证据为空。
     开放问题:
-    - 自动评测指标和LLM评审者能否在应用数学、ML和模拟发现任务中与人类科学同行评审保持一致？
-    - 智能体能否从ML工程技巧和模板代码中跳出来，生成可复用的领域级假设或理论？
-    - 失败感知记忆如何跨科学领域迁移，哪些内容应作为负知识存储而不过度约束搜索？
-    - 当生成实验或论文进入真实科学流程时，需要怎样的人类监督、安全与有效性检查？
-    - 交互式多智能体平台如何超越小规模内部案例得到外部验证？
+    - 自动评审或LLM评分能否与独立人工同行评审和真实科学有效性对齐？
+    - 智能体如何从工程技巧转向新的领域洞察，而不是局部参数和实现式搜索？
+    - 虚拟发现中的任务完成和解释性知识指标能否预测真实实验室或代码实验中的成功？
+    - 失败感知负知识在PDE和ScienceAgentBench之外的任务上有多通用？
+    - 当局限性和工件未报告时，缺失的安全、成本和可复现性边界是什么？
   synthesis_status: llm
   generation_notes: []
 - id: ai_scientist_systems
@@ -600,7 +597,7 @@ topics:
   description: End-to-end autonomous research agents that combine ideation, experimentation,
     analysis, and manuscript generation.
   description_zh: ''
-  paper_count: 555
+  paper_count: 557
   top_tags:
   - AI
   - LG
@@ -617,7 +614,7 @@ topics:
     methodology_quality: 58.2
     recency: 95.6
     reproducibility: 40.7
-    topical_relevance: 37.6
+    topical_relevance: 37.5
   top_papers:
   - id: reasflow-assisting-reasoning-centric-scientific-discovery-i-2026
     title: 'ReasFlow: Assisting Reasoning-Centric Scientific Discovery in Applied
@@ -667,124 +664,116 @@ topics:
     score: 76.9
     url: https://arxiv.org/abs/2504.08066v1
   related_work_outline:
-  - 'Mainstream direction: End-to-end autonomous research agents that integrate ideation,
-    execution, analysis, and manuscript generation, with main sub-directions in general
-    discovery pipelines such as The AI Scientist and AI Scientist-v2, and domain-specific
-    systems such as ReasFlow and AI CFD Scientist.'
-  - 'Shared research pattern: Large-model agent loops are connected to experimentation
-    or tool use, then outputs are evaluated through automated review, benchmark tasks,
-    or verification gates; evidence focuses on generated-paper quality or task and
-    evidence metrics.'
-  - 'Key differences: General machine-learning pipelines optimize reviewer-based acceptance
-    and agentic search, while domain systems add physics-aware or logical verification;
-    evaluation work splits between virtual task environments and blinded peer-derived
-    evidence benchmarks.'
-  - 'Trend evolution: From 2024 broad frameworks and discovery environments, through
-    2025 agentic tree search and workshop peer review, to 2026 domain-specific verification
-    and evidence-grounded evaluation; the available evidence mainly reflects the current
-    frontier.'
-  - 'Open questions: Whether automated judges align with real scientific validity,
-    whether agents generalize across base models and domains, and how to improve verification
-    gates that can still miss failures or fail to separate agents.'
+  - 'Mainstream direction: end-to-end LLM-based research agents that combine ideation,
+    code or experiment execution, analysis, verification, and manuscript generation,
+    with increasing emphasis on automated review and evidence quality.'
+  - 'Shared research pattern: decompose scientific discovery into stages, evaluate
+    outputs with LLM reviewers or benchmark rubrics, and add verification gates to
+    catch invalid or unsupported claims.'
+  - 'Key differences: general machine-learning discovery agents versus domain-specific
+    physics/math systems; internal validity gates versus external benchmark judges;
+    fully autonomous versus human-as-PI collaboration.'
+  - 'Trend evolution: 2024 introduced broad fully automated frameworks and virtual
+    discovery tasks; 2025 added agentic tree search and workshop peer acceptance;
+    2026 shifted toward domain-specific verification and evidence-grounded benchmarks,
+    all within the current frontier.'
+  - 'Open questions: whether systems can generate credible controls, robustness, falsifiability,
+    and cross-domain generalization; how well LLM-based review or rubrics predict
+    scientific value; and whether domain verification gates scale beyond narrow demonstrations.'
   related_work_outline_zh:
-  - 主流方向：端到端自主科研智能体，集成构思、实验执行、分析和论文生成；主要包括通用发现流程（如 The AI Scientist、AI Scientist-v2）和领域专用系统（如
-    ReasFlow、AI CFD Scientist）两条子方向。
-  - 研究共性：以大模型智能体循环连接实验或工具，并通过自动评审、基准任务或验证门控评估产出；证据多聚焦论文质量、任务完成或证据指标，而非引用影响力。
-  - 关键差异：通用机器学习流程偏向树搜索和评审式接受度；领域系统加入物理感知或逻辑验证；评测工作分为虚拟任务环境与盲态证据基准两类。
-  - 趋势演进：从2024年通用框架和发现环境，到2025年树搜索与工作坊同行评审，再到2026年领域专用验证和证据锚定评测；当前证据主要反映前沿阶段而非长期历史趋势。
-  - 开放问题：自动评审与真实科学有效性是否一致，智能体能否跨基座模型和领域泛化，以及如何改进仍会漏报或无法区分智能体的验证门控。
+  - 主流方向：端到端基于大语言模型的研究智能体，整合构思、代码或实验执行、分析、验证与论文生成，并日益强调自动评审和证据质量。
+  - 研究共性：把科学发现拆分为多个阶段，用大语言模型评审或基准评分评估输出，并加入验证门控以拦截无效或缺乏支持的主张。
+  - 关键差异：通用机器学习发现智能体与领域专属物理/数学系统；内部有效性门控与外部基准裁判；全自主运行与人类作为项目负责人的人机协作。
+  - 趋势演进：2024年出现广泛的全自动框架与虚拟发现任务；2025年加入智能体树搜索和研讨会同行接收；2026年转向领域专属验证和证据锚定基准，整体仍处当前前沿。
+  - 开放问题：系统能否生成可信的对照、稳健性、可证伪性和跨域泛化；基于大语言模型的评审或评分在多大程度上预测科学价值；领域验证门控能否超出狭窄演示扩展。
   literature_review:
     line_of_work_matrix:
-    - line: End-to-end agentic discovery systems
-      what_it_solves: Integrating research ideation, code or experiment execution,
-        analysis, and manuscript generation into a runnable agent loop.
-      what_remains_open: Reliability across domains and runs; general systems can
-        produce publication-like papers, but acceptance is inconsistent and evidence
-        of genuine discovery remains limited.
-    - line: Domain-specific verification and grounded execution
-      what_it_solves: Detecting invalid claims in mathematical or physical workflows
-        by adding logical checks, knowledge retrieval, physics-aware vision gates,
-        or solver-level compilation.
-      what_remains_open: Verification gates still miss planted failures; evidence
-        is limited to specific solvers or domains, and external validity is not standardized.
-    - line: Evaluation and evidence design
-      what_it_solves: Making discovery-agent claims comparable through task suites,
-        blinded peer-derived problems, or rubric-based evidence-maturity scoring.
-      what_remains_open: Agents can plateau near each other without statistical separation;
-        current metrics may not capture controls, robustness, falsifiability, or cross-dataset
-        generalization.
-    - line: Reproducible discovery infrastructure and artifacts
-      what_it_solves: Providing runnable stacks, open-source agents, or environment
-        interfaces so discovery workflows can be inspected and repeated.
-      what_remains_open: Missing code, dataset, baseline, metric, or limitation details
-        remain verification gaps; standardized external validation across hardware
-        and user settings is absent.
+    - line: End-to-end autonomous research agents
+      what_it_solves: Compressing literature synthesis, ideation, code or experiment
+        execution, analysis, visualization, and manuscript writing into one runnable
+        loop.
+      what_remains_open: Inconsistent quality and limited validation; only one of
+        three workshop submissions passed peer review, and some baselines cannot produce
+        defensible claims without stronger gates.
+    - line: Domain-specific discovery agents with verification gates
+      what_it_solves: Adding logical, knowledge-retrieval, or physics-aware checks
+        before accepting results or writing papers, reducing silent failures in mathematics
+        or computational fluid dynamics.
+      what_remains_open: Verification still missed 2 of 16 planted silent failures
+        and was demonstrated only on narrow CFD or applied-math tasks.
+    - line: Discovery benchmark environments
+      what_it_solves: Providing repeatable multi-topic tasks that require hypothesis
+        formation, experiment design, result analysis, and conclusion formation.
+      what_remains_open: Strong baselines from prior environments struggle on most
+        discovery tasks, and task-completion or action metrics may not align with
+        real scientific utility.
+    - line: Evidence-grounded blind evaluation
+      what_it_solves: Comparing agents on blind tasks derived from peer-reviewed studies
+        using frozen data and rubric-based evidence-maturity scoring.
+      what_remains_open: Current evidence uses a single frozen base model; four coding
+        agents plateau closely, and controls, robustness, falsifiability, and cross-base-model
+        generalization remain unverified.
     consensus:
-    - 'Autonomous discovery systems share a common loop: generate a hypothesis or
-      task, execute experiments or derivations, analyze outputs, and produce a written
-      artifact.'
-    - Verification and evaluation are treated as necessary, whether through automated
-      reviewers, logic checks, physics-aware gates, or rubric-based judges.
-    - 'Current evidence distinguishes execution and documentation competence from
-      scientific judgment: agents can run analyses and write papers, but often lack
-      controls, robustness, falsifiability, or statistical separation.'
-    - Publication-style output and task completion are used as proxy signals, but
-      the packet does not establish that these proxies equal real scientific validity.
+    - Autonomous LLM-based agents can execute a full scientific workflow from ideation
+      to manuscript writing without human code templates in several recent demonstrations.
+    - Automated assessment, whether via LLM reviewers, peer-review thresholds, benchmark
+      completion, or evidence-maturity rubrics, is central to scaling evaluation of
+      generated disclosures.
+    - Verification and validity gating improve defensibility, but current systems
+      still miss failures and often lack controls, robustness, falsifiability, and
+      cross-dataset generalization.
+    - Strong performance in earlier environments does not transfer automatically to
+      novel discovery tasks, so discovery-specific evaluation is required.
     disagreements:
-    - 'Evaluation target differs: some systems optimize peer-review acceptance or
-      paper scores, while benchmark work evaluates task completion or evidence maturity
-      rather than manuscript quality.'
-    - 'Deployment setting differs: evidence includes virtual text-based discovery
-      environments, open-source CFD solver workflows, and applied-mathematics paper-generation
-      workflows, each with different failure modes.'
-    - 'Interaction mode differs: some pipelines operate fully autonomously, while
-      an applied-mathematics system adopts a principal investigator and graduate student
-      collaboration; the level of human intervention varies.'
-    - 'Verification mechanism differs: some systems validate through an internal logical
-      loop, others through a post-artifact automated reviewer, and others through
-      a physics-aware vision-language gate during execution.'
+    - General-purpose machine-learning discovery agents pursue open-ended idea generation,
+      while domain-specific systems constrain research to physics or applied mathematics
+      with domain-gated execution.
+    - 'Evaluation targets differ: virtual discovery task completion, blind evidence
+      maturity against peer-reviewed studies, LLM-reviewer thresholds, and workshop
+      peer acceptance are used as alternative standards.'
+    - 'Claim validation differs: some systems use internal self-audit or vision-language
+      physics gates, while others rely on external fixed LLM judges or benchmark-defined
+      rubrics.'
+    - 'Interaction and deployment differ: human-as-Principal-Investigator and agent-as-graduate-student
+      collaboration versus fully autonomous or benchmark-embedded agent runs.'
     open_questions:
-    - Do automated reviewers or LLM judges align with human scientific judgment and
-      actual discovery utility when current agents still lack controls, robustness,
-      and falsifiability?
-    - Can agentic discovery generalize across base models and scientific domains when
-      benchmark results are reported on only one frozen base model and domain-specific
-      systems are tested in narrow settings?
-    - Why do multiple coding agents plateau around similar evidence-maturity scores
-      with no statistically reliable pairwise separation, and what metric would discriminate
-      stronger scientific reasoning?
-    - How should verification gates be improved or externally validated when a physics-aware
-      gate still missed 2 of 16 planted failures and several limitation fields are
-      empty?
+    - How can autonomous agents produce the controls, robustness checks, falsifiability
+      tests, and cross-dataset generalization needed for trustworthy scientific claims?
+    - To what extent do LLM-reviewer scores, workshop acceptance, benchmark completion,
+      or evidence-maturity rubrics predict real scientific value beyond narrow demonstrations?
+    - Can domain-specific verification gates generalize across tasks, domains, and
+      failure modes when current examples still miss planted silent failures?
+    - How stable are agent evaluations across base models, domains, and infrastructure
+      when current evidence relies on single frozen models or narrow task sets?
   literature_review_zh:
     研究路线矩阵:
-    - 路线: 端到端智能体发现系统
-      解决的问题: 将研究构思、代码或实验执行、分析和论文生成整合为可运行的智能体循环。
-      尚未覆盖: 跨领域和多次运行的可靠性；通用系统能产出类似论文，但接受率不稳定，真实发现证据有限。
-    - 路线: 领域专用验证与受控执行
-      解决的问题: 通过逻辑检查、知识检索、物理感知视觉门控或求解器级编译，检测数学或物理工作流中的不可靠主张。
-      尚未覆盖: 验证门控仍会漏报人为植入的失败；证据局限于特定求解器或领域，外部有效性尚未标准化。
-    - 路线: 评测与证据设计
-      解决的问题: 通过任务套件、盲态同行评议问题或基于评分表的证据成熟度评估，使发现类智能体的主张可比较。
-      尚未覆盖: 多个智能体得分接近且缺乏统计区分；现有指标未必能体现对照、稳健性、可证伪性或跨数据集泛化。
-    - 路线: 可复现发现基础设施与工件
-      解决的问题: 提供可运行栈、开源智能体或环境接口，使发现工作流可检查、可重复。
-      尚未覆盖: 缺失代码、数据集、基线、指标或局限性说明仍是验证缺口；跨硬件和用户设置的标准化外部验证不足。
+    - 路线: 端到端自主研究智能体
+      解决的问题: 把文献综合、构思、代码或实验执行、分析、可视化和论文撰写压缩到一个可运行循环中。
+      尚未覆盖: 质量不稳定；仅少量投稿通过同行评审，且缺少更强门控的基线有时无法产生可辩护主张。
+    - 路线: 带验证门控的领域专属发现智能体
+      解决的问题: 在数学或计算流体动力学等任务中加入逻辑、知识检索或物理感知检查，在接收结果或写作前拦截静默失败。
+      尚未覆盖: 验证门控仍会漏掉部分植入失败，且只在狭窄的计算流体动力学或应用数学任务中展示。
+    - 路线: 科学发现基准环境
+      解决的问题: 提供可重复的多主题任务，要求智能体形成假设、设计实验、分析结果并形成结论。
+      尚未覆盖: 在旧环境表现好的基线在多数发现任务上仍很困难，任务完成类指标与真实科学效用的一致性尚未证实。
+    - 路线: 基于证据的盲评与证据成熟度评分
+      解决的问题: 使用来自同行评审研究的盲任务、冻结数据和基于量规的证据成熟度评分，比较智能体的科学推断质量。
+      尚未覆盖: 当前证据仅基于一个冻结基座模型；四个编码智能体得分接近，且对照、稳健性、可证伪性和跨基座模型泛化仍未验证。
     共识:
-    - 自主发现系统共享同一循环：提出假设或任务，执行实验或推导，分析结果，并生成书面产出。
-    - 验证与评测被视为必要环节，形式包括自动评审、逻辑检查、物理感知门控或评分表裁判。
-    - 现有证据区分执行与文档能力及科学判断：智能体能运行分析和写论文，但常缺乏对照、稳健性、可证伪性或统计区分。
-    - 论文式产出和任务完成被用作代理信号，但证据包没有证明这些代理信号等同于真实科学有效性。
+    - 近期的自主智能体已能执行从构思、实验到论文撰写的完整科研工作流，部分系统不再依赖人类编码模板。
+    - 自动评估被广泛用作规模化比较的手段，包括大语言模型评审、同行评审阈值、基准任务完成度和证据成熟度量规。
+    - 验证门控有助于提高结果可信度，但现有系统仍会遗漏失败，并普遍缺乏对照、稳健性、可证伪性和跨数据集泛化。
+    - 旧环境中的强基线不会直接迁移到新的科学发现任务，因此需要面向发现过程的专门评测。
     分歧:
-    - 评测目标不同：部分系统优化同行评审接受或论文分数，而基准工作评估任务完成或证据成熟度，而非手稿质量。
-    - 部署场景不同：证据涵盖虚拟文本发现环境、开源 CFD 求解器工作流和应用数学论文生成工作流，失败模式不同。
-    - 交互方式不同：一些流程完全自主，而应用数学系统采用首席研究员和研究生式的人机协作，人类介入程度不同。
-    - 验证机制不同：有的在内部逻辑循环中验证，有的在产出后由自动评审验证，有的在执行过程中采用物理感知视觉语言门控。
+    - 通用机器学习发现智能体强调开放式想法生成，领域专属系统则把研究限制在物理或应用数学，并用领域门控执行。
+    - 评测目标不同：虚拟任务完成度、基于同行评审研究的盲证据成熟度、大语言模型评审阈值和研讨会同行接收被分别作为标准。
+    - 主张验证方式不同：有些依赖内部自检或视觉-语言物理门控，有些依赖外部固定大语言模型裁判或基准量规。
+    - 交互与部署模式不同：人类作为项目负责人、智能体作为研究生的协作，对比完全自主运行或嵌入基准的智能体。
     开放问题:
-    - 自动评审或 LLM 裁判是否与人类科学判断和真实发现效用一致，而当前智能体仍缺乏对照、稳健性和可证伪性？
-    - 智能体发现能否跨基座模型和科学领域泛化，而目前基准结果只基于一个冻结基座模型，领域系统只在狭窄场景中测试？
-    - 为什么多个编码智能体在证据成熟度得分上接近且无统计上可靠的成对差异，什么指标能区分更强的科学推理？
-    - 当物理感知门控仍漏报 16 个植入失败中的 2 个，且若干局限性字段为空时，应如何改进或外部验证验证门控？
+    - 自主智能体如何产出可信主张所需的对照、稳健性检查、可证伪性测试和跨数据集泛化？
+    - 大语言模型评审分数、研讨会接收、基准完成度或证据成熟度量规在多大程度上预测真实科学价值？
+    - 在现有验证门控仍会漏报植入失败的情况下，领域专属门控能否跨任务、跨领域、跨失败模式泛化？
+    - 当前证据常依赖单一冻结模型或狭窄任务集时，智能体评测在基座模型、领域和基础设施变化下是否稳定？
   synthesis_status: llm
   generation_notes: []
 - id: writing_and_communication
@@ -793,7 +782,7 @@ topics:
   description: Automatic paper writing, manuscript drafting, scientific reporting,
     peer review assistance, and research communication.
   description_zh: ''
-  paper_count: 403
+  paper_count: 405
   top_tags:
   - AI
   - LG
@@ -809,8 +798,8 @@ topics:
     graph_prestige: 0.0
     methodology_quality: 51.1
     recency: 95.0
-    reproducibility: 40.4
-    topical_relevance: 33.5
+    reproducibility: 40.3
+    topical_relevance: 33.4
   top_papers:
   - id: reasflow-assisting-reasoning-centric-scientific-discovery-i-2026
     title: 'ReasFlow: Assisting Reasoning-Centric Scientific Discovery in Applied
@@ -859,131 +848,122 @@ topics:
     score: 74.0
     url: https://arxiv.org/abs/2606.31478v1
   related_work_outline:
-  - 'Mainstream direction: End-to-end autonomous research and manuscript generation
-    pipelines that move from idea or topic prompt through execution, visualisation,
-    and paper drafting, increasingly adding verification and human collaboration.'
-  - 'Shared research pattern: Multi-agent or staged decomposition of scientific writing
-    into ideation, implementation, experiment, verification, reporting, and review;
-    evaluation usually uses LLM/VLM reviewers, rubric scores, or domain-specific physical
-    metrics.'
-  - 'Key differences: Systems differ in interaction mode, from full autonomy with
-    simulated review to targeted human-in-the-loop oversight; in evaluation targets,
-    from workshop peer review to domain-specific RMSE or blind scores; and in error
-    correction, from logical auditing to physics-aware visual checks.'
-  - 'Trend evolution: The 2024-2026 frontier shifted from demonstrating fully automated
-    discovery and drafting, toward workshop-level acceptance, then toward reliability
-    mechanisms such as failure attribution, grounded reporting, domain-specific verification,
-    and selective human collaboration.'
-  - 'Open questions: Whether verification gates transfer across disciplines, whether
-    simulated review scores predict real peer-review utility, how much human intervention
-    is optimal, and whether systems can move beyond narrow benchmarks or workshop-level
-    venues.'
+  - 'Mainstream direction: End-to-end LLM agent systems for autonomous research and
+    manuscript generation, exemplified by The AI Scientist, ReasFlow, and AI CFD Scientist,
+    increasingly add verification and grounded reporting to prevent fabricated claims.'
+  - 'Shared research pattern: Multi-agent workflows couple ideation, execution, result
+    verification, and paper writing, with review or human oversight used to filter
+    weak outputs.'
+  - 'Key differences: Verification mechanisms, degree of human involvement, evaluation
+    targets, and domain constraints vary; for example, internal logical audits versus
+    physical or visual gates versus reporting constrained to measured values.'
+  - 'Trend evolution: Within the available 2024-2026 top-paper evidence, broad autonomous
+    frameworks are followed by domain-specific verified agents and self-correcting
+    failure attribution, shifting emphasis from generation to reliability.'
+  - 'Open questions: External validity of LLM-based review, long-horizon citation
+    and number hallucination, optimal human intervention, and consistent full-conference
+    manuscript readiness remain unproven.'
   related_work_outline_zh:
-  - 主流方向：端到端自主研究与论文生成流水线，从想法或主题提示出发，经过执行、可视化和论文撰写，并逐步加入验证与人机协作。
-  - 研究共性：将科学写作分解为构思、实现、实验、验证、报告和评审的多智能体或分阶段流程；评测通常依赖 LLM/VLM 评审、评分表或领域物理指标。
-  - 关键差异：交互模式不同，从完全自主加模拟评审到目标化的人类监督；评测目标不同，从 workshop 同行评审到领域 RMSE 或盲评分；纠错方式不同，从逻辑审计到物理感知视觉检查。
-  - 趋势演进：2024-2026 前沿从展示全自动发现与草稿撰写，走向 workshop 级接受，再转向失败归因、grounded reporting、领域验证和选择性人类协作等可靠性机制。
-  - 开放问题：验证门控能否跨学科迁移，模拟评审分数能否预测真实同行评审效用，多少人类干预最优，以及系统能否超越窄基准或 workshop 级场所。
+  - 主流方向：构建端到端LLM智能体系统以自主研究并撰写论文，如 The AI Scientist、ReasFlow 和 AI CFD Scientist，正逐步加入验证与基于实证的报告来防止虚假声明。
+  - 研究共性：多智能体工作流将构思、执行、结果验证和论文写作耦合，并以评审或人工监督过滤弱输出。
+  - 关键差异：验证机制、人类参与程度、评测目标和领域约束不同；例如内部逻辑审计、物理或视觉门控与约束到实测值的报告不同。
+  - 趋势演进：在2024-2026的现有证据中，通用自动框架之后出现领域特定可验证智能体和多假设失败归因，重点从生成转向可靠性。
+  - 开放问题：LLM评审的外部效度、长周期引用与数字幻觉、最佳人类干预以及稳定达到完整会议发表水平仍不明确。
   literature_review:
     line_of_work_matrix:
-    - line: End-to-end autonomous manuscript generation and scientific discovery pipelines
-        (e.g., The AI Scientist, AI Scientist-v2)
-      what_it_solves: Turns a research idea into code execution, experiments, figures,
-        and a full draft, optionally with simulated review scoring.
-      what_remains_open: Reliability across topics and venues is weak; only one of
-        three AI Scientist-v2 submissions passed peer review, and full conference-level
-        validation remains absent.
-    - line: Verification and grounded failure-attribution mechanisms (e.g., AI CFD
-        Scientist, SAGE, ReasFlow)
-      what_it_solves: Detects invalid execution, hallucinated citations or numbers,
-        and silent failures before a manuscript is accepted or written.
-      what_remains_open: Detection is incomplete; AI CFD Scientist missed 2/16 planted
-        failures, and constrained reporting still does not guarantee conference-ready
-        scientific writing.
-    - line: Human-AI collaboration and intervention design (e.g., AutoResearchClaw,
-        ReasFlow)
-      what_it_solves: Embeds human expertise at high-leverage points to keep research
-        direction coherent while reducing exhaustive step-by-step oversight.
-      what_remains_open: The best intervention granularity is not established across
-        domains; evidence comes mainly from a 25-topic benchmark and applied mathematics
-        generation.
-    - line: Simulated review and evaluation rubrics for generated papers (e.g., AI
-        Scientist reviewer, ReasFlow rubric)
-      what_it_solves: Provides low-cost approximation of human review for generated
-        manuscripts through LLM/VLM reviewers and rubric scores.
-      what_remains_open: Proxy review scores are not fully validated against real
-        peer-review decisions or broader scientific writing utility.
-    - line: Domain-specific discovery writers with knowledge or physics gates (e.g.,
-        AI CFD Scientist, ReasFlow)
-      what_it_solves: Adds domain knowledge retrieval or physical-validity checks
-        so generated claims are more defensible in specialized fields.
-      what_remains_open: Generalization beyond computational fluid dynamics and applied
-        mathematics is not shown, and verification gates inherit domain-specific blind
-        spots.
+    - line: End-to-end autonomous research writing systems
+      what_it_solves: Converts research ideas into full workflows such as code, experiments,
+        visualizations, and complete manuscripts without relying on human-authored
+        templates.
+      what_remains_open: Acceptance is inconsistent beyond workshop or LLM-review
+        settings; several attempts fail during implementation or evaluation, leaving
+        full conference-level reliability unresolved.
+    - line: Domain-specific verifiable discovery and writing agents
+      what_it_solves: Grounds manuscript generation in domain constraints by coupling
+        retrieval, simulation, or verification with paper drafting, especially for
+        applied mathematics and computational fluid dynamics.
+      what_remains_open: Verification gates still miss some silent failures, and it
+        is unclear whether the domain-specific checks generalize across other scientific
+        fields.
+    - line: Human-AI collaborative research workflows
+      what_it_solves: Balances autonomous research with human oversight through structured
+        intervention modes, reducing failures at high-leverage decision points.
+      what_remains_open: The optimal amount and timing of human intervention is not
+        established beyond the evaluated benchmarks and collaboration modes.
+    - line: Self-correction and failure attribution in research writing
+      what_it_solves: Diagnoses failed experiments and constrains reporting to measured
+        values before manuscript drafting, improving the share of outputs with usable
+        metrics.
+      what_remains_open: Conference-ready scientific writing remains difficult; failure
+        diagnosis may not fully cover conceptual reasoning, scientific taste, or domain
+        intelligence gaps.
+    - line: Automated review and evidence-based evaluation of generated research
+      what_it_solves: Makes generated paper claims comparable through simulated review,
+        benchmark scores, or domain error metrics.
+      what_remains_open: LLM-based review rubrics and narrow benchmarks may not match
+        human peer review or long-term research utility, and several evaluation details
+        remain unspecified.
     consensus:
-    - Research writing is treated as a multi-agent workflow with separable stages
-      such as hypothesis generation, execution, verification, reporting, and review.
-    - Generation without validity checks is insufficient for defensible papers, so
-      verification gates are considered necessary.
-    - LLM/VLM reviewers can approximate human scoring, but real peer-review acceptance
-      remains rare and task-specific.
-    - Targeted human involvement improves outcomes over both full autonomy and exhaustive
-      step-by-step oversight.
+    - Current systems agree that manuscript generation must be coupled to executable
+      experiments and verification rather than isolated text generation.
+    - They adopt multi-agent pipelines that separate ideation, execution, reporting,
+      and review to reduce single-agent failure.
+    - Generated scientific claims require verification or grounded reporting because
+      unimpeded generation can fabricate results or citations.
     disagreements:
-    - 'Interaction mode differs: some systems pursue full autonomy with simulated
-      review, while others design targeted human oversight or PI-agent collaboration.'
-    - 'Evaluation target differs: workshop peer review, blind scores, domain-specific
-      physical RMSE, or rubric scores over generated papers.'
-    - 'Evidence control differs: some systems constrain outputs to measured values
-      and use grounded reporting, while others rely on LLM reviewers without source-level
-      or execution-level enforcement.'
-    - 'Error-correction signal differs: physics-aware visual verification, logical
-      coherence auditing, multi-hypothesis failure attribution, or human feedback
-      loops are used to different degrees.'
+    - 'Verification signals differ: internal logical audits, domain-specific physical
+      or visual gates, and grounded reporting constrained to measured values.'
+    - Human involvement ranges from full autonomy to targeted high-leverage collaboration
+      or step-by-step oversight; some evidence suggests targeted collaboration outperforms
+      exhaustive oversight.
+    - 'Evaluation targets differ: LLM-based review scores, topic benchmarks such as
+      ARC-Bench, and domain error such as wall Cf RMSE capture different notions of
+      success.'
+    - Scope differs from generic machine learning to constrained domains such as applied
+      mathematics or computational fluid dynamics, changing what counts as valid evidence.
     open_questions:
-    - Can domain-aware verification gates transfer to fields without rendered physical
-      outputs or formal theorem-style checks?
-    - Do simulated LLM/VLM review scores align with real peer-review decisions and
-      long-term scientific utility?
-    - What is the minimal and most effective human intervention strategy across venue
-      types and disciplines?
-    - How should failure attribution handle silent errors that both vision-language
-      and logical audits miss?
-    - Can end-to-end systems remain stable beyond narrow topic sets or workshop-level
-      venues?
+    - Do LLM-based review scores or workshop acceptance adequately proxy scientific
+      communication quality and longer-term research utility?
+    - Can verification gates eliminate hallucinated citations and fabricated numbers
+      across long-horizon research writing?
+    - How should optimal human intervention be chosen across domains beyond ARC-Bench
+      or CFD-style examples?
+    - What is missing for consistently producing conference-ready manuscripts when
+      only a fraction of attempts pass peer review?
+    - Where limitations, external baselines, or datasets are unspecified in the packet,
+      what additional evidence is needed to establish failure boundaries and reproducibility?
   literature_review_zh:
     研究路线矩阵:
-    - 路线: 端到端自主论文生成与科学发现流水线（如 The AI Scientist、AI Scientist-v2）
-      解决的问题: 将研究想法转化为代码执行、实验、图表和完整草稿，并可给出模拟评审分数。
-      尚未覆盖: 多主题与多会议稳定性不足；AI Scientist-v2 三篇提交仅一篇通过同行评审，完整会议级验证仍缺失。
-    - 路线: 验证与有根据的失败归因机制（如 AI CFD Scientist、SAGE、ReasFlow）
-      解决的问题: 在论文被接受或撰写前检测无效执行、幻觉引用/数字和静默失败。
-      尚未覆盖: 检测仍不完整；AI CFD Scientist 漏掉 16 个植入失败中的 2 个，约束式报告仍无法保证可投会议论文。
-    - 路线: 人机协作与干预设计（如 AutoResearchClaw、ReasFlow）
-      解决的问题: 在高杠杆点引入人类专业判断，在减少逐步监督的同时保持研究方向一致。
-      尚未覆盖: 不同领域的最佳干预粒度尚未建立；证据主要来自 25 主题基准和应用数学生成任务。
-    - 路线: 生成论文的模拟评审与评估标准（如 AI Scientist reviewer、ReasFlow 的 LLM 评审标准）
-      解决的问题: 通过 LLM/VLM 评审器和评分表为生成手稿提供低成本的人类评审近似。
-      尚未覆盖: 代理评审分数与真实同行评审决定或更广泛的科学写作效用之间的一致性尚未充分验证。
-    - 路线: 带知识或物理门控的领域专用发现写作系统（如 AI CFD Scientist、ReasFlow）
-      解决的问题: 通过领域知识检索或物理有效性检查，使专业领域中的生成结论更可辩护。
-      尚未覆盖: 尚未证明能泛化到计算流体动力学与应用数学以外的领域；验证门控继承领域盲点。
+    - 路线: 端到端自主研究写作系统
+      解决的问题: 将研究想法转化为完整流程，包括代码、实验、可视化和完整论文，而不依赖人类编写模板。
+      尚未覆盖: 在工作坊或LLM评审之外通过率不稳定；多次尝试在实现或评估阶段失败，完整会议级可靠性仍未解决。
+    - 路线: 领域特定可验证发现与写作智能体
+      解决的问题: 通过将检索、仿真或验证与论文起草耦合，把稿件生成锚定在领域约束中，尤其用于应用数学和计算流体动力学。
+      尚未覆盖: 验证门控仍会遗漏部分静默失败，且这些领域特定检查是否可推广到其他科学领域仍不清楚。
+    - 路线: 人机协作研究流程
+      解决的问题: 通过结构化干预模式平衡自主研究与人类监督，降低高杠杆决策点的失败。
+      尚未覆盖: 最佳人类干预数量和时机尚未在现有基准和协作模式之外得到确定。
+    - 路线: 研究写作中的失败归因与自我纠正
+      解决的问题: 在论文起草前诊断失败实验并将报告约束到实测值，提高含可用指标输出的比例。
+      尚未覆盖: 面向会议的科研写作仍然困难；失败诊断可能未充分覆盖概念推理、科学品味或领域智能缺口。
+    - 路线: 生成研究的自动评审与证据评估
+      解决的问题: 通过模拟评审、基准分数或领域误差指标，使生成论文的主张具有可比性。
+      尚未覆盖: 基于LLM的评审标准和窄基准可能无法匹配人类同行评审或长期研究效用，且若干评估细节仍未说明。
     共识:
-    - 科学写作被作为多智能体工作流处理，假设生成、执行、验证、报告和评审被分为相对独立的阶段。
-    - 仅生成而没有有效性检查不足以产生可辩护论文，因此验证门控被视为必要机制。
-    - LLM/VLM 评审可近似人类打分，但真实同行评审接受仍不常见且高度依赖任务。
-    - 目标化的人类参与优于完全自主和逐步式监督。
+    - 当前系统认为稿件生成必须与可执行实验和验证耦合，而不是孤立的文本生成。
+    - 它们采用多智能体流水线，将构思、执行、报告和评审分工以降低单点失败。
+    - 生成的科学声明需要验证或基于实证的报告，否则可能产生虚假结果或引用。
     分歧:
-    - 交互模式不同：有的追求完全自主加模拟评审，有的设计目标化的人类监督或 PI-智能体协作。
-    - 评测目标不同：包括 workshop 同行评审接受、盲评分、领域物理 RMSE 以及生成论文的评分表分数。
-    - 证据控制不同：有的系统把输出约束为测量值并使用 grounded reporting，有的仍主要依赖 LLM 评审而未强制源级或执行级核实。
-    - 纠错信号不同：物理感知视觉验证、逻辑一致性审计、多假设失败归因或人类反馈循环各有侧重。
+    - 验证信号不同：内部逻辑审计、领域特定物理或视觉门控、将报告约束到实测值。
+    - 人类参与程度不同，从完全自主到精准高杠杆协作或逐步监督；部分证据表明精准协作优于过度监督。
+    - 评测目标不同：LLM评审分数、ARC-Bench等主题基准以及壁面Cf RMSE等领域误差代表不同的成功定义。
+    - 范围不同：从通用机器学习到应用数学或计算流体动力学等强约束领域，这改变了有效证据的判定。
     开放问题:
-    - 领域感知验证门控能否迁移到没有可渲染物理输出或形式化定理式检查的领域？
-    - 模拟 LLM/VLM 评审分数与真实同行评审决定及长期科学效用是否一致？
-    - 在不同会议类型和学科中，最少且有效的人类干预策略是什么？
-    - 当视觉-语言和逻辑审计都漏掉无声错误时，失败归因还能如何覆盖？
-    - 端到端系统能否在窄主题集或 workshop 级场所以外保持稳定？
+    - LLM评审分数或工作坊接收是否足以代理科研交流质量和长期研究效用？
+    - 验证门控能否在长周期研究写作中消除幻觉引用和虚假数字？
+    - 在ARC-Bench或CFD式示例之外，如何选择最佳人类干预方式？
+    - 当只有部分尝试通过同行评审时，当前系统还缺什么才能稳定产出符合会议要求的论文？
+    - 当证据包未明确说明局限性、外部基线或数据集时，还需要哪些证据来确定失败边界与可复现性？
   synthesis_status: llm
   generation_notes: []
 - id: evaluation_and_governance
@@ -992,7 +972,7 @@ topics:
   description: Evaluation, reproducibility, safety, epistemic reliability, governance,
     and benchmark infrastructure for automated research.
   description_zh: ''
-  paper_count: 482
+  paper_count: 484
   top_tags:
   - AI
   - CL
@@ -1008,7 +988,7 @@ topics:
     graph_prestige: 0.0
     methodology_quality: 58.8
     recency: 95.3
-    reproducibility: 40.8
+    reproducibility: 40.7
     topical_relevance: 35.6
   top_papers:
   - id: ai-cfd-scientist-toward-open-ended-computational-fluid-dyna-2026
@@ -1058,120 +1038,131 @@ topics:
     score: 76.8
     url: https://arxiv.org/abs/2505.08341v2
   related_work_outline:
-  - 'Mainstream direction: Building and evaluating autonomous research agents that
-    progress from idea generation through executed experiments to manuscript or report
-    writing, with reliability gates and benchmark environments used to assess evidence
-    quality.'
-  - 'Shared research pattern: Agentic loops combine hypothesis generation, code or
-    experiment execution, automated verification through LLM judges, vision-language
-    gates, or deterministic evaluators, and documented results; evaluation often hides
-    target conclusions or injects failures to test discovery rather than reproduction.'
-  - 'Key differences: Systems target different scopes such as broad open-ended ML
-    discovery, domain-specific CFD, omics or forecasting evolution, and virtual benchmark
-    tasks. Verification differs across LLM-based evidentiary scoring, physics-aware
-    visual gates, deterministic authority separation, and human baseline comparison.'
-  - 'Trend evolution: Within 2024-2026 evidence, the field is moving from broad fully
-    automated writing frameworks toward evidence-grounded benchmarks, domain-specific
-    reliability controls, and explicit attention to missing controls, robustness,
-    and falsifiability.'
-  - 'Open questions: Whether automated judges and proxy metrics align with real scientific
-    validity; whether reliability gates generalize beyond known failure modes; whether
-    agent rankings depend on a single frozen base model; and whether domain-specific
-    wins demonstrate general discovery ability.'
+  - 'Mainstream direction: The dominant move is toward automated research agents paired
+    with evaluation, audit, and verification infrastructure that checks whether their
+    claims are trustworthy, reproducible, and governable rather than merely novel.'
+  - 'Shared research pattern: Most work couples an LLM-driven generation and experimentation
+    loop with automated evaluation: simulated review, benchmark tasks, LLM judges,
+    physics-aware gates, or deterministic execution authorities.'
+  - 'Key differences: Systems differ in evaluation target such as virtual discovery,
+    domain data, evidence maturity, or peer-review acceptance; in validation signal
+    such as human baseline, LLM judge, deterministic gate, or visual physics check;
+    and in enforcement point such as result verification versus source-edit and promotion
+    control.'
+  - 'Trend evolution: The 2024-2026 evidence shows a shift from end-to-end discovery
+    frameworks toward dedicated benchmarks, evidence-grounding audits, and reliability-hardened
+    agents, while reported validation remains concentrated in narrow domains and workshop-level
+    peer review.'
+  - 'Open questions: It remains unclear whether automated metrics match real scientific
+    utility, whether verification gates generalize beyond planted failures, and whether
+    results hold across base models, datasets, and broader domains.'
   related_work_outline_zh:
-  - 主流方向：构建并评估自主研究智能体，使其从想法生成走向实验执行和论文或报告撰写，并通过可靠性门控和基准环境评估证据质量。
-  - 研究共性：智能体闭环把假设生成、代码或实验执行、自动验证（LLM评委、视觉语言门控或确定性评估器）和文档化结果结合起来；评测常用隐藏目标结论或注入失败来考查发现而非复现。
-  - 关键差异：系统目标范围不同，包括宽泛的开放式机器学习发现、领域专用的CFD、组学或预测架构演化，以及虚拟基准任务；验证方式包括基于LLM的证据评分、物理感知视觉门控、确定性权限分离和人类基线对比。
-  - 趋势演进：从2024年宽泛的自动撰写框架，演进到2025-2026年基于证据的基准、领域专用可靠性控制，并明确关注对照、稳健性和可证伪性等缺口。
-  - 开放问题：自动评审与代理指标是否反映真实科学有效性；可靠性门控能否泛化到未知失败模式；智能体排名是否依赖单一冻结基座模型；领域改进能否证明通用发现能力。
+  - 主流方向：构建自主研究智能体，并配套评估、审计与验证基础设施，以判断其主张是否可信、可复现、可治理，而不仅是新颖。
+  - 研究共性：多数工作将LLM驱动的生成/实验循环与自动评估结合，例如模拟评审、基准任务、LLM裁判、物理感知门控或确定性执行权威。
+  - 关键差异：系统在评测目标（虚拟发现、领域数据、证据成熟度或同行评审接受）、验证信号（人类基线、LLM裁判、确定性门控、视觉物理检查）和约束位置（结果验证或源码编辑与晋升控制）上不同。
+  - 趋势演进：2024-2026年证据显示，研究从端到端发现框架转向专用基准、证据审计和可靠性增强智能体；报告结果仍集中于窄领域和工作坊级验证。
+  - 开放问题：自动化指标是否对应真实科学效用、验证门控能否泛化到植入失败之外、结果能否跨基座模型、数据集和更广泛领域保持，仍不清楚。
   literature_review:
     line_of_work_matrix:
-    - line: Evidence-grounded benchmark design
-      what_it_solves: Makes discovery claims comparable by using blind tasks, hidden
-        source conclusions, frozen data, automatic metrics, and human baselines to
-        measure evidence rather than reproduction.
-      what_remains_open: Proxy LLM-judge scores may not track real decision utility;
-        coverage across domains and base models remains limited.
-    - line: Systems and reproducible infrastructure for autonomous research
-      what_it_solves: Turns agentic hypotheses into executable code, experiments,
-        and manuscripts with verification gates, authority separation, or open-source
-        artifacts to make workflows repeatable.
-      what_remains_open: Failure coverage is incomplete; standardized external validation
-        across hardware, datasets, and base models is missing.
-    - line: Domain-specific autonomous discovery systems
-      what_it_solves: Embeds research agents in physics, omics, or forecasting pipelines,
-        using task-specific diagnostics, baselines, and promotion rules to produce
-        domain-relevant improvements.
-      what_remains_open: Reported wins are often demonstrated on few cases; it is
-        unclear how much comes from task-specific priors or evaluator design rather
-        than general scientific reasoning.
-    - line: Conceptual and measurement framing for evidence maturity
-      what_it_solves: Operationalizes scientific reliability into dimensions such
-        as controls, robustness, falsifiability, auditability, and novelty for automated
-        scoring.
-      what_remains_open: The categories need direct empirical validation that they
-        predict agent behavior or downstream scientific validity.
+    - line: Autonomous discovery-loop systems
+      what_it_solves: Converts LLM-generated ideas into runnable experiments, code,
+        results, and manuscripts for end-to-end research automation.
+      what_remains_open: Peer-review success is inconsistent and currently demonstrated
+        mainly at workshop level; validity claims remain only as strong as the embedded
+        review and evaluation loop.
+    - line: Benchmark suites for discovery agents
+      what_it_solves: Provides standardized tasks and automatic metrics for comparing
+        agents on complete cycles of scientific discovery across simulated and domain-specific
+        settings.
+      what_remains_open: Task completion and action metrics are proxies; real scientific
+        soundness, domain diversity, and correspondence to decision utility are not
+        established.
+    - line: Evidence-grounded evaluation frameworks
+      what_it_solves: Scores claims by evidentiary maturity and documentation quality
+        rather than reproduction of hidden target conclusions.
+      what_remains_open: Results are bounded to limited frozen base models and show
+        weak separation between agents; criteria for acceptable evidence and generalization
+        remain unresolved.
+    - line: Verification and governance gates
+      what_it_solves: Adds deterministic or physics-aware checks to catch silent failures,
+        constrain source edits, and enforce canonical evaluation before claims are
+        promoted.
+      what_remains_open: Ablation evidence shows gates can still miss failure modes;
+        cross-domain and cross-hardware validation is missing.
+    - line: Human-reference and peer-review validation
+      what_it_solves: Contextualizes automated performance with human expert baselines,
+        simulated reviewer scores, or actual peer-review submissions.
+      what_remains_open: Human baselines are sparse and peer-review acceptance is
+        narrow and variable; no consensus threshold for trustworthy autonomous science
+        exists.
     consensus:
-    - 'Automated research requires more than fluent generation: systems now include
-      execution, verification, and documentation loops.'
-    - Evaluation for discovery should hide target conclusions or inject failures so
-      agents cannot succeed merely by reproducing known answers.
-    - Current agents can execute and document analyses competently, but still lack
-      discriminating scientific behaviors such as controls, robustness, and falsifiability.
-    - Reproducibility signals such as code, datasets, open artifacts, and deterministic
-      aggregation are increasingly treated as part of credible evidence.
+    - Autonomous research agents can execute and document analyses competently, but
+      current evidence repeatedly shows they lack controls, robustness checks, falsifiability,
+      and cross-dataset generalization.
+    - Evaluation is shifting away from merely reproducing known findings toward blinded
+      discovery tasks, evidence maturity scoring, and validity gates before claims
+      are accepted.
+    - Reliability cannot be assumed from generation ability alone; deterministic or
+      domain-specific verification is needed to catch silent failures and indefensible
+      outputs.
+    - Domain benchmarks expose the gap between routine analysis execution and the
+      discriminating acts required for credible scientific claims.
     disagreements:
-    - Scope of evaluation ranges from broad open-ended discovery tasks to narrow domain-specific
-      architecture or physics-model improvements.
-    - 'Verification mechanisms differ: LLM-based evidentiary judges, visual physics
-      gates, deterministic source-edit and promotion authorities, and human baseline
-      comparisons.'
-    - 'Success measures differ: workshop peer-review acceptance, task completion rate,
-      wall shear RMSE improvement, forecasting performance, and evidence-maturity
-      scores.'
-    - 'Autonomy and reliability designs differ: some separate cognition from deterministic
-      authority for safety, while others rely on LLM reviewers or vision-language
-      inspection.'
+    - 'Evaluation target differs: some work measures success on synthetic or virtual
+      discovery tasks, others on real domain-specific data, still others on evidence
+      maturity or peer-review acceptance.'
+    - 'Validation signals differ: LLM-based judges and simulated reviewers are used
+      alongside human expert baselines, deterministic program authorities, and visual
+      or physics-aware verification gates.'
+    - 'Enforcement point differs: some systems gate final results or manuscripts,
+      while others constrain source-edit boundaries and promotion decisions during
+      the research loop.'
+    - 'Deployment setting differs: evidence covers simulated text environments, computational
+      fluid dynamics, single-cell omics, time-series forecasting, and machine-learning
+      workshop writing, creating different failure surfaces and evaluation needs.'
     open_questions:
-    - Do LLM-based judges or automated reviewers align with human scientific judgment
-      across domains and task types?
-    - Can verification gates detect silent failures outside the failure modes used
-      in ablation tests?
-    - How robust are agent rankings when evaluation uses only one frozen base model?
-    - Do domain-specific improvements such as lower wall Cf RMSE or better forecasting
-      architectures demonstrate general discovery ability or task-specific tuning?
-    - What benchmark designs can reliably measure controls, robustness, falsifiability,
-      and cross-dataset generalization?
+    - How well do automated task-completion and LLM-judge scores predict the validity,
+      reproducibility, or real-world utility of a discovery claim?
+    - Can verification and governance gates generalize beyond the specific silent
+      failures or planted ablations reported, and how should miss rates be certified?
+    - How should evaluation designs control for frozen base models, domain memorization,
+      and stochastic agent behavior to establish robust cross-model and cross-task
+      trends?
+    - What minimum controls, robustness checks, falsifiability tests, and peer-review
+      or human-reference thresholds should define a trustworthy autonomous research
+      claim?
   literature_review_zh:
     研究路线矩阵:
-    - 路线: 基于证据的基准设计
-      解决的问题: 通过盲任务、隐藏源结论、冻结数据、自动指标和人类基线，使发现主张可比较，并测量证据而非复现。
-      尚未覆盖: 代理LLM评判分数未必反映真实决策效用；跨领域和跨基座模型的覆盖仍有限。
-    - 路线: 自主研究的系统与可复现基础设施
-      解决的问题: 把智能体假设转化为可执行代码、实验和论文，并通过验证门控、权限分离或开源工件使流程可重复。
-      尚未覆盖: 失效覆盖不完整；跨硬件、数据集和基座模型的标准化外部验证尚缺失。
-    - 路线: 领域专用自主发现系统
-      解决的问题: 将研究智能体嵌入物理、组学或预测流程，使用任务特定诊断、基线和晋升规则产生领域相关改进。
-      尚未覆盖: 报告的优势常只在少数案例上显示；不清楚多少来自任务先验或评估器设计，而非通用科学推理。
-    - 路线: 证据成熟度的概念与测量框架
-      解决的问题: 把科学可靠性操作化为对照、稳健性、可证伪性、可审计性和新颖性等维度，用于自动评分。
-      尚未覆盖: 这些分类能否预测智能体行为或下游科学有效性，仍缺少直接实证验证。
+    - 路线: 自主发现循环系统
+      解决的问题: 将LLM生成的想法转化为可运行的实验、代码、结果和论文，以支持端到端研究自动化。
+      尚未覆盖: 同行评审成功不稳定，目前主要在工作坊级别得到验证；有效性声明取决于内嵌评审/评估循环的强度。
+    - 路线: 面向发现智能体的基准测试套件
+      解决的问题: 提供标准化任务和自动指标，在模拟与领域特定设置中比较智能体的完整科学发现周期。
+      尚未覆盖: 任务完成和动作指标只是代理指标；其科学可靠性、领域多样性及与决策效用的一致性尚未建立。
+    - 路线: 证据锚定的评估框架
+      解决的问题: 根据证据成熟度和记录质量给主张打分，而不是复现隐藏的目标结论。
+      尚未覆盖: 结果受限于少量冻结基座模型，智能体之间统计区分较弱；可接受证据和泛化标准仍未解决。
+    - 路线: 验证与治理门控
+      解决的问题: 加入确定性或物理感知检查，以在主张晋升前捕获静默失败、约束源码编辑并执行规范化评估。
+      尚未覆盖: 消融证据显示仍可能漏过失败模式；跨领域、跨硬件验证缺失。
+    - 路线: 人类参照与同行评审验证
+      解决的问题: 通过人类专家基线、模拟评审或真实同行评审投稿，为自动化表现提供参照。
+      尚未覆盖: 人类基线稀疏，同行评审接受范围窄且波动；缺少可信自主科学的共识阈值。
     共识:
-    - 自主研究不能只靠流畅生成：当前系统已加入执行、验证和文档化闭环。
-    - 面向发现的评测应隐藏目标结论或注入失败，使智能体不能仅靠复现已知答案成功。
-    - 当前智能体能较熟练地执行和记录分析，但仍缺乏对照、稳健性、可证伪性等判别性科学行为。
-    - 代码、数据集、开放工件和确定性聚合等可复现信号，越来越被视为可信证据的一部分。
+    - 自主研究智能体能够胜任分析执行和记录工作，但现有证据反复显示其缺少对照、稳健性、可证伪性和跨数据集泛化。
+    - 评估正在从复现已知发现转向盲测发现任务、证据成熟度评分和在接收主张前设置有效性门控。
+    - 可靠性不能仅凭生成能力假定；需要确定性或领域特定验证来捕获静默失败和不可辩护输出。
+    - 领域基准暴露了常规分析执行与可信科学主张所需判别性行为之间的差距。
     分歧:
-    - 评测范围不同：从宽泛的开放式发现任务，到较窄的领域专用架构或物理模型改进。
-    - 验证机制不同：基于LLM的证据评分、视觉物理门控、确定性源码编辑与晋升权限、人类基线比较。
-    - 成功度量不同：工作坊同行评审接受、任务完成率、壁面剪切RMSE改进、预测性能和证据成熟度分数。
-    - 自主性与可靠性设计不同：有的将认知与确定性权威分离以控风险，有的依赖LLM评审或视觉语言检查。
+    - 评测目标不同：有的以合成或虚拟发现任务衡量成功，有的采用真实领域数据，有的关注证据成熟度或同行评审接受。
+    - 验证信号不同：使用LLM裁判和模拟评审的同时，也使用人类专家基线、确定性程序权威以及视觉或物理感知验证门控。
+    - 约束位置不同：有的系统只在最终结果或论文处把关，另一些在研究循环中约束源码编辑边界和晋升决策。
+    - 部署设置不同：证据覆盖模拟文本环境、计算流体动力学、单细胞组学、时间序列预测和机器学习工作坊写作，失败面和评估需求各异。
     开放问题:
-    - 基于LLM的评审或自动评判是否与跨领域、跨任务的人类科学判断一致？
-    - 验证门控能否在消融测试所用失败模式之外检测未知静默失败？
-    - 当评测只使用一个冻结基座模型时，智能体排名有多稳健？
-    - 领域专用改进（如更低壁面Cf RMSE或更好预测架构）证明的是通用发现能力还是任务特定调优？
-    - 何种基准设计能可靠测量对照、稳健性、可证伪性和跨数据集泛化？
+    - 自动化任务完成指标和LLM裁判分数在多大程度上能预测发现主张的有效性、可复现性或现实效用？
+    - 验证与治理门控能否泛化到已报告的静默失败或植入消融之外，漏检率应如何认证？
+    - 评测设计应如何控制冻结基座模型、领域记忆和智能体随机行为，以建立稳健的跨模型、跨任务趋势？
+    - 可信自主研究主张应满足哪些最低限度的对照、稳健性、可证伪性和同行评审或人类参照阈值？
   synthesis_status: llm
   generation_notes: []
 - id: literature_review_agents
@@ -2278,16 +2269,16 @@ topics:
   label_zh: ''
   description: Papers and resources related to Research Agent Benchmarks.
   description_zh: ''
-  paper_count: 38
+  paper_count: 39
   top_tags: []
   component_averages:
     citation_impact: 0.0
     citation_velocity: 0.0
     graph_prestige: 0.0
-    methodology_quality: 30.3
-    recency: 94.9
-    reproducibility: 39.1
-    topical_relevance: 17.3
+    methodology_quality: 30.8
+    recency: 95.1
+    reproducibility: 38.9
+    topical_relevance: 17.0
   top_papers:
   - id: stateless-language-agents-scaling-long-horizon-automated-re-2026
     title: 'Stateless Language Agents: Scaling Long-Horizon Automated Research'
@@ -2334,118 +2325,123 @@ topics:
     score: 53.9
     url: https://arxiv.org/abs/2609.02749
   related_work_outline:
-  - 'Mainstream direction: Building long-horizon autonomous research agents that search
-    modeling/evaluation changes under explicit budgets, with durable state, reusable
-    experience or skills, and held-out/sealed validation.'
-  - 'Shared research pattern: Treat research as an iterative loop—propose candidate
-    changes, receive cheap or high-fidelity feedback, condense reusable knowledge,
-    and evaluate final transfer on unseen targets or benchmark suites.'
-  - 'Key differences: Some contributions create new evaluation artifacts, such as
-    EvalResearchBench; others provide reusable workbenches or skill libraries, such
-    as TSFLab or DisCo; still others change state/feedback architecture, such as Stateless
-    Language Agents or Online Surrogate Repair.'
-  - 'Trend evolution: Within the 2024–2026 frontier, work is moving from single coding
-    agents toward self-improving workbenches, budget-aware feedback sampling, experience
-    reuse, and recursive evaluation design.'
-  - 'Open questions: How well fixed-budget benchmark wins predict real research utility,
-    how to compare across heterogeneous suites and hidden targets, and how much gain
-    comes from infrastructure or skills versus the underlying model.'
+  - 'Mainstream direction: Building autonomous research agents and agent-agnostic
+    workbenches that make long-horizon research loops cheaper and more evaluable,
+    with separate research state, reusable knowledge, and held-out feedback.'
+  - 'Shared research pattern: Externalize durable evidence or skills from raw agent
+    context, allocate expensive feedback sparsely, and evaluate task completion/accuracy
+    together with token, query, or development cost.'
+  - 'Key differences: Some work focuses on stateless harness context, some on surrogate
+    or experience-based feedback efficiency, some on reusable repository skills, and
+    some on self-built evaluator quality; domains range from code and ML to materials
+    and time series.'
+  - 'Trend evolution: Visible top-paper evidence clusters in 2026 and shifts toward
+    longer-horizon budgets, agent-agnostic infrastructure, held-out or sealed transfer,
+    and efficiency metrics; earlier 2024-2025 trends are not inferable from this packet.'
+  - 'Open questions: Whether dev/sealed/hold-out gains transfer to real research utility,
+    how to avoid persistent surrogate or experience errors, and how to close reproducibility
+    gaps from missing code, data, baselines, or limitation statements.'
   related_work_outline_zh:
-  - 主流方向：构建长程自主研究智能体，在显式预算、持久状态、可复用经验/技能和留出/隐藏验证下搜索建模或评测变化。
-  - 研究共性：把研究视为迭代循环——提出候选变化，接收廉价或高保真反馈，压缩可复用知识，并在未见目标或基准套件上评估迁移。
-  - 关键差异：有的贡献新基准或评估器，如 EvalResearchBench；有的提供可复用工作台或技能库，如 TSFLab、DisCo；有的改变状态或反馈架构，如
-    Stateless Language Agents、Online Surrogate Repair。
-  - 趋势演进：在 2024–2026 前沿内，研究正从单一编码智能体走向自改进工作台、预算感知反馈采样、经验复用和递归评估设计。
-  - 开放问题：固定预算下基准提升能否预测真实研究效用；异质任务套件与隐藏目标如何公平比较；基础设施或技能带来的收益有多少来自底层模型。
+  - 主流方向：构建自主研究智能体与智能体无关工作台，通过分离研究状态、复用知识以及留出反馈，让长程研究循环更便宜、更可评估。
+  - 研究共性：把持久证据或技能从智能体上下文中外部化，稀疏分配昂贵反馈，并在任务完成/准确率之外报告 token、查询或开发成本。
+  - 关键差异：有些工作聚焦无状态框架上下文，有些聚焦代理或经验反馈效率，有些聚焦仓库技能复用，有些聚焦自建评估器质量；领域涵盖代码、ML、材料和时序预测。
+  - 趋势演进：可见顶级论文集中在 2026 年，朝向更长预算、智能体无关基础设施、留出或密封迁移及效率指标发展；2024–2025 趋势因证据不足无法判断。
+  - 开放问题：开发/密封/留出收益能否转化为真实研究效用，如何避免持续代理或经验误差，以及如何弥补缺失代码、数据、基线与局限性声明的可复现缺口。
   literature_review:
     line_of_work_matrix:
-    - line: State and representation modeling
-      what_it_solves: Turns raw experimental trajectories, repository knowledge, and
-        agent histories into compact reusable research state or experience.
-      what_remains_open: Whether compressed or curated state is sufficient beyond
-        the evaluated domains and longer horizons.
-    - line: Action-conditioned control and planning
-      what_it_solves: Connects research-agent decisions to interventions, closed-loop
-        feedback, and budget-aware experiment allocation.
-      what_remains_open: How much of the measured gain comes from allocation rules,
-        surrogate feedback, or task-specific priors rather than the agent itself.
-    - line: Evaluation and evidence design
-      what_it_solves: Makes autonomous research claims comparable through executable
-        benchmarks, development versus sealed/holdout targets, budgets, and metrics.
-      what_remains_open: Coverage across tasks and agreement between proxy metrics
-        and real research utility.
-    - line: Systems and reproducible infrastructure
-      what_it_solves: Turns isolated research agents into reusable workbenches, harnesses,
-        shared tools, and verified skill libraries.
-      what_remains_open: Standardized external validation and maintenance across changing
-        repositories, datasets, and user settings.
-    - line: Conceptual taxonomy and theory
-      what_it_solves: Organizes failure modes and design axes such as state ownership,
-        experience reuse, and evaluator construction.
-      what_remains_open: Direct empirical validation that these axes predict model
-        behavior across heterogeneous benchmarks.
+    - line: Evaluation and benchmark design for autonomous research
+      what_it_solves: Creates comparable tasks, budgets, baselines, and metrics for
+        research agents, including self-built evaluator quality and held-out material
+        modeling transfer.
+      what_remains_open: Sealed-target and dev-target rankings diverge, evaluator
+        agreement remains below target disagreement ceilings, and no single researcher
+        config wins all metrics.
+    - line: Long-horizon state and context management
+      what_it_solves: Prevents history replay, duplicated work, and stalled experimentation
+        by storing durable research state outside conversations and giving agents
+        focused, role-specific contexts.
+      what_remains_open: Benefits are shown on software engineering, kernel optimization,
+        and algorithm tasks; explicit limitations are absent, and generalization to
+        other research workflows is unmeasured.
+    - line: Closed-loop feedback allocation and surrogate repair
+      what_it_solves: Uses sparse high-fidelity evaluations to update surrogates during
+        longer searches and chooses candidates by decision-relevant acquisition rules.
+      what_remains_open: Improving global surrogate fit does not necessarily reduce
+        regret; fixed surrogates leave persistent errors; evidence mainly covers synthetic
+        and MADE benchmarks.
+    - line: Reusable experience and skill libraries
+      what_it_solves: Distills prior experimental trajectories or GitHub repositories
+        into verified, reusable experience or skills that improve agent performance
+        and reduce interaction or development cost.
+      what_remains_open: Several systems lack explicit limitations; whether libraries
+        transfer across research domains without contamination or stale knowledge
+        remains unresolved.
+    - line: Domain-specific workbenches and transfer protocols
+      what_it_solves: Provides shared resources and tools for time series forecasting
+        research or materials discovery, with reproduction, benchmarking, and new
+        method development workflows.
+      what_remains_open: Materials transfer is limited to ten Matbench endpoints and
+        one holdout intervention failed; time series workbench lacks stated own limitations;
+        broader external validation is open.
     consensus:
-    - The papers treat autonomous research as an iterative search-evaluation loop,
-      where candidate changes are generated, scored, and selected under resource constraints.
-    - They converge on externalizing durable research knowledge from agent context
-      into harness state, experience libraries, or skill bases to reduce redundant
-      exploration.
-    - They evaluate with final performance on held-out, sealed, or benchmark-suite
-      targets, while reporting resource costs such as tokens, oracle queries, or development
-      time.
-    - Reproducibility signals are often weak or missing in the packet, so code, artifact,
-      and limitation claims remain verification gaps rather than established absences.
+    - Durable research state or reusable external knowledge is preferable to treating
+      growing conversation history as the only memory.
+    - Sparse, targeted, or pilot feedback can improve research-agent efficiency while
+      preserving or improving final performance.
+    - Practical evaluations now add cost signals such as tokens, oracle queries, and
+      development time to task completion or accuracy.
+    - Agent-agnostic shared infrastructure can make existing agents more reproducible
+      and can lower research iteration costs.
     disagreements:
-    - 'The primary bottleneck is framed differently: context/history management, feedback
-      frequency, evaluator quality, or operational skill distillation.'
-    - Evaluation settings differ from domain-specific discovery tasks to general ML
-      research suites and recursive evaluator construction, so success metrics are
-      not directly comparable.
-    - 'Feedback strategy differs: some use sparse high-fidelity surrogate repair during
-      search, others use inner-fold means, pilot tests, or one-time held-out checks
-      after freezing.'
-    - Claims about generalization differ in strength, ranging from sealed hidden targets
-      and held-out data splits to cross-benchmark score gains under fixed backbones.
+    - 'Where durable knowledge should live: harness state, an experience library,
+      a surrogate, or a repository-derived skill library.'
+    - 'Feedback evidence: frozen held-out evaluation, sealed targets hidden from the
+      researcher, online surrogate acquisition, or targeted pilot experiments when
+      prior experience is insufficient.'
+    - 'Evaluation target: some benchmark task completion and accuracy in code/ML/materials/time
+      series; others benchmark the quality of evaluators an agent creates.'
+    - 'Domain coverage: some evidence uses controlled synthetic or single-domain tasks;
+      other evidence spans multiple ML benchmark suites but lacks explicit limitations.'
     open_questions:
-    - Do token-efficiency and task-completion gains transfer to unseen domains, longer
-      horizons, and real-world research workflows not covered by current benchmarks?
-    - How should agent-generated evaluators be interpreted when target benchmarks
-      themselves disagree by roughly 9%?
-    - What minimal high-fidelity feedback frequency is needed to keep closed-loop
-      search progressing without amplifying surrogate errors?
-    - Can distilled skills and accumulated experience libraries be updated safely
-      as source repositories and task distributions change?
+    - Do reduced token/query costs and improved benchmark scores translate into more
+      useful real-world research outputs under domain shift?
+    - How should systems detect and repair persistent surrogate, experience, or skill
+      errors during long-horizon searches?
+    - What missing code, dataset, baseline, and limitation details would change reproducibility
+      or generalization claims?
+    - How robust are these research-agent designs across tasks outside software engineering,
+      kernel, Matbench, MADE, and time series forecasting?
   literature_review_zh:
     研究路线矩阵:
-    - 路线: 表示/状态建模
-      解决的问题: 将原始实验轨迹、仓库知识和智能体历史转化为紧凑可复用的研究状态或经验。
-      尚未覆盖: 压缩或筛选后的状态在评估域之外及更长时程下是否仍然充分。
-    - 路线: 动作条件控制与规划
-      解决的问题: 把研究智能体的决策连接到干预、闭环反馈和预算感知的实验分配。
-      尚未覆盖: 测得收益有多少来自分配规则、代理反馈或任务特定先验，而非智能体自身。
-    - 路线: 评测与证据设计
-      解决的问题: 通过可执行基准、开发集与密封/留出目标、预算和指标，使自主研究声明可比较。
-      尚未覆盖: 任务覆盖度，以及代理指标与真实研究效用之间的一致性。
-    - 路线: 系统与可复现基础设施
-      解决的问题: 将孤立研究智能体转化为可复用工作台、运行框架、共享工具和经过验证的技能库。
-      尚未覆盖: 跨仓库、数据集和用户设置的标准化外部验证与维护。
-    - 路线: 概念分类与理论
-      解决的问题: 组织失败模式和设计轴，例如状态持有者、经验复用和评估器构建方式。
-      尚未覆盖: 这些分类轴能否预测模型行为仍缺少直接实证验证。
+    - 路线: 自主研究的评测与基准设计
+      解决的问题: 为研究智能体提供可比较的任务、预算、基线和指标，包括自建评估器质量与材料建模留出迁移。
+      尚未覆盖: 密封目标与开发目标排序不一致，评估器一致性低于目标分歧上限，且没有单一研究者配置在所有指标上领先。
+    - 路线: 长程状态与上下文管理
+      解决的问题: 通过将持久研究状态保存在智能体对话之外并提供聚焦的角色特定上下文，防止历史重放、重复工作和实验停滞。
+      尚未覆盖: 证据集中在软件工程、内核优化和算法任务；缺少明确局限性，其他研究流程中的泛化性未测量。
+    - 路线: 闭环反馈分配与代理修复
+      解决的问题: 在较长搜索中利用稀疏高保真评估更新代理模型，并通过面向决策相关区域的采集规则选择候选。
+      尚未覆盖: 改善全局代理拟合不必然降低遗憾；固定代理会留下持久模型误差；证据主要来自合成环境和 MADE 基准。
+    - 路线: 可复用经验与技能库
+      解决的问题: 把先验实验轨迹或 GitHub 仓库提炼为经过验证的可复用经验或技能库，降低智能体交互和开发成本。
+      尚未覆盖: 多个系统缺少明确局限性；经验或技能库能否在无污染、不过时的情况下跨领域迁移仍未解决。
+    - 路线: 领域专用工作台与迁移协议
+      解决的问题: 为时序预测或材料发现提供共享资源、工具与复现/基准/新方法开发流程。
+      尚未覆盖: 材料迁移仅覆盖十个 Matbench 端点且一个留出干预失败；时序工作台缺少自身局限性；外部验证仍开放。
     共识:
-    - 这些工作都把自主研究视为迭代的搜索-评估循环：在资源约束下生成、评分并选择候选变化。
-    - 它们一致倾向于将持久研究知识从智能体上下文中外部化，放入运行框架状态、经验库或技能库，以减少冗余探索。
-    - 它们都使用留出、密封或基准套件目标上的最终性能作为证据，同时报告 token、oracle 查询或开发时间等资源成本。
-    - 证据包中可复现信号普遍较弱或缺失，因此代码、工件和局限声明应被视为验证缺口，而不是已证实不存在。
+    - 持久研究状态或可复用外部知识比仅依赖不断增长的对话历史更可靠。
+    - 稀疏、定向或试点反馈可以在保持或提升最终表现的同时提高研究智能体效率。
+    - 实用评测在任务完成或准确率之外，越来越多加入 token、oracle 查询和开发时间等成本信号。
+    - 智能体无关的共享基础设施可提高现有智能体的可复现性并降低迭代成本。
     分歧:
-    - 对主要瓶颈的定位不同：上下文/历史管理、反馈频率、评估器质量或操作技能提炼。
-    - 评测设置从领域特定发现任务到通用 ML 研究套件和递归评估器构建各不相同，成功指标不可直接比较。
-    - 反馈策略不同：有的在搜索过程中用稀疏高保真代理修复，有的使用内部折均值、试点测试或冻结后一次性留出检查。
-    - 泛化证据强度不同，从密封隐藏目标、留出数据划分到固定骨干下的跨基准得分提升，各自覆盖不同失败模式。
+    - 持久知识应存放在 harness 状态、经验库、代理模型还是仓库派生技能库中，方案不同。
+    - 反馈证据不同：冻结留出评估、对研究者隐藏的密封目标、在线代理采集，或经验不足时的定向试点。
+    - 评测目标不同：部分基准关注代码/ML/材料/时序任务完成与准确率，部分基准关注智能体自建评估器的质量。
+    - 领域覆盖不同：部分证据来自受控合成或单域任务，部分证据跨多个 ML 基准但缺少明确局限性。
     开放问题:
-    - 当前基准上的 token 效率与任务完成率提升，能否迁移到未见领域、更长时程和真实研究工作流？
-    - 当目标基准之间本身就存在约 9% 的不一致时，应如何解释智能体生成的评估器？
-    - 维持闭环搜索持续进展所需的最低高保真反馈频率是多少，同时不放大代理误差？
-    - 当源仓库和任务分布变化时，提炼出的技能库与积累的经验库能否安全更新？
+    - 降低的 token/查询成本和更高的基准分数能否转化为领域转移下的真实研究效用？
+    - 系统应如何在长程搜索中检测并修复持续的代理、经验或技能误差？
+    - 缺失的代码、数据集、基线和局限性细节会如何改变可复现性或泛化性结论？
+    - 这些研究智能体设计在软件工程、内核、Matbench、MADE 和时序预测之外的任务上有多稳健？
   synthesis_status: llm
   generation_notes: []
